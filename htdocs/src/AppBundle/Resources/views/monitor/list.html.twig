@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% set page_title = 'Monitor' %}
+{% set current_url = app.request.requestUri %}
+{% block body %}
+    <script>
+        gotToMonitorList('{{ current_url|raw }}');
+    </script>
+{% endblock %}
+

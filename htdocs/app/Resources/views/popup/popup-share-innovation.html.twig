@@ -1,0 +1,50 @@
+<div class="custom-content-popup element-share-innovation-popup transition">
+    <div class="content-blur transition"></div>
+    <div class="content-popup-for-scroll">
+        <div class="element-popup background-color-fff central-content-994">
+            <div class="cross-close-popup transition action-close-popup"></div>
+            <div class="content-popup">
+                <form id="form-share-innovation" action="" method="post">
+                    <div class="padding-30 central-content-846 box-sizing-border-box">
+                        <div class="title main-title font-montserrat-700">Share project</div>
+                    </div>
+                    <div class="padding-left-30 padding-right-30 padding-bottom-30 central-content-846 box-sizing-border-box">
+                        <input type="hidden" name="innovation_id" id="form-share-innovation-id" />
+                        <div class="form-element">
+                            <label class="color-4a4a4a font-size-15 line-height-1">
+                                Who do you want to share this project to?
+                            </label>
+                            <div class="content-select">
+                                <select class="people-select required form-input" name="people"
+                                        id="form-share-innovation-people">
+                                    <option value=""></option>
+                                    {% for contact in contacts %}
+                                        <option value="{{ contact.id }}">{{ contact.username }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-element">
+                            <label class="color-4a4a4a font-size-15 line-height-1">Your message</label>
+                            <div class="content-textarea">
+                                <textarea name="message"
+                                          id="form-share-innovation-message"
+                                            class="required form-input"
+                                            rows="9"
+                                            placeholder="Add a message (optional)"></textarea>
+                            </div>
+                        </div>
+                        <div class="content-buttons">
+                            <div class="error-message-share-innovation info-inner-content-button font-work-sans-400 color-e8485c"></div>
+                            <div class="loader-popup">
+                                <div class="loading-spinner"></div>
+                            </div>
+                            <button class="hub-button grey action-close-popup" type="button">Cancel</button>
+                            <button class="hub-button" type="submit">Share</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

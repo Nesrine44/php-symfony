@@ -1,0 +1,46 @@
+# Global parameters
+# Use it in action : $this->container->getParameter('app.website_title')
+# Use it in entity : you don't have to!
+parameters:
+    app.website_title: Innovation Hub
+    app.version: pr
+    app.company: Pernod Ricard
+    app.volume_unit: k9Lcs
+    app.image_folder_all: all
+    web_dir: "%kernel.root_dir%/../web/"
+    upload_dir: "%kernel.root_dir%/../web/uploads/"
+    stage: '%env(CURRENT_PLATFORM)%'
+    redis_prefix: "%stage%_"
+
+    amazon.s3.key:     '%env(AWS_KEY)%'
+    amazon.s3.secret:  '%env(AWS_SECRET)%'
+    amazon.s3.bucket:  '%env(AWS_BUCKET)%'
+    amazon.s3.region:  '%env(AWS_REGION)%'
+    amazon.s3.version: '%env(AWS_VERSION)%'
+    amazon.s3.directory: '%env(CURRENT_PLATFORM)%'
+
+    pr_auth:
+        password_key: BFE678Z9V79J7XBR2SVTA9E65MMST2KNZE2JF3U7
+        my_portal_authentication_enabled: true
+        contact_email: emily.lararosales@pernod-ricard.com
+        website_title: Innovation Pipeline
+        default_roles: [ROLE_USER]
+        removable_roles: []
+
+    mailer.reply: "emily.lararosales@pernod-ricard.com"
+    mailer.noreply: "innovation@pernod-ricard.com"
+    mailer.name: "%app.website_title%"
+
+    pr_employee.api_key: "mf8vpp8q3uh26tg4mkeypwcg"
+    pr_employee.base_url: "https://api.pernod-ricard.io/v2/Employee/"
+
+    azure.scope: ["openid", "profile", "email"]
+
+# Twig Configuration
+# use it in twig :  {{ website_title }}
+# use global (wich is a service) in twig : {{ global.settings.contact_email }}
+twig:
+    globals:
+        website_title: '%app.website_title%'
+        pr_auth: '%pr_auth%'
+        global: '@AppBundle\Service\WebsiteGlobalDatas'

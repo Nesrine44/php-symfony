@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% set page_title = 'Compare' %}
+{% block body %}
+    <script>
+        goToCompareListPage();
+        var innovation_1 = getInnovationById({{ innnovations_ids[0] }}, true);
+        var innovation_2 = getInnovationById({{ innnovations_ids[1] }}, true);
+        init_explore_benchmark_comparison(innovation_1, innovation_2);
+    </script>
+{% endblock %}
+

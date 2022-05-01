@@ -1,0 +1,4 @@
+parameters:
+    stage: dev
+    http_protocol: http
+    cookie_secure: false

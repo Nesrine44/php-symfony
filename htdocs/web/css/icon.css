@@ -1,0 +1,443 @@
+.icon {
+    background-image: url('../images/icons/icon-empty.png');
+}
+
+.with-icon.round .icon {
+    background-image: url('../images/icons/icon-empty-round.png');
+}
+
+
+/* Classification
+----------------------------------------------------------------------------------------*/
+
+.icon.product {
+    background-image: url('../images/icons/icon-product.png');
+}
+.icon.service {
+    background-image: url('../images/icons/icon-service.png');
+}
+
+/* Type
+----------------------------------------------------------------------------------------*/
+
+.icon.stretch {
+    background-image: url('../images/icons/icon-stretch.png');
+}
+
+.icon.incremental {
+    background-image: url('../images/icons/icon-incremental.png');
+}
+
+.icon.breakthrough,
+.icon.new_business_model {
+    background-image: url('../images/icons/icon-breakthrough.png');
+}
+
+/* Consumer Opportunity
+----------------------------------------------------------------------------------------*/
+
+.with-icon.round .icon.human_authenticity,
+.icon.human_authenticity {
+    background-image: url('../images/icons/icon-human_authenticity.png');
+}
+
+.with-icon.round .icon.easy_at_home_everywhere,
+.icon.easy_at_home_everywhere {
+    background-image: url('../images/icons/icon-easy_at_home_everywhere.png');
+}
+
+.with-icon.round .icon.shaking_the_codes,
+.icon.shaking_the_codes {
+    background-image: url('../images/icons/icon-shaking_the_codes.png');
+}
+
+.with-icon.round .icon.power_to_consumers,
+.icon.power_to_consumers {
+    background-image: url('../images/icons/icon-power_to_consumers.png');
+}
+
+.with-icon.round .icon.feminine_identity,
+.icon.feminine_identity {
+    background-image: url('../images/icons/icon-feminine_identity.png');
+}
+
+.with-icon.round .icon.doing_good,
+.icon.doing_good {
+    background-image: url('../images/icons/icon-doing_good.png');
+}
+
+.with-icon.round .icon.better_for_me,
+.icon.better_for_me {
+    background-image: url('../images/icons/icon-better_for_me.png');
+}
+
+.with-icon.round .icon.tactical_innovation,
+.icon.tactical_innovation {
+    background-image: url('../images/icons/icon-tactical_innovation.png');
+}
+
+/* Stage
+----------------------------------------------------------------------------------------*/
+
+.icon.discover{
+    background-image: url('../images/icons/stage/stage-discover.png');
+}
+.icon.ideate{
+    background-image: url('../images/icons/stage/stage-ideate.png');
+}
+.icon.experiment{
+    background-image: url('../images/icons/stage/stage-experiment.png');
+}
+.icon.incubate{
+    background-image: url('../images/icons/stage/stage-incubate.png');
+}
+.icon.scale_up{
+    background-image: url('../images/icons/stage/stage-scale_up.png');
+}
+.icon.permanent_range{
+    background-image: url('../images/icons/stage/stage-permanent_range.png');
+}
+.icon.discontinued{
+    background-image: url('../images/icons/stage/stage-discontinued.png');
+}
+.icon.frozen {
+    background-image: url('../images/icons/stage/stage-frozen-darker.png');
+}
+
+.icon.discover-unselected{
+    background-image: url('../images/icons/stage/stage-discover-unselected.png');
+}
+.icon.ideate-unselected{
+    background-image: url('../images/icons/stage/stage-ideate-unselected.png');
+}
+.icon.experiment-unselected{
+    background-image: url('../images/icons/stage/stage-experiment-unselected.png');
+}
+.icon.incubate-unselected{
+    background-image: url('../images/icons/stage/stage-incubate-unselected.png');
+}
+.icon.scale_up-unselected{
+    background-image: url('../images/icons/stage/stage-scale_up-unselected.png');
+}
+.icon.permanent_range-unselected {
+    background-image: url('../images/icons/stage/stage-permanent_range-light.png');
+}
+.icon.discontinued-unselected {
+    background-image: url('../images/icons/stage/stage-discontinued-light.png');
+}
+
+.hovered .icon.discover-unselected,
+.icon.discover-unselected.active,
+.icon.discover.light{
+    background-image: url('../images/icons/stage/stage-discover-light.png');
+}
+.hovered .icon.ideate-unselected,
+.icon.ideate-unselected.active,
+.icon.ideate.light{
+    background-image: url('../images/icons/stage/stage-ideate-light.png');
+}
+.hovered .icon.experiment-unselected,
+.icon.experiment-unselected.active,
+.icon.experiment.light{
+    background-image: url('../images/icons/stage/stage-experiment-light.png');
+}
+.hovered .icon.incubate-unselected,
+.icon.incubate-unselected.active,
+.icon.incubate.light{
+    background-image: url('../images/icons/stage/stage-incubate-light.png');
+}
+.hovered .icon.scale_up-unselected,
+.icon.scale_up-unselected.active,
+.icon.scale_up.light{
+    background-image: url('../images/icons/stage/stage-scale_up-light.png');
+}
+.icon.permanent_range-unselected.active,
+.icon.permanent_range.light{
+    background-image: url('../images/icons/stage/stage-permanent_range-light.png');
+}
+.icon.discontinued-unselected.active,
+.icon.discontinued.light{
+    background-image: url('../images/icons/stage/stage-discontinued-light.png');
+}
+.icon.frozen.light{
+    background-image: url('../images/icons/stage/stage-frozen-light.png');
+}
+
+.tooltip-consolidation-donut.discover .title-stage .img,
+.icon.discover.dark{
+    background-image: url('../images/icons/stage/stage-discover-dark.png');
+}
+.tooltip-consolidation-donut.ideate .title-stage .img,
+.icon.ideate.dark{
+    background-image: url('../images/icons/stage/stage-ideate-dark.png');
+}
+.tooltip-consolidation-donut.experiment .title-stage .img,
+.icon.experiment.dark{
+    background-image: url('../images/icons/stage/stage-experiment-dark.png');
+}
+.tooltip-consolidation-donut.incubate .title-stage .img,
+.icon.incubate.dark{
+    background-image: url('../images/icons/stage/stage-incubate-dark.png');
+}
+.tooltip-consolidation-donut.scale_up .title-stage .img,
+.icon.scale_up.dark{
+    background-image: url('../images/icons/stage/stage-scale_up-dark.png');
+}
+.tooltip-consolidation-donut.permanent_range .title-stage .img,
+.icon.permanent_range.dark{
+    background-image: url('../images/icons/stage/stage-permanent_range-dark.png');
+}
+.tooltip-consolidation-donut.discontinued .title-stage .img,
+.icon.discontinued.dark{
+    background-image: url('../images/icons/stage/stage-discontinued-dark.png');
+}
+.tooltip-consolidation-donut.frozen .title-stage .img,
+.icon.frozen.dark{
+    background-image: url('../images/icons/stage/stage-frozen-dark.png');
+}
+
+
+.icon.discover.darker{
+    background-image: url('../images/icons/stage/stage-discover-darker.png');
+}
+.icon.ideate.darker{
+    background-image: url('../images/icons/stage/stage-ideate-darker.png');
+}
+.icon.experiment.darker{
+    background-image: url('../images/icons/stage/stage-experiment-darker.png');
+}
+.icon.incubate.darker{
+    background-image: url('../images/icons/stage/stage-incubate-darker.png');
+}
+.icon.scale_up.darker{
+    background-image: url('../images/icons/stage/stage-scale_up-darker.png');
+}
+.icon.permanent_range.darker{
+    background-image: url('../images/icons/stage/stage-permanent_range-darker.png');
+}
+.icon.discontinued.darker{
+    background-image: url('../images/icons/stage/stage-discontinued-darker.png');
+}
+.icon.frozen.darker{
+    background-image: url('../images/icons/stage/stage-frozen-darker.png');
+}
+
+
+.icon.discover-unselected.frozen.active {
+    background-image: url('../images/icons/stage/stage-discover-frozen-light.png');
+}
+.icon.ideate-unselected.frozen.active {
+    background-image: url('../images/icons/stage/stage-ideate-frozen-light.png');
+}
+.icon.experiment-unselected.frozen.active{
+    background-image: url('../images/icons/stage/stage-experiment-frozen-light.png');
+}
+.icon.incubate-unselected.frozen.active{
+    background-image: url('../images/icons/stage/stage-incubate-frozen-light.png');
+}
+.icon.scale_up-unselected.frozen.active{
+    background-image: url('../images/icons/stage/stage-scale_up-frozen-light.png');
+}
+
+.icon.permanent_range.dark.neutral {
+    background-image: url('../images/icons/stage/stage-permanent_range-dark-neutral.png');
+}
+.icon.discontinued.dark.neutral {
+    background-image: url('../images/icons/stage/stage-discontinued-dark-neutral.png');
+}
+.icon.frozen.dark.neutral {
+    background-image: url('../images/icons/stage/stage-frozen-dark-neutral.png');
+}
+
+/* Growth Model
+----------------------------------------------------------------------------------------*/
+
+.tooltip-consolidation-donut.fast_growth .title-stage .img,
+.icon.fast_growth{
+    background-image: url('../images/icons/icon-fast_growth.png');
+}
+.tooltip-consolidation-donut.slow_build .title-stage .img,
+.icon.slow_build{
+    background-image: url('../images/icons/icon-slow_build.png');
+}
+
+.icon.fast_growth.light{
+    background-image: url('../images/icons/icon-fast_growth-light.png');
+}
+.icon.slow_build.light{
+    background-image: url('../images/icons/icon-slow_build-light.png');
+}
+
+/* Others
+----------------------------------------------------------------------------------------*/
+
+.icon.none.light {
+    background-image: url('../images/icons/icon-empty-round.png');
+}
+
+.icon.link-ibp,
+.icon.link-mybrand,
+.icon.link-press,
+.icon.link-website,
+.icon.link-video {
+    width: 30px!important;
+    height: 30px!important;
+    border-radius: 15px;
+    background-color: #fcb400;
+    background-size: 30px 30px!important;
+    background-position: center center;
+    background-repeat:no-repeat;
+}
+.icon.link-ibp {
+    background-image: url('../images/explore/pic-link-ibp.png');
+}
+.icon.link-mybrand {
+    background-image: url('../images/explore/pic-link-mybrands.png');
+}
+.icon.link-press {
+    background-image: url('../images/explore/pic-link-pressrelease.png');
+}
+.icon.link-video {
+    background-image: url('../images/explore/pic-link-video.png');
+}
+.icon.link-website {
+    background-image: url('../images/explore/pic-link-website.png');
+}
+/*
+.icon.pic.ancre{
+    background-image: url('../images/icons/icon-pic-ancre.png');
+}
+*/
+
+
+.icon.category {
+    background-image: url('../images/icons/icon-category.png');
+}
+.with-icon.round .icon.craft,
+.icon.craft {
+    background-image: url('../images/icons/icon-craft.png');
+}
+.with-icon.round .icon.rtd_rts,
+.icon.rtd_rts {
+    background-image: url('../images/icons/icon-rtd_rts.png');
+}
+.with-icon.round .icon.specialty,
+.icon.specialty {
+    background-image: url('../images/icons/icon-specialty.png');
+}
+.with-icon.round .icon.no_low_alcohol,
+.icon.no_low_alcohol {
+    background-image: url('../images/icons/icon-no_low_alcohol.png');
+}
+.with-icon.round .icon.big_bet,
+.icon.big_bet{
+    background-image: url('../images/icons/icon-big_bet.png');
+}
+.with-icon.round .icon.contributor,
+.icon.contributor{
+    background-image: url('../images/icons/icon-contributor.png');
+}
+.with-icon.round .icon.new_business_acceleration,
+.icon.new_business_acceleration {
+    background-image: url('../images/icons/icon-nba.png');
+}
+
+.with-icon.round .icon.top_contributor,
+.icon.top_contributor{
+    background-image: url('../images/icons/icon-top_contributor.png');
+}
+.with-icon.round .icon.negative_caap,
+.icon.negative_caap{
+    background-image: url('../images/icons/icon-negative_caap.png');
+}
+.with-icon.round .icon.high_investment,
+.icon.high_investment{
+    background-image: url('../images/icons/icon-high_investment.png');
+}
+.icon.value-proposition{
+    background-image: url('../images/icons/icon-value-proposition.png');
+}
+.icon.consumer{
+    background-image: url('../images/icons/icon-consumer.png');
+}
+.icon.business-priority {
+    background-image: url('../images/icons/icon-business-priority-light.png');
+}
+.icon.moc{
+    background-image: url('../images/icons/icon-moc.png');
+}
+.icon.confidential{
+    background-image: url('../images/icons/confidential.png');
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 11px;
+    height: 11px;
+    background-size: 11px 11px;
+    background-position: center center;
+    background-repeat:no-repeat;
+}
+
+
+.icon.consumer.light {
+    background-image: url('../images/icons/icon-consumer-light.png');
+}
+
+.icon.business-priority.light {
+    background-image: url('../images/icons/icon-business-priority-light.png');
+}
+.icon.value-proposition.light {
+    background-image: url('../images/icons/icon-value-proposition-light.png');
+}
+.with-icon.round .icon.big_bet.light,
+.icon.big_bet.light {
+    background-image: url('../images/icons/icon-big_bet-light.png');
+}
+.with-icon.round .icon.rtd_rts.light,
+.icon.rtd_rts.light {
+    background-image: url('../images/icons/icon-rtd_rts-light.png');
+}
+.with-icon.round .icon.specialty.light,
+.icon.specialty.light {
+    background-image: url('../images/icons/icon-specialty-light.png');
+}
+.with-icon.round .icon.no_low_alcohol.light,
+.icon.no_low_alcohol.light {
+    background-image: url('../images/icons/icon-no_low_alcohol-light.png');
+}
+.with-icon.round .icon.opportunity-outlook.light,
+.icon.opportunity-outlook.light {
+    background-image: url('../images/icons/icon-opportunity-outlook-light.png');
+}
+.icon.moc.light{
+    background-image: url('../images/icons/icon-moc-light.png');
+}
+.icon.category.light {
+    background-image: url('../images/icons/icon-category-light.png');
+}
+.icon.introduction-date.light{
+    background-image: url('../images/icons/icon-introduction-date-light.png');
+}
+
+.icon.nbm{
+    background-image: url('../images/icons/icon-nbm.png');
+}
+
+
+
+
+.icon.icon-warn {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    background-size: 14px 14px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('../images/icons/icon-warn.png');
+}
+
+.icon.abv.light{
+    background-image: url('../images/icons/icon-abv.png');
+}

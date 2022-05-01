@@ -1,0 +1,86 @@
+{% set citation = global.getRandomCitation() %}
+<div class="pri-content-modale-loading">
+    <div class="blur"></div>
+    <div class="container">
+        <div class="content-modale-loader">
+            <div class="modale-loader">
+                <div class="loading-spinner"></div>
+            </div>
+            <div class="libelle font-montserrat-700">Optimizing innovations…</div>
+            <div class="sub-libelle font-work-sans-400">
+                <span class="full-loading-progress">{{ global.getRedisCacheProgress() }}</span>%</div>
+            <div class="sub-sub-libelle font-work-sans-400">This action may take 10 minutes</div>
+        </div>
+        <div class="citation font-montserrat-700">
+            <div class="content">
+                <div class="picto-top"></div>
+                <div class="picto-bottom"></div>
+                <span>
+                    {{ citation['content'] }}
+                </span>
+            </div>
+            <div class="author">
+                {{ citation['author'] }}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            $('html').addClass('overflow-hidden');
+            $('#main').removeClass('list-innovations_inner loading').addClass('full-loading');
+
+            var all_citations = {{ global.getAllCitations()|json_encode|raw }};
+            setInterval(function(){
+                var citation = all_citations[Math.floor(Math.random() * all_citations.length)];
+                $('.citation').css({'opacity': 0});
+                setTimeout(function(){
+                    $('.citation .content span').html(citation['content']);
+                    $('.citation .author').html(citation['author']);
+                    $('.citation').css({'opacity': 1});
+                }, 300);
+            }, 60000);
+
+            function check_update_full_data(){
+                $.ajax({
+                    url: '{{ path("check_all_data") }}',
+                    data:{},
+                    type: "POST",
+                    success: function (data) {
+                        updateFullProgress(data);
+                    }, error: function (resultat, statut, e) {
+                        if (resultat.status == 200) {
+                            location.reload();
+                        } else if (resultat.statusText == 'abort') {
+                            return;
+                        } else {
+                            add_flash_message('error', 'Error : failed to export data, please reload this page');
+                            if (request_export != null)
+                                request_export.abort();
+                            jQuery('html').removeClass('exporting');
+                        }
+                    }
+                });
+            }
+            check_update_full_data();
+
+            function updateFullProgress(data){
+                if(data.status == 'success'){
+                    location.reload();
+                }else {
+                    var progress = (data['progress']) ? data['progress'] : 0;
+                    $('.full-loading-progress').html(progress);
+                    changePageTitle('Loading ('+progress+'%)' + ' | ' + global_wording['title']);
+                    checkEndUpdate();
+                }
+            }
+
+            function checkEndUpdate(){
+                setTimeout(function(){
+                    check_update_full_data();
+                }, 4000);
+            }
+        });
+    })(jQuery);
+</script>

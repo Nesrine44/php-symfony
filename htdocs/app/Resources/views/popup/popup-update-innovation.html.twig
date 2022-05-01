@@ -1,0 +1,136 @@
+<div class="custom-content-popup element-update-innovation-popup transition">
+    <div class="content-blur transition"></div>
+    <div class="content-popup-for-scroll">
+        <div class="element-popup background-color-fff central-content-994">
+            <div class="cross-close-popup transition action-close-popup"></div>
+            <div class="back-on-popup action-back-popup transition display-none"></div>
+            <div class="content-popup">
+                <form id="form-update-innovation" action="" method="post" enctype="multipart/form-data">
+                    <div class="padding-30 central-content-786">
+                        <div class="title main-title font-montserrat-700">Update project</div>
+                    </div>
+                    <div class="central-content-786 padding-30 padding-top-0">
+                        <div class="form-element">
+                            <label>Innovation name</label>
+                            <div class="content-input-text">
+                                <input type="text" name="innovation-name"
+                                       class="required form-input"
+                                       placeholder="Enter your innovation or project code name"/>
+                            </div>
+                        </div>
+
+                        {% if (entities|length == 1) %}
+                            <input type="hidden" name="entity" id="form-update-innovation-entity"
+                                   value="{{ entities[0]['id'] }}"/>
+                        {% else %}
+                            <div class="form-element">
+                                <label>Entity</label>
+                                <div class="under-label">Please select your entity for this innovation</div>
+                                <div class="content-select">
+                                    <select class="team-entity-select required form-input" name="entity"
+                                            id="form-update-innovation-entity">
+                                        {% set selected = false %}
+                                        {% for entity in entities %}
+                                            <option value="{{ entity.id }}" {{ (selected) ? '' : 'selected="selected"' }}>{{ entity.text }}</option>
+                                            {% set selected = true %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        <div class="form-element content-only-service display-none">
+                            <label>Is your innovation multi-brand?</label>
+                            <div class="content-input-radio">
+                                <input type="radio" value="1" name="multi_brand_innovation"
+                                       class="update_multi_brand_innovation checkbox-content-filter"
+                                       id="update_multi_brand_innovation_yes">
+                                <label class="fake-checkbox" for="update_multi_brand_innovation_yes"></label>
+                                <label class="fake-label" for="update_multi_brand_innovation_yes">Yes</label>
+                                <input type="radio" value="0" name="multi_brand_innovation"
+                                       class="update_multi_brand_innovation checkbox-content-filter"
+                                       id="update_multi_brand_innovation_no" checked>
+                                <label class="fake-checkbox" for="update_multi_brand_innovation_no"></label>
+                                <label class="fake-label" for="update_multi_brand_innovation_no">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-element content-have_a_mother_brand">
+                            <label>Does your innovation have a motherbrand?</label>
+                            <div class="content-input-radio">
+                                <input type="radio" value="1" name="have_a_mother_brand"
+                                       class="update_have_a_mother_brand checkbox-content-filter"
+                                       id="update_have_a_mother_brand_yes" checked>
+                                <label class="fake-checkbox" for="update_have_a_mother_brand_yes"></label>
+                                <label class="fake-label" for="update_have_a_mother_brand_yes">Yes</label>
+                                <input type="radio" value="0" name="have_a_mother_brand"
+                                       class="update_have_a_mother_brand checkbox-content-filter"
+                                       id="update_have_a_mother_brand_no">
+                                <label class="fake-checkbox" for="update_have_a_mother_brand_no"></label>
+                                <label class="fake-label" for="update_have_a_mother_brand_no">No</label>
+                            </div>
+                        </div>
+                        <div class="form-element content-brand-name">
+                            <label>Brand name</label>
+                            <div class="content-select">
+                                <select class="brand-select optional" name="brand-name" id="form-update-innovation-brand">
+                                    {% for brand in brands %}
+                                        <option value="{{ brand.id }}">{{ brand.text }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="content-buttons">
+                            <div class="error-message-update-innovation info-inner-content-button font-work-sans-400 color-e8485c"></div>
+                            <div class="loader-popup">
+                                <div class="loading-spinner"></div>
+                            </div>
+                            <button class="hub-button grey action-close-popup" type="button">Cancel</button>
+                            <button class="hub-button" type="submit">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="custom-content-popup element-update-innovation-contact-popup transition">
+    <div class="content-blur transition"></div>
+    <div class="content-popup-for-scroll">
+        <div class="element-popup background-color-fff central-content-994">
+            <div class="cross-close-popup transition action-close-popup"></div>
+            <div class="back-on-popup action-back-popup transition display-none"></div>
+            <div class="content-popup">
+                <form id="form-update-innovation-contact" action="" method="post" enctype="multipart/form-data">
+                    <div class="padding-30 central-content-786">
+                        <div class="title main-title font-montserrat-700">Update contact</div>
+                    </div>
+                    <div class="central-content-786 padding-30 padding-top-0">
+                        <div class="form-element content-contact">
+                            <label>Contact</label>
+                            <div class="content-select">
+                                <select class="contact-name" name="contact" id="form-update-contact">
+                                    {% for contact in contacts %}
+                                        <option value="{{ contact.id }}">{{ contact.username }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="content-buttons">
+                            <div class="error-message-update-innovation-contact info-inner-content-button font-work-sans-400 color-e8485c"></div>
+                            <div class="loader-popup">
+                                <div class="loading-spinner"></div>
+                            </div>
+                            <button class="hub-button grey action-close-popup" type="button">Cancel</button>
+                            <button class="hub-button" type="submit">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+# composer
+composer.phar
+vendor
+composer.lock
+
+# bin
+bin
+
+# PHP CS Fixer
+.php_cs.cache
+

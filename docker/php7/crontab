@@ -1,0 +1,18 @@
+# Run dtc queue
+*/2 * * * * root /root/run-queue.sh >> /var/log/cron.log 2>&1
+*/2 * * * * root echo "[run-queue]" >> /var/log/cron.log 2>&1
+
+# Remove old files
+02 4 * * * root find /var/www/symfony/private/secure/* -mtime +6 -type f -delete 2>&1
+02 4 * * * root echo "[remove old files]" >> /var/log/cron.log 2>&1
+
+# send promote innovation emails every friday at 12:00
+0 11 * * FRI root /root/send-promote-innovation-emails.sh >> /var/log/cron.log 2>&1
+0 11 * * FRI root echo "[send-promote-innovation-emails]" >> /var/log/cron.log 2>&1
+
+# update portfolio every night at 2am
+0 2 * * * root /root/update-portfolio.sh >> /var/log/cron.log 2>&1
+0 2 * * * root echo "[update-portfolio]" >> /var/log/cron.log 2>&1
+
+# Don't remove the empty line at the end of this file. It is required to run the cron job
+

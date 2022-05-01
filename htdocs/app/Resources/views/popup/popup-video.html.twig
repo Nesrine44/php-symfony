@@ -1,0 +1,31 @@
+<div class="custom-content-popup element-video-popup transition">
+    <div class="content-blur transition"></div>
+    <div class="content-popup-for-scroll">
+        <div class="element-popup background-color-fff central-content-994">
+            <div class="cross-close-popup transition action-close-popup"></div>
+            <div class="content-popup">
+                <div class="central-content-846 padding-30">
+                    <div class="title font-montserrat-700">What's the {{ website_title }}?</div>
+                    <div class="subtitle font-montserrat-500">Get an overview of what the {{ website_title }} can do in this video</div>
+                    <div class="content-video">
+                        <img alt="" src="{{ asset('/images/masks/video-big.png') }}">
+                        <video id="video-pipeline" class="video-js" controls preload="auto"
+                               poster="{{ asset('/videos/hub/InnovationHub.png') }}" data-setup="{}">
+                            <source src="{{ asset('/videos/hub/InnovationHub.mp4') }}" type='video/mp4'>
+                            <source src="{{ asset('/videos/hub/InnovationHub.webm') }}" type='video/webm'>
+                            <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a web browser
+                                that
+                                <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5
+                                    video</a>
+                            </p>
+                        </video>
+                    </div>
+                    <div class="content-buttons">
+                        <button class="hub-button grey action-close-popup" type="button">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

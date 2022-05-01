@@ -1,0 +1,474 @@
+/* ARTICLE ITEM
+----------------------------------------------------------------------------------------*/
+
+.c-learn-article-item__element {
+    display: inline-block;
+    margin: 0 20px 20px 20px;
+    width: 304px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.c-learn-article-item__element:nth-child(3n+1) {
+    margin-left: 0;
+}
+
+.c-learn-article-item__element:nth-child(3n) {
+    margin-right: 0;
+}
+
+.c-learn-article-item__element.standalone {
+    margin: initial;
+    width: 100%;
+}
+
+.c-learn-article-item__element a {
+    text-decoration: none;
+}
+
+.content-list-learn {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.content-list-learn .c-learn-list-content-article {
+    position: relative;
+    float: left;
+    width: 33.33%;
+    vertical-align: top;
+    margin-bottom: 25px;
+    text-align: center;
+    line-height: 0;
+}
+
+.content-list-learn .c-learn-list-content-article .c-learn-article-item__element {
+    display: inline-block;
+    margin: 0!important;
+    width: 304px;
+    text-align: left;
+}
+
+.content-list-learn .c-learn-list-content-article:nth-child(3n+1) {
+    text-align: left;
+}
+
+.content-list-learn .c-learn-list-content-article:nth-child(3n) {
+    text-align: right;
+}
+
+@media only screen and (max-width: 980px) {
+    .content-list-learn .c-learn-list-content-article {
+        width: 50%;
+    }
+    .content-list-learn .c-learn-list-content-article .c-learn-article-item__element {
+        width: 92%;
+    }
+    .content-list-learn .c-learn-list-content-article:nth-child(3n+1),
+    .content-list-learn .c-learn-list-content-article:nth-child(3n) {
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 690px) {
+    .content-list-learn .c-learn-list-content-article {
+        width: 100%;
+    }
+    .content-list-learn .c-learn-list-content-article .c-learn-article-item__element {
+        width: 100%;
+    }
+}
+
+.c-learn-article-item__thumbnail {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 190px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.c-learn-article-item__title {
+    margin-bottom: 5px;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.c-learn-article-item__element>a:first-child:hover .c-learn-article-item__title {
+    color: #fcb400;
+}
+
+.c-learn-article-item__preview {
+    margin-bottom: 9px;
+    color: #000000;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.c-learn-article-item__author {
+    color: #787878;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 13px;
+    line-height: 1.77;
+}
+
+.c-learn-article-item__author a,
+.c-learn-article-item__author a:visited {
+    color: #787878;
+    text-decoration: underline;
+}
+
+.c-learn-article-item__author a:hover,
+.c-learn-article-item__author a:active {
+    text-decoration: none;
+}
+
+.c-learn-article-item__meta {
+    color: #b5b5b5;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1;
+    position: relative;
+}
+
+
+/* ARTICLE PAGE
+----------------------------------------------------------------------------------------*/
+
+.c-learn-article-page__article {
+    position: relative;
+    margin: auto;
+    margin-top: 50px;
+    max-width: 1280px;
+    font-size: 0;
+}
+
+.c-learn-article-page__content {
+    display: inline-block;
+    position: relative;
+    z-index: 99;
+    padding-bottom: 60px;
+    width: 66%;
+    vertical-align: top;
+    overflow: visible;
+}
+
+.c-learn-article-page__content a {
+    color: #fcb400;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.c-learn-article-page__sidebar {
+    display: inline-block;
+    margin-top: -23px;
+    width: 34%;
+}
+
+.c-learn-article-page__heading {
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+}
+
+
+/* START HERO */
+
+.c-learn-article-page__hero {
+    position: relative;
+    margin-bottom: 40px;
+    width: 100%;
+    overflow: hidden;
+    /* height: 510px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: skewY(1.5deg);
+    transform-origin: 100% 0; */
+}
+
+.c-learn-article-page__hero-image {
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    margin-top: 1px;
+    clip-path: polygon(0 100px, 0 100%, 100% 100%, 100% 0);
+}
+
+.c-learn-article-page__hero-triangle {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+}
+
+.c-learn-article-page__hero-triangle svg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.c-learn-article-page__meta {
+    position: relative;
+    color: #b5b5b5;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+
+/* END HERO */
+
+
+/* START CONTENT */
+
+.c-learn-article-page__introduction {
+    margin: 20px 0 70px 0;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.62;
+}
+
+.c-learn-article-page__paragraph-heading {
+    margin-top: 20px;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+}
+
+.c-learn-article-page__paragraph,
+.c-learn-article-page__list {
+    padding: 20px 0;
+    color: #000000;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 19px;
+    font-weight: 300;
+    line-height: 1.58;
+}
+
+.c-learn-article-page__paragraph .medium,
+.c-learn-article-page__list .medium {
+    font-weight: 500;
+}
+
+.c-learn-article-page__paragraph .bold,
+.c-learn-article-page__list .bold {
+    font-weight: 700;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.c-learn-article-page__paragraph .titre {
+    font-weight: bold;
+    font-size: 26px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.c-learn-article-page__emphasize-section {
+    margin: 60px 0px;
+    padding: 60px 40px;
+    background-color: #f2f2f2;
+}
+
+.c-learn-article-page__emphasize-section .c-learn-article-page__paragraph-heading {
+    font-size: 36px;
+    margin: 0 0 40px 0;
+}
+
+.c-learn-article-footer {
+    background-color: #005095;
+    height: 50;
+    width: 1280;
+}
+
+.c-learn-article-page__emphasize-section .c-learn-article-page__paragraph-heading.subject {
+    color: #b5b5b5;
+    font-size: 22px;
+    margin: 0 0 5px 0;
+}
+
+.c-learn-article-page__emphasize-section .c-learn-article-page__paragraph,
+.c-learn-article-page__emphasize-section .c-learn-article-page__list {
+    font-size: 22px;
+    line-height: 33px;
+}
+
+.c-learn-article-page__emphasize-section .c-learn-article-page__quote .title {
+    font-size: 22px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.c-learn-article-page__emphasize-section .c-learn-article-page__quote .title .font-weight-500 {
+    font-weight: 500;
+}
+
+.learn-arrow-separator {
+    position: relative;
+    margin: 0 auto 30px;
+    width: 50px;
+    height: 25px;
+    background-size: 50px auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.learn-arrow-separator.blue {
+    background-image: url('../images/learn/consumer-benefit/arrow-blue.png');
+}
+
+.c-learn-article-page__list {
+    margin: 20px auto;
+    max-width: 580px;
+    list-style: none;
+    counter-reset: item;
+    position: relative;
+}
+
+.c-learn-article-page__list li:before {
+    position: absolute;
+    left: 0;
+    content: counter(item) ".";
+    font-weight: 700;
+}
+
+.c-learn-article-page__list li {
+    padding-bottom: 20px;
+    margin-left: 40px;
+    counter-increment: item;
+}
+
+.c-learn-article-page__image {
+    display: block;
+    margin: auto;
+    padding: 40px;
+    max-width: 580px;
+    box-sizing: border-box;
+}
+
+.c-learn-article-page__imagenewbusiness {
+    width: 748px;
+    height: 466px;
+    display: block;
+}
+
+.c-learn-article-page__imageNBM-success {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    width: 350px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+
+/* END CONTENT */
+
+.c-learn-article-page__quote {
+    position: relative;
+    margin: 60px auto;
+    text-align: center;
+    color: #000;
+}
+
+.c-learn-article-page__quote .title {
+    margin-bottom: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.c-learn-article-page__quote .title span {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+
+.c-learn-article-page__quote .title span.quote-left,
+.c-learn-article-page__quote .title span.quote-right {
+    margin: 0;
+    width: 44px;
+    height: 30px;
+    background-size: 44px 30px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.c-learn-article-page__quote .title span.quote-left {
+    vertical-align: top;
+    margin-right: 10px;
+    background-image: url('../images/quote/quote-left.png');
+}
+
+.c-learn-article-page__quote .title span.quote-right {
+    vertical-align: bottom;
+    margin-left: 10px;
+    background-image: url('../images/quote/quote-right.png');
+}
+
+.c-learn-article-page__quote .subtitle {
+    margin-top: 20px;
+    color: #b5b5b5;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    ;
+    text-align: center;
+}
+
+
+/* SIDEBAR */
+
+.c-learn-article-page__sidebar-headline {
+    margin-bottom: 36px;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.c-learn-article-page__sidebar-item {}
+
+
+/* END SIDEBAR */
+
+.c-learn-article-page__grey-bg {
+    width: 100%;
+    background-color: #f2f2f2;
+    margin-left: -20px;
+    padding-left: 20px;
+}
+
+@media only screen and (max-width: 1050px) {
+    .c-learn-article-page__sidebar,
+    .c-learn-article-page__content {
+        display: block;
+        width: 100%;
+    }
+}

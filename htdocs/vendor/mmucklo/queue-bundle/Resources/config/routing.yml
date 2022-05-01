@@ -1,0 +1,10 @@
+queue:
+    resource: "@DtcQueueBundle/Controller/QueueController.php"
+    prefix:  /dtc_queue/
+    type: annotation
+
+queue_trends:
+    resource: "@DtcQueueBundle/Controller/TrendsController.php"
+    prefix:  /dtc_queue/
+    type: annotation
+

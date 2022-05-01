@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% set page_title = 'Connect' %}
+{% set current_url = app.request.requestUri %}
+{% block body %}
+    <script>
+        goToConnectPage('{{ current_url|raw }}');
+    </script>
+{% endblock %}
+
+
+
+

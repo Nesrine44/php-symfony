@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% set page_title = the_user['username'] %}
+{% set current_url = app.request.requestUri %}
+{% block body %}
+    <script>
+        goToUserProfile({{ the_user|json_encode|raw }});
+    </script>
+{% endblock %}
+
+
+
+

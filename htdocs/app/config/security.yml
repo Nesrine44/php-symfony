@@ -1,0 +1,45 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_MANAGEMENT:  ROLE_USER
+        ROLE_MD:  ROLE_USER
+        ROLE_HQ:       ROLE_MANAGEMENT
+        ROLE_SUPER_ADMIN: ROLE_HQ
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email # on se connecte avec son email sur le pipeline
+
+    firewalls:
+        main:
+            logout_on_user_change: true
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+
+            logout:       true
+            anonymous:    true
+            remember_me:
+                secure: %cookie_secure%
+                secret: "YF(61Ai_q2DOsHlgVY-wjzZKDQM)wX1jkv!dS"
+
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/pm/, role: IS_AUTHENTICATED_ANONYMOUSLY } # unconnected metrics
+        #- { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }  # we dont allow registration
+        #- { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY } # we dont allow resetting password
+        - { path: ^/connect/azure, role: IS_AUTHENTICATED_ANONYMOUSLY } # For PrAuthBundle
+        - { path: ^/connect/azure/check, role: IS_AUTHENTICATED_ANONYMOUSLY } # For PrAuthBundle
+        - { path: ^/admin/, role: ROLE_HQ }
+        - { path: ^/dtc_queue, roles: ROLE_SUPER_ADMIN }
+        - { path: ^/dtc_grid, roles: ROLE_SUPER_ADMIN }
+        - { path: ^/develop, role: ROLE_SUPER_ADMIN }
+        - { path: ^/develop/, role: ROLE_SUPER_ADMIN }
+        - { path: ^/api/doc, role: ROLE_SUPER_ADMIN }
+        - { path: ^/, role: ROLE_USER }

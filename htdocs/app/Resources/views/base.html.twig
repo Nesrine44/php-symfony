@@ -1,0 +1,234 @@
+{% set current_path = (app.request.attributes.get('_route')) ? path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) : '' %}
+{% set main_classes = (app.user) ? global.main_classes(app.user,current_path) : '' %}
+{% set cache_version_adder = '?v=' ~ global.settings.cache_version  %}
+{% set check_redis_data = global.checkRedisDatas() %}
+{% set init_walkthrough = check_redis_data and global.settings.is_walkthrough_enabled and not app.user.getHasSeenWalkthrough() and app.user.hasManageAccess() %}
+{% set user_full_data = (app.user and check_redis_data) ? global.user_full_data(app.user, additional_read_ids|default([])) : null %}
+
+{% set contacts = (app.user and user_full_data['other_datas']) ? user_full_data['other_datas']['contacts_json'] : [] %}
+{% set brands = (app.user and user_full_data['other_datas']) ? user_full_data['other_datas']['brands_json'] : [] %}
+{% set entities = (app.user and user_full_data['popup-new']) ? user_full_data['popup-new']['entities'] : [] %}
+{% set init_walkthrough = check_redis_data and global.settings.is_walkthrough_enabled and not app.user.getHasSeenWalkthrough() and app.user.hasManageAccess() %}
+<!DOCTYPE html>
+<html class="{% if added_html_classes is defined %}{{ added_html_classes }}{% endif %}{% if init_walkthrough %} popup-opened{% endif %}">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700|Work+Sans:300,400,500,600" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://vjs.zencdn.net/6.6.3/video-js.css">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/libs/tooltipster/css/tooltipster.css') }}{{ cache_version_adder }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/libs/select2/css/select2.css') }}{{ cache_version_adder }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/libs/rateit/css/rateit.css') }}{{ cache_version_adder }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/libs/jquery-jvectormap/jquery-jvectormap-2.0.3.css') }}{{ cache_version_adder }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/libs/owl-caroussel/assets/owl.carousel.min.css') }}{{ cache_version_adder }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/libs/venobox/venobox.css') }}{{ cache_version_adder }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/animations.css') }}{{ cache_version_adder }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/icon.css') }}{{ cache_version_adder }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}{{ cache_version_adder }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/learn.css') }}{{ cache_version_adder }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/about.css') }}{{ cache_version_adder }}">
+
+    {% if init_walkthrough %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('js/libs/introjs/introjs.css') }}{{ cache_version_adder }}">
+    {% endif %}
+    {% block stylesheets %}{% endblock %}
+
+    <link rel="icon" href="{{ asset('favicon.ico') }}" />
+
+    {% if app.user and not check_redis_data %}
+        <title>Loading | {{ website_title }}</title>
+    {% else %}
+        <title>{% if page_title is defined %} {{ page_title }} | {% endif %}{{ website_title }}</title>
+    {% endif %}
+
+    <script type="text/javascript" src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+    <script type="text/javascript" src="https://vjs.zencdn.net/6.6.3/video.js"></script>
+
+    <script type="text/javascript" src="{{ asset('js/libs/polyfills.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/jquery/jquery.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/braowser.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/select2/js/select2.full.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/select2/js/select2_extended_ajax_adapter.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/modernizr-custom.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/jquery-ui-1.11.4/jquery-ui.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/jquery.placeholder.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/md5.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/data_collection-1.1.6-min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/is.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/tooltipster/js/jquery.tooltipster.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/pri-loader.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/moment.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/chartjs-2.5.0/Chart.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/jquery.animateNumber.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/rateit/jquery.rateit.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/js-cookie.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/jquery-AreYouSure/jquery.are-you-sure.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/fastclick.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/jquery-jvectormap/jquery-jvectormap-2.0.3.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/jquery-jvectormap/assets/jquery-jvectormap-us-aea-en.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/jquery-jvectormap/assets/jquery-jvectormap-world-mill-en.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/saveSvgAsPng.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/pri-content-filter.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/pri-map-lister.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/owl-caroussel/owl.carousel.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/venobox/venobox.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/cookie-notificator.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/introjs/intro.min.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/jquery-file-upload/js/jquery.iframe-transport.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/jquery-file-upload/js/cors/jquery.xdr-transport.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/libs/jquery-file-upload/js/jquery.fileupload.js') }}{{ cache_version_adder }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/global.util.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/global.search.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/global.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/global.wording.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/global.jquery.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/global.tooltip.js') }}{{ cache_version_adder }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/custom-popup.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/custom-popup.new-innovation.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/custom-popup.update-innovation.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/custom-popup.change-stage.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/custom-popup.consumer-opportunity.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/custom-popup.feedback.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/custom-popup.canvas.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/custom-popup.manage-new-feedback.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/custom-popup.manage-new-competitor.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/custom-popup.share-innovation.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/custom-popup.activities-view-all.js') }}{{ cache_version_adder }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/manage.list.js') }}{{ cache_version_adder }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/connect.list.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/connect.detail.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/connect.user.settings.js') }}{{ cache_version_adder }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/compare.js') }}{{ cache_version_adder }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/explore.list.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/explore.detail.overview.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/explore.detail.activities.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/explore.detail.canvas.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/explore.detail.feedback.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/explore.detail.financial.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/explore.detail.markets.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/explore.detail.key_cities.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/explore.detail.team.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/explore.detail.edit.upload.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/explore.detail.edit.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/explore.detail.js') }}{{ cache_version_adder }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/welcome.js') }}{{ cache_version_adder }}"></script>
+    <script type="text/javascript" src="{{ asset('js/monitor.js') }}{{ cache_version_adder }}"></script>
+
+    {% if init_walkthrough %}
+        <script type="text/javascript" src="{{ asset('js/walkthrough.js') }}{{ cache_version_adder }}"></script>
+    {% endif %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127686150-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-127686150-1');
+    </script>
+</head>
+<body>
+<script>
+    init_wording({{ global.get_global_wording()|json_encode|raw }});
+    if (!data_all_innovations) {
+        optimization_init({{ user_full_data|json_encode|raw }});
+    }
+</script>
+<input type="hidden" name="token" id="hub-token" value="{{ csrf_token('hub_token') }}"/>
+<div id="main"
+     data-uid="{{ (app.user) ? app.user.id : '' }}"
+     data-displayable-date="{{ global.settings.current_financial_date }}"
+     data-accept-newsletter="{{ (app.user and app.user.getAcceptNewsletter()) ? '1' : '0' }}"
+     data-accept-contact="{{ (app.user and app.user.getAcceptContact()) ? '1' : '0' }}"
+     data-current-trimester="{{ global.settings.current_trimester }}"
+     data-open-date="{{ global.settings.open_date }}"
+     data-before-seazure-date-libelle="{{ global.settings.open_date_libelle }}"
+     data-during-seazure-date-libelle="{{ global.settings.close_date_libelle }}"
+     data-show-closed-message="{{ global.settings.is_closed_message_enabled }}"
+     data-closure-date="{{ global.settings.close_date }}"
+     data-libelle-current-le="{{ global.settings.libelle_current_le }}"
+     data-libelle-last-a="{{ global.settings.libelle_last_a }}"
+     data-contact-mail="{{ global.settings.contact_email }}"
+     data-is-http="{{ (global.settings.is_https_enabled) ? '0' : '1' }}"
+     data-last-ns-group="{{ (app.user) ? global.last_ns_group(app.user) : '' }}"
+     data-perimeter="{{ (app.user) ? app.user.getProperPerimeterId() : '' }}"
+     data-data-capture-toast-enabled="{{ (global.settings.is_data_capture_toast_enabled) ? '1' : '0' }}"
+     data-tidio-enabled="{{ (global.settings.is_tidio_chat_enabled) ? '1' : '0' }}"
+     class="{{ main_classes }} {% if added_main_classes is defined %}{{ added_main_classes }}{% endif %}">
+    {% if global.settings.is_maintenance_enabled and app.user and not app.user.hasAdminRights()  %}
+        {% include 'default/maintenance-mode.html.twig' %}
+    {% else %}
+        <div id="pri-main-container" class="transition priority-right home">
+            {% include 'default/header.html.twig' %}
+            <div id="pri-main-container-without-header">
+                {% if check_redis_data %}
+                    {% block body %}{% endblock %}
+                {% endif %}
+            </div>
+            {% block javascripts %}{% endblock %}
+        </div>
+        {% if app.user %}
+            {% include 'popup/popup-search.html.twig' %}
+            {% include 'popup/popup-new-innovation.html.twig' %}
+            {% include 'popup/popup-update-innovation.html.twig' %}
+            {% include 'popup/popup-user-innovation-right.html.twig' %}
+            {% include 'popup/popup-activities-view-all.html.twig' %}
+            {% include 'popup/popup-change-stage.html.twig' %}
+            {% include 'popup/popup-consumer-opportunity.html.twig' %}
+            {% include 'popup/popup-feedback-request.html.twig' %}
+            {% include 'popup/popup-share-innovation.html.twig' %}
+            {% include 'popup/popup-delete-skill.html.twig' %}
+            {% include 'popup/popup-key-cities.html.twig' %}
+            {% include 'popup/popup-canvas.html.twig' %}
+            {% if feedbackInvitation is defined %}
+                {% include 'popup/popup-feedback-answer.html.twig' %}
+            {% endif %}
+            {% include 'popup/popup-video.html.twig' %}
+            {% include 'popup/popup-manage-new-feedback.html.twig' %}
+            {% include 'popup/popup-manage-new-competitor.html.twig' %}
+            {% include 'popup/popup-export.html.twig' %}
+            {% if init_walkthrough %}
+                {% include 'popup/popup-walkthrough.html.twig' %}
+            {% endif %}
+            {% if not check_redis_data %}
+                {% include 'popup/popup-loading-data.html.twig' %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+</div>
+<script type="text/javascript">
+    var _mfq = _mfq || [];
+    var mouseflowPath = '{{ global.getMouseflowPath(app.user, app.request.requestUri)|raw }}';
+    (function () {
+        var mf = document.createElement("script");
+        mf.type = "text/javascript";
+        mf.async = true;
+        mf.src = "//cdn.mouseflow.com/projects/b33db4be-e5de-4559-b250-7cc244811e92.js";
+        document.getElementsByTagName("head")[0].appendChild(mf);
+    })();
+</script>
+{% if global.settings.is_tidio_chat_enabled %}
+    {% if app.user %}
+        <script type="text/javascript">
+            document.tidioIdentify = {
+                distinct_id: '{{ (app.user.getOldId()) ? app.user.getOldId() : 'sf-' ~ app.user.getId() }}',
+                email: '{{ app.user.getEmail() }}',
+                name: '{{ app.user.getProperUsername() }}'
+            };
+        </script>
+    {% endif %}
+    <script src="//code.tidio.co/alyrul2jjaqdqu6vw46xane276qpxjvy.js"></script>
+{% endif %}
+</body>
+</html>

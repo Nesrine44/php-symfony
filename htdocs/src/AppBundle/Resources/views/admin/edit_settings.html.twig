@@ -1,0 +1,115 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        (function ($) {
+
+            /**
+             * get_financial_date_by_trimester
+             * @param trimestre
+             * @return {string}
+             */
+            function get_financial_date_by_trimester(old_trimestre, trimestre, financial_date) {
+                var date_explode = financial_date.split('-');
+                var year = parseInt(date_explode[0]);
+                if (trimestre == 2) {
+                    //year -= 1;
+                }
+                var dateM = '';
+                if (trimestre == 3) {
+                    dateM = '01';
+                    if(old_trimestre == 2){
+                        year += 1;
+                    }
+                } else if (trimestre == 4) {
+                    dateM = '04';
+                } else if (trimestre == 1) {
+                    dateM = '07';
+                } else {
+                    dateM = 10;
+                    if(old_trimestre == 3){
+                        year -= 1;
+                    }
+                }
+                return year + '-' + dateM + '-15';
+            }
+
+            function get_financial_date_libelle(the_date) {
+                var date = new Date(the_date);
+                var date_explode = the_date.split('-');
+                var year = parseInt(date_explode[0]);
+                year = (year - 2000);
+                var month = (parseInt(date.getMonth()) + 1);
+                var futur_year = year + 1;
+
+                if (month < 4) {
+                    return 'LE2 ' + year;
+                } else if (month < 7) {
+                    return 'LE3 ' + year;
+                } else if (month < 10) {
+                    return 'B' + futur_year;
+                } else {
+                    return 'LE1 ' + futur_year;
+                }
+            }
+
+            function update_label(target){
+                var $target_field = $('#'+target);
+                var $label = $target_field.parent().parent().find('label');
+                var the_date = $target_field.val();
+                $label.html('Current financial date  : '+get_financial_date_libelle(the_date));
+            }
+
+            function initDateChangerToField(){
+                var field_id = $('.field_financial_date').attr('id');
+                var $field = $('#'+field_id);
+                var field_trimester_id = $('.field_current_trimester').attr('id');
+                $('.content-picker-buttons button').attr('data-target-trimester', field_trimester_id).attr('data-target', field_id);
+                $field.attr('readonly', true);
+                $('#'+field_trimester_id).attr('readonly', true);
+                initActions();
+                update_label(field_id);
+            }
+
+            function initActions(){
+                $('.content-picker-buttons .past').click(function () {
+                    var target = $(this).attr('data-target');
+                    var target_trimester = $(this).attr('data-target-trimester');
+                    var $target_field = $('#'+target);
+                    var $target_trimester_field = $('#'+target_trimester);
+                    var current_date = $target_field.val();
+                    var old_trimester = parseInt($target_trimester_field.val());
+                    var trimester = old_trimester - 1;
+                    if(trimester <= 0){
+                        trimester = 4;
+                    }
+                    $target_trimester_field.val(trimester);
+                    $target_field.val(get_financial_date_by_trimester(old_trimester, trimester, current_date));
+                    update_label(target);
+                    return false;
+                });
+
+                $('.content-picker-buttons .next').click(function () {
+                    var target = $(this).attr('data-target');
+                    var target_trimester = $(this).attr('data-target-trimester');
+                    var $target_field = $('#'+target);
+                    var $target_trimester_field = $('#'+target_trimester);
+                    var current_date = $target_field.val();
+                    var old_trimester = parseInt($target_trimester_field.val());
+                    var trimester = old_trimester + 1;
+                    if(trimester >= 5){
+                        trimester = 1;
+                    }
+                    $target_trimester_field.val(trimester);
+                    $target_field.val(get_financial_date_by_trimester(old_trimester, trimester, current_date));
+                    update_label(target);
+                    return false;
+                });
+            }
+
+            $(document).ready(function () {
+                initDateChangerToField();
+            });
+        })(jQuery);
+    </script>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% set cache_version_adder = '?v=' ~ global.settings.cache_version  %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="cleartype" content="on">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Work+Sans:300,400,500,600" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/prauth/css/fosuserbundle.css') }}{{ cache_version_adder }}">
+        <link rel="icon" href="{{ asset('favicon.ico') }}" />
+        <script type="text/javascript" src="{{ asset('js/libs/jquery/jquery.min.js') }}{{ cache_version_adder }}"></script>
+        <script type="text/javascript" src="{{ asset('js/global.util.js') }}{{ cache_version_adder }}"></script>
+        <script type="text/javascript" src="{{ asset('js/fosuserbundle.js') }}{{ cache_version_adder }}"></script>
+        <title>{% if page_title is defined %} {{ page_title }} | {% endif %}{{ website_title }}</title>
+    </head>
+    <body>
+        <div id="main">
+            {#
+            {% if app.request.hasPreviousSession %}
+                <div class="content-flash-messages">
+                    {% for type, messages in app.session.flashbag.all() %}
+                        {% for message in messages %}
+                            <div class="flash-message {{ type }}">
+                                <div class="content">
+                                    {{ message }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            #}
+
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+    </body>
+</html>

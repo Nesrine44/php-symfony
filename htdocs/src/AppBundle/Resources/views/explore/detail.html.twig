@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% set current_url = url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+{% set page_title = innovation_title %}
+{% block body %}
+    <script>
+        goToExploreDetailPage(
+            {{ id }},
+            '{{ tab is not defined ? "overview" : tab }}',
+            {{ isFeedbackInv is defined and isFeedbackInv ? 'true' : 'false' }},
+            '{{ current_url }}'
+        );
+    </script>
+{% endblock %}
+

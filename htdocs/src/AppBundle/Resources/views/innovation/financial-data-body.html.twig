@@ -1,0 +1,68 @@
+{% set current_stage = (innovation.getStage()) ? innovation.getStage().getCssClass() : 'empty' %}
+
+
+<tr>
+    <td>Year</td>
+    {% for year in fields['year'] %}
+        <td>{{ year }}</td>
+    {% endfor %}
+</tr>
+{% if innovation.isANewBusinessAcceleration() %}
+    <tr>
+        <td>Investment ({{ global.get_global_wording()['volume_unit'] }})</td>
+        {% for item in fields['investment'] %}
+            {% include '@App/innovation/financial-data-td.html.twig' with {'item': item, 'key': 'investment', 'the_user': the_user, 'disabled': disabled, 'financial_data': financial_data } %}
+        {% endfor %}
+    </tr>
+    <tr>
+        <td>Revenue ({{ global.get_global_wording()['volume_unit'] }})</td>
+        {% for item in fields['revenue'] %}
+            {% include '@App/innovation/financial-data-td.html.twig' with {'item': item, 'key': 'revenue', 'the_user': the_user, 'disabled': disabled, 'financial_data': financial_data } %}
+        {% endfor %}
+    </tr>
+{% else %}
+    {% if not innovation.isAService() and current_stage not in ['discover', 'ideate'] %}
+        <tr>
+            <td>Volume ({{ global.get_global_wording()['volume_unit'] }})</td>
+            {% for item in fields['volume'] %}
+                {% include '@App/innovation/financial-data-td.html.twig' with {'item': item, 'key': 'volume', 'the_user': the_user, 'disabled': disabled, 'financial_data': financial_data } %}
+            {% endfor %}
+        </tr>
+        {% if current_stage != 'experiment' %}
+            <tr>
+                <td>Net sales (k€)</td>
+                {% for item in fields['net_sales'] %}
+                    {% include '@App/innovation/financial-data-td.html.twig' with {'item': item, 'key': 'net_sales', 'the_user': the_user, 'disabled': disabled, 'financial_data': financial_data } %}
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Contributing Margin<br>(k€)</td>
+                {% for item in fields['contributing_margin'] %}
+                    {% include '@App/innovation/financial-data-td.html.twig' with {'item': item, 'key': 'contributing_margin', 'the_user': the_user, 'disabled': disabled, 'financial_data': financial_data } %}
+                {% endfor %}
+            </tr>
+        {% endif %}
+    {% endif %}
+    <tr>
+        <td>Central Invest (k€)</td>
+        {% for item in fields['central_investment'] %}
+            {% include '@App/innovation/financial-data-td.html.twig' with {'item': item, 'key': 'central_investment', 'the_user': the_user, 'disabled': disabled, 'financial_data': financial_data } %}
+        {% endfor %}
+    </tr>
+    {% if innovation.isAService() or current_stage not in ['discover', 'ideate'] %}
+        <tr>
+            <td>A&P (k€)</td>
+            {% for item in fields['advertising_promotion'] %}
+                {% include '@App/innovation/financial-data-td.html.twig' with {'item': item, 'key': 'advertising_promotion', 'the_user': the_user, 'disabled': disabled, 'financial_data': financial_data } %}
+            {% endfor %}
+        </tr>
+    {% endif %}
+    {% if not innovation.isAService() and current_stage not in ['discover', 'ideate', 'experiment'] %}
+        <tr>
+            <td>COGS (k€)</td>
+            {% for item in fields['cogs'] %}
+                {% include '@App/innovation/financial-data-td.html.twig' with {'item': item, 'key': 'cogs', 'the_user': the_user, 'disabled': disabled, 'financial_data': financial_data } %}
+            {% endfor %}
+        </tr>
+    {% endif %}
+{% endif %}

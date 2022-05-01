@@ -1,0 +1,33 @@
+<div class="container-custom-maintenance background-color-gradient-161541">
+    <div id="element-main-header-without-user" class="transition">
+        <div class="central-content">
+            <a href="{{ url_homepage }}" data-url-list="{{ url_list }}"
+               class="element-main-header-logo position-relative">
+                <img src="{{ asset('/images/logo.png') }}" data-no-retina alt="Home" class="vertical-align-middle"/>
+                <span class="vertical-align-middle font-montserrat-700">{{ website_title }}</span>
+            </a>
+        </div>
+    </div>
+    <div class="container-maintenance-svg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="431" height="330" viewBox="0 0 431 330">
+            <g fill="none" fill-rule="evenodd">
+                <path class="svg-paint" fill="#005095" fill-opacity=".7" d="M394 0h37v147h-35l-4.152-50.865L391 134l-55.563 2.689L331 181.4 264 187l-7.957-93H203v36l-65-3-.875-13.883L75 117l-4.966-58.106L10 57.29 0 0h394z"/>
+                <g transform="rotate(-10 1017.54 -1229.735)" class="svg-roller">
+                    <path fill="#9B9B9B" d="M64.907 110.35V92.207c-.023-3.367 2.632-7.492 5.716-8.827l32.798-14.29c5.453-2.362 9.606-8.875 9.566-14.828v-7.307c-.045-6.456-5.28-11.751-11.715-11.697h-76.43v7.212h76.475a5.226 5.226 0 0 1 5.26 5.187v6.66c.023 3.366-2.622 7.49-5.705 8.825L68.185 77.434c-5.453 2.36-9.73 8.874-9.688 14.828v18.143l6.41-.055z"/>
+                    <rect width="17.629" height="48.079" x="52.887" y="102.57" fill="#616161" rx="5"/>
+                    <rect width="72.921" height="23.238" x="28.848" y="27.245" fill="#0063B8" rx="7"/>
+                </g>
+            </g>
+        </svg>
+    </div>
+    <div class="content-custom-maintenance">
+        <div class="central-content">
+            <img src="{{ asset('/images/exceptions/maintenance-cone.png') }}" width="100" height="105" class="img-maintenance-cone"/>
+            <div class="text-align-center font-montserrat-700 color-fff margin-bottom-20 font-size-44">Sorry…</div>
+            <div class="text-align-center font-montserrat-700 color-fff-0-6 font-size-26">
+                The {{ website_title }} is currently down for maintenance.<br>
+                It’ll be back up shortly, better than ever!
+            </div>
+        </div>
+    </div>
+</div>

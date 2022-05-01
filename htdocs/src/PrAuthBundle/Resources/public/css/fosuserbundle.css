@@ -1,0 +1,893 @@
+@charset "utf-8";
+
+/* reset
+----------------------------------------------------------------------------------------*/
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    padding-top: 0 !important;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+html,
+body,
+body.maintenance-page {
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+html.height-100{
+    height: 100%;
+    min-height: 100%;
+}
+html.safari .innovation-list *:not(.edit-mode) {
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+html.no-scroll,
+html.no-scroll body,
+html.no-scroll #main{
+    overflow: hidden;
+}
+
+body.no-min-width {
+    min-width: 0;
+}
+
+body.min-width-950 {
+    min-width: 950px;
+}
+
+.maintenance-page #main {
+    width: 100%;
+}
+
+/* Fonts
+----------------------------------------------------------------------------------------*/
+
+html, body {
+    line-height: 1.2;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+}
+
+.line-height-1 {
+    line-height: 1;
+}
+
+.font-work-sans-300 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+}
+.font-work-sans-400 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+}
+.font-work-sans-500 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+}
+.font-work-sans-600 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+}
+.font-montserrat-400 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+.font-montserrat-700 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.text-ellipsis {
+    white-space: nowrap;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+}
+
+.span-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.text-align-left {
+    text-align: left;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+/* Placeholder
+--------------*/
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder { /* WebKit browsers */
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    color: #b5b5b5;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    color: #b5b5b5;
+    opacity: 1;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    color: #b5b5b5;
+    opacity: 1;
+}
+
+.placeholder {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    color: #b5b5b5 !important;
+}
+
+.color-fff {
+    color: #fff;
+}
+.color-b5b5b5{
+    color: #b5b5b5;
+}
+.color-000 {
+    color: #000;
+}
+.color-787878 {
+    color: #787878;
+}
+.color-e8485c {
+    color: #e8485c;
+}
+.color-1eb3ea{
+    color: #1eb3ea;
+}
+
+.font-size-10 {
+    font-size: 10px;
+}
+.font-size-11 {
+    font-size: 11px;
+}
+.font-size-12 {
+    font-size: 12px;
+}
+.font-size-13 {
+    font-size: 13px;
+}
+.font-size-14 {
+    font-size: 14px;
+}
+.font-size-15 {
+    font-size: 15px;
+    line-height: 1.53;
+}
+.font-size-17{
+    font-size: 17px;
+}
+.font-size-20 {
+    font-size: 20px;
+    line-height: 1.5;
+}
+.font-size-26 {
+    font-size: 26px;
+}
+
+
+/* base
+----------------------------------------------------------------------------------------*/
+
+.display-none {
+    display: none!important;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
+.content-flash-messages {
+    position: absolute;
+    right: 0;
+    top: 55px;
+    text-align: right;
+    z-index: 2;
+}
+.flash-message  {
+    position: static;
+}
+.flash-message .content {
+    border-radius: 6px;
+    padding: 5px 36px;
+    position: relative;
+    display: inline-block;
+    background-size: 16px 16px;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15);
+    max-width: 400px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.flash-message.success .content {
+    background-image: url('../images/toast/check.png');
+    background-color: rgba(122, 182, 35, 0.95);
+}
+.flash-message.notice .content {
+    background-image: url('../images/toast/warn.png');
+    background-color: rgba(30, 179, 234, 0.95);
+}
+.flash-message.error .content {
+    background-image: url('../images/toast/warn.png');
+    background-color: rgba(232, 72, 92, 0.95);
+}
+
+.flash-message span {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    font-size: 14px;
+    color: #fff;
+    line-height: 26px;
+}
+.flash-message span a {
+    display: inline-block;
+    border-radius: 13px;
+    background-color: #fff;
+    padding: 0 8px;
+    text-decoration: none;
+    margin: 0 5px;
+}
+.flash-message span a:hover {
+    background-color: #eeeeee;
+}
+.flash-message.success span a {
+    color: #7AB623;
+}
+.flash-message.notice span a {
+    color: #1EB3EA;
+}
+.flash-message.error span a {
+    color: #e8485c;
+}
+.close-flash-message {
+    position: absolute;
+    background-image: url('../images/toast/close-toast-darkbg.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+    width: 20px;
+    height: 20px;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+}
+
+.close-flash-message:hover {
+    opacity: 0.7;
+}
+
+/* Backgrounds
+----------------------------------------------------------------------------------------*/
+
+.background-color-fff {
+    background-color: #fff;
+}
+.background-color-f2f2f2{
+    background-color: #f2f2f2;
+}
+.background-color-gradient-161541{
+    background-color: #161541;
+    background-image: linear-gradient(to bottom, #161541, #193E77), linear-gradient(to bottom, #161541, #161541);
+}
+.background-color-005095{
+    background-color: #005095;
+}
+
+/* Transitions
+----------------------------------------------------------------------------------------*/
+
+.content-current-stage *,
+.ui-datepicker *,
+.transition {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.transition-slow {
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    -ms-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+}
+
+.close-flash-message,
+.custom-content-popup .cross-close-popup,
+.custom-content-popup .back-on-popup,
+.transition-opacity {
+    -webkit-transition: opacity 0.3s ease;
+    -moz-transition: opacity 0.3s ease;
+    -o-transition: opacity 0.3s ease;
+    -ms-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+
+.transition-none {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    -ms-transition: none;
+    transition: none;
+}
+
+.hub-button {
+    -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+    -moz-transition: background-color 0.3s ease, color 0.3s ease;
+    -o-transition: background-color 0.3s ease, color 0.3s ease;
+    -ms-transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Buttons
+----------------------------------------------------------------------------------------*/
+
+.hub-button {
+    line-height: 34px;
+    border-radius: 17px;
+    font-size: 14px;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+    border: none;
+    background-color: #fcb400;
+    box-sizing: border-box;
+    cursor: pointer;
+    outline: 0;
+    padding: 0 15px;
+    text-decoration: none;
+    display: inline-block;
+}
+.hub-button.height-26{
+    line-height: 26px;
+    border-radius: 13px;
+    font-size: 13px;
+}
+
+.hub-button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.hub-button.yellow {
+    background-color: #fcb400;
+}
+
+.hub-button:hover,
+.hub-button.yellow:hover {
+    background-color: #faa200;
+}
+.hub-button.grey {
+    background-color: #f2f2f2;
+    color: #fc9300;
+}
+.hub-button.grey:hover {
+    background-color: #eaeaea;
+}
+.hub-button.light-blue {
+    background-color: #1eb3ea;
+}
+.hub-button.light-blue:hover{
+    background-color: #35cafd;
+}
+
+.hub-button.transparent-yellow {
+    color: #fc9300;
+    background-color: transparent;
+}
+.hub-button.transparent-yellow:hover {
+    color: #fcb400;
+    background-color: transparent;
+}
+
+
+
+/* USEFULL
+----------------------------------------------------------------------------------------*/
+
+html, body {
+    -webkit-font-smoothing: subpixel-antialiased;
+    background-color: #161541;
+    background-image: linear-gradient(to bottom, #161541, #193E77), linear-gradient(to bottom, #161541, #161541);
+    color: #fff;
+    min-height: 100%;
+}
+#main{
+    height: 100%;
+    min-height: 100%;
+}
+
+.central-content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+@media only screen and (max-width: 1240px) {
+    .central-content {
+        margin: 0 20px;
+    }
+}
+.central-content-866 {
+    position: relative;
+    margin: 0 auto;
+    max-width: 866px;
+}
+@media only screen and (max-width: 906px) {
+    .central-content-866 {
+        margin: 0 20px;
+    }
+}
+
+.central-content-720 {
+    position: relative;
+    margin: 0 auto;
+    max-width: 720px;
+}
+@media only screen and (max-width: 760px) {
+    .central-content-720 {
+        margin: 0 20px;
+    }
+}
+
+.margin-top-20 { margin-top: 20px; }
+.margin-top-30 { margin-top: 30px; }
+.margin-top-40 { margin-top: 40px; }
+.margin-top-50 { margin-top: 50px; }
+.margin-top-60 { margin-top: 60px; }
+.margin-bottom-20 { margin-bottom: 20px; }
+.margin-bottom-30 { margin-bottom: 30px; }
+.margin-bottom-40 { margin-bottom: 40px; }
+.margin-bottom-50 { margin-bottom: 50px; }
+.margin-bottom-60 { margin-bottom: 60px; }
+.overflow-hidden {
+    position: relative;
+    overflow: hidden !important;
+}
+
+.fosuserbundle-content{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-56%);
+    box-sizing: border-box;
+}
+
+.fosuserbundle-content.login{
+    padding: 20px;
+}
+
+#primary-logo {
+    position: relative;
+    width: 294px;
+    height: 64px;
+    margin: 40px auto 0;
+    background-repeat: no-repeat;
+    background-size: 294px 56px;
+    background-position: center center;
+    background-image: url('../images/logo-hub.png');
+}
+
+#pernod-ricard-logo {
+    position: absolute;
+    bottom: -80px;
+    width: 132px;
+    height: 60px;
+    left: 50%;
+    margin-left: -66px;
+    background-repeat: no-repeat;
+    background-size: 132px 60px;
+    background-position: center center;
+    background-image: url('../images/logo_pernod_ricard.png');
+
+}
+
+.content-login-modes{
+    position: relative;
+    text-align: center;
+    padding: 50px 60px 40px 60px;
+}
+.fosuserbundle-content.login.with-email .content-login-modes {
+    padding-bottom: 30px;
+}
+
+.content-login-mode{
+    position: relative;
+    display: block;
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+.login-divider{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 1px;
+    height: 259px;
+    background-color: #d8d8d8;
+    margin: 0 53px;
+}
+
+.content-remember-me{
+    display: none;
+}
+
+.help-infos{
+    position: relative;
+}
+.help-infos a{
+    color: #787878;
+    text-decoration: underline;
+}
+
+@media only screen and (max-height: 575px) {
+    .fosuserbundle-content.login{
+        position: relative;
+        transform: none;
+        top: 0;
+        padding-top: 40px;
+        padding-bottom: 100px;
+    }
+}
+@media only screen and (max-height: 720px) {
+    .fosuserbundle-content.login.with-email {
+        position: relative;
+        transform: none;
+        top: 0;
+        padding-top: 40px;
+        padding-bottom: 100px;
+    }
+}
+
+@media only screen and (max-width: 906px) {
+    .fosuserbundle-content.login.with-prauth{
+        position: relative;
+        transform: none;
+        top: 0;
+        padding-top: 40px;
+        padding-bottom: 100px;
+    }
+    .login-divider {
+        height: 1px;
+        margin: 30px 0;
+        display: block;
+        width: auto;
+    }
+    .content-login-mode{
+        display: block;
+        width: auto;
+        height: auto;
+    }
+    .help-infos{
+        position: relative;
+        margin-top: 20px;
+    }
+
+}
+
+/* Forms
+----------------------------------------------------------------------------------------*/
+
+.form-element {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-element label {
+    position: relative;
+    display: block;
+    font-size: 13px;
+    color: #b5b5b5;
+    margin-bottom: 5px;
+}
+.form-element label.font-15{
+    font-size: 15px;
+}
+.background-color-f2f2f2 .form-element label{
+    color: #4a4a4a;
+}
+.form-element .under-label{
+    position: relative;
+    display: block;
+    font-size: 14px;
+    color: #787878;
+    margin-bottom: 5px;
+}
+.form-element label + .under-label{
+    margin-top: -5px;
+}
+
+.form-element .content-textarea,
+.form-element .content-input-text,
+.form-element .content-select {
+    position: relative;
+    font-size: 0;
+}
+.form-element .content-textarea textarea,
+.form-element .content-input-text input[type="text"],
+.form-element .content-input-text input[type="password"],
+.form-element .content-select select,
+.form-element .content-select .select2-container {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100% !important;
+}
+
+.form-element .content-input-text.with-icon > .icon,
+.form-element .content-select.with-icon > .icon {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+    background-size: 34px 34px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.form-element .content-input-text.with-icon input[type="text"],
+.form-element .content-select.with-icon select,
+.form-element .content-select.with-icon .select2-container {
+    width: calc(100% - 44px) !important;
+}
+
+.form-element .content-input-text input[type="text"],
+.form-element .content-input-text input[type="email"],
+.form-element .content-input-text input[type="number"],
+.form-element .content-input-text input[type="password"] {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 10px;
+    line-height: 32px;
+    box-sizing: border-box;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: #fff;
+    border: 1px solid #c8c8c8;
+    outline: 0;
+    height: 34px;
+}
+
+input::-ms-clear {
+    display: none;
+}
+.form-element input[type="text"],
+.form-element input[type="email"],
+.form-element input[type="number"],
+.form-element input[type="password"]
+.form-element textarea,
+.form-element.error-empty .select2-container--default .select2-selection--single,
+.form-element.error .select2-container--default .select2-selection--single{
+    -webkit-transition: background-color 0.3s ease, border-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease, border-color 0.3s ease;
+    -o-transition: background-color 0.3s ease, border-color 0.3s ease;
+    -ms-transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.form-element .content-textarea textarea {
+    padding: 7px 10px;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #000000;
+    margin-bottom: 0;
+    background-color: #fff;
+    border: 1px solid #c8c8c8;
+}
+.form-element .content-textarea textarea:not(:disabled):hover,
+.form-element .content-input-text input[type="text"]:not(:disabled):hover,
+.form-element .content-input-text input[type="email"]:not(:disabled):hover,
+.form-element .content-input-text input[type="number"]:not(:disabled):hover,
+.form-element .content-input-text input[type="password"]:not(:disabled):hover{
+    background-color: #fffbf0;
+}
+.form-element.error-empty .select2-container--default .select2-selection--single,
+.form-element.error-empty .content-textarea textarea:not(:disabled),
+.form-element.error-empty .content-input-text input[type="text"]:not(:disabled),
+.form-element.error-empty .content-input-text input[type="email"]:not(:disabled),
+.form-element.error-empty .content-input-text input[type="number"]:not(:disabled),
+.form-element.error-empty .content-input-text input[type="password"]:not(:disabled),
+.form-element.error .select2-container--default .select2-selection--single,
+.form-element.error .content-textarea textarea:not(:disabled),
+.form-element.error .content-input-text input[type="text"]:not(:disabled),
+.form-element.error .content-input-text input[type="email"]:not(:disabled),
+.form-element.error .content-input-text input[type="number"]:not(:disabled),
+.form-element.error .content-input-text input[type="password"]:not(:disabled){
+    border-color: #e8485c;
+    background-color: #fef6f7;
+}
+.form-element.error-empty .select2-container--default .select2-selection--single:hover,
+.form-element.error-empty .content-textarea textarea:not(:disabled):hover,
+.form-element.error-empty .content-input-text input[type="text"]:not(:disabled):hover,
+.form-element.error-empty .content-input-text input[type="email"]:not(:disabled):hover,
+.form-element.error-empty .content-input-text input[type="number"]:not(:disabled):hover,
+.form-element.error-empty .content-input-text input[type="password"]:not(:disabled):hover,
+.form-element.error .select2-container--default .select2-selection--single:hover,
+.form-element.error .content-textarea textarea:not(:disabled):hover,
+.form-element.error .content-input-text input[type="text"]:not(:disabled):hover,
+.form-element.error .content-input-text input[type="email"]:not(:disabled):hover,
+.form-element.error .content-input-text input[type="number"]:not(:disabled):hover,
+.form-element.error .content-input-text input[type="password"]:not(:disabled):hover{
+    border-color: #e8485c;
+    background-color: #fce4e7;
+}
+
+
+.form-element.error-empty .select2-container--open .select2-selection--single,
+.form-element.error-empty .select2-container--open .select2-selection--single:hover,
+.form-element.error-empty .content-textarea textarea:not(:disabled):focus,
+.form-element.error-empty .content-input-text input[type="text"]:not(:disabled):focus,
+.form-element.error-empty .content-input-text input[type="email"]:not(:disabled):focus,
+.form-element.error-empty .content-input-text input[type="number"]:not(:disabled):focus,
+.form-element.error-empty .content-input-text input[type="password"]:not(:disabled):focus,
+.form-element.error .select2-container--open .select2-selection--single,
+.form-element.error .select2-container--open .select2-selection--single:hover,
+.form-element.error .content-textarea textarea:not(:disabled):focus,
+.form-element.error .content-input-text input[type="text"]:not(:disabled):focus,
+.form-element.error .content-input-text input[type="email"]:not(:disabled):focus,
+.form-element.error .content-input-text input[type="number"]:not(:disabled):focus,
+.form-element.error .content-input-text input[type="password"]:not(:disabled):focus,
+
+.form-element .content-textarea textarea:not(:disabled):focus,
+.form-element .content-input-text input[type="text"]:not(:disabled):focus,
+.form-element .content-input-text input[type="email"]:not(:disabled):focus,
+.form-element .content-input-text input[type="number"]:not(:disabled):focus,
+.form-element .content-input-text input[type="password"]:not(:disabled):focus{
+    border-color: #fcb400;
+    background-color: #fff;
+}
+
+.form-element .content-textarea textarea:not(:disabled):hover{
+
+}
+
+input:focus,
+textarea:focus {
+    outline: 0;
+    box-shadow: none;
+}
+.form-element .content-input-text input[type="text"]:disabled,
+.form-element .content-input-text input[type="email"]:disabled,
+.form-element .content-input-text input[type="number"]:disabled,
+.form-element .content-input-text input[type="password"]:disabled{
+    border: 1px solid #e1e1e1;
+    background-color: #f5f5f5;
+    color: #9b9b9b;
+}
+.form-element .content-input-text input[type="text"]:disabled.input-disabled-stage{
+    border-color: #eee;
+}
+.form-element .content-input-text input[type="text"].loading,
+.form-element .content-input-text input[type="email"].loading,
+.form-element .content-input-text input[type="number"].loading,
+.form-element .content-input-text input[type="password"].loading,
+.form-element .content-textarea textarea.loading{
+    padding-right: 34px;
+}
+.form-element .content-select.with-icon select.loading + .select2-container--default .select2-selection--single .select2-selection__arrow{
+    display: none;
+}
+.form-element .content-textarea .loading-spinner,
+.form-element .content-select .loading-spinner,
+.form-element .content-input-text .loading-spinner{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 16px;
+    height: 16px;
+    z-index: 2;
+}
+.form-element .content-input-radio{
+    display: table-cell;
+    vertical-align: middle;
+    height: 34px;
+}
+.form-element .content-input-radio .loading-spinner{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+}
+
+.form-element .form-element-error {
+    position: relative;
+    text-align: right;
+    font-size: 12px;
+    color: #e8485c;
+    line-height: 1.53;
+}
+
+.form-fosuserbundle {
+    position: relative;
+    display: block;
+    max-width: 300px;
+    text-align: left;
+    margin: 0 auto;
+}

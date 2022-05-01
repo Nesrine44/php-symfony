@@ -1,0 +1,93 @@
+{% set class_no_hq = (app.user.hasAdminRights()) ? '' : ' display-none' %}
+<div class="custom-content-popup element-popup-new-user-innovation-right transition">
+    <div class="content-blur transition"></div>
+    <div class="content-popup-for-scroll">
+        <div class="element-popup central-content-994 background-color-fff">
+            <div class="cross-close-popup transition action-close-popup"></div>
+            <div class="content-popup padding-30 central-content-846">
+                <div class="title font-montserrat-700">Add a new team member</div>
+                <form id="form-new-user-innovation-right" class="padding-top-30" action="" method="post">
+                    <div class="form-element choose-select-member">
+                        <label>Select a new team member</label>
+                        <div class="content-select">
+                            <select name="uid" id="new-ui-right-uid-select" class="select-people-popup">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="choose-create-member display-none">
+                        <div class="form-element">
+                            <label>Full name</label>
+                            <div class="content-input-text margin-bottom-5">
+                                <input type="text" id="new-ui-name" placeholder="Full name"/>
+                            </div>
+                        </div>
+                        <div class="form-element">
+                            <label>Email address</label>
+                            <div class="content-input-text">
+                                <input type="text" id="new-ui-email" placeholder="Email address"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-element only-hq {{ class_no_hq }}">
+                        <label>Role</label>
+                        <div class="content-select">
+                            <select name="right" id="new-ui-role-select" class="select-people-popup">
+                                <option value="{{ global.constants.UserInnovationRight.ROLE_RESEARCH_AND_DEVELOPMENT }}">{{ global.constants.UserInnovationRight.ROLE_RESEARCH_AND_DEVELOPMENT }}</option>
+                                <option value="{{ global.constants.UserInnovationRight.ROLE_OPERATIONS}}">{{ global.constants.UserInnovationRight.ROLE_OPERATIONS }}</option>
+                                <option value="{{ global.constants.UserInnovationRight.ROLE_LEGAL }}">{{ global.constants.UserInnovationRight.ROLE_LEGAL}}</option>
+                                 <option value="{{ global.constants.UserInnovationRight.ROLE_MANAGEMENT }}">{{ global.constants.UserInnovationRight.ROLE_MANAGEMENT}}</option>
+                                 <option value="{{ global.constants.UserInnovationRight.ROLE_CONSUMER_INSIGHTS }}">{{ global.constants.UserInnovationRight.ROLE_CONSUMER_INSIGHTS}}</option>
+                                <option value="{{ global.constants.UserInnovationRight.ROLE_OTHER }}">{{ global.constants.UserInnovationRight.ROLE_OTHER|capitalize }}</option>
+                                <option value="{{ global.constants.UserInnovationRight.ROLE_FINANCE_CONTACT }}">{{ global.constants.UserInnovationRight.ROLE_FINANCE_CONTACT|capitalize }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-new-team-member-content-skills"></div>
+                </form>
+                <div class="content-buttons margin-top-10">
+                    <div class="loader-popup">
+                        <div class="loading-spinner"></div>
+                    </div>
+                    <button class="hub-button grey action-close-popup">Cancel</button>
+                    <button class="hub-button add-new-user-innovation-right">Add user</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="custom-content-popup element-popup-update-user-innovation-right transition">
+    <div class="content-blur transition"></div>
+    <div class="content-popup-for-scroll">
+        <div class="element-popup central-content-994 background-color-fff">
+            <div class="cross-close-popup transition action-close-popup"></div>
+            <div class="content-popup padding-30 central-content-846">
+                <div class="title font-montserrat-700">Update team member</div>
+                <form id="form-update-user-innovation-right" action="" method="post">
+                    <input type="hidden" id="update-ui-uid"/>
+                    <div class="form-element form-element-role  only-hq {{ class_no_hq }}">
+                        <label>Role</label>
+                        <div class="content-select">
+                            <select name="role" id="update-ui-role-select" class="select-people-popup">
+                                <option value="{{ global.constants.UserInnovationRight.ROLE_RESEARCH_AND_DEVELOPMENT }}">{{ global.constants.UserInnovationRight.ROLE_RESEARCH_AND_DEVELOPMENT }}</option>
+                                <option value="{{ global.constants.UserInnovationRight.ROLE_OPERATIONS}}">{{ global.constants.UserInnovationRight.ROLE_OPERATIONS }}</option>
+                                <option value="{{ global.constants.UserInnovationRight.ROLE_LEGAL }}">{{ global.constants.UserInnovationRight.ROLE_LEGAL}}</option>
+                                 <option value="{{ global.constants.UserInnovationRight.ROLE_MANAGEMENT }}">{{ global.constants.UserInnovationRight.ROLE_MANAGEMENT}}</option>
+                                 <option value="{{ global.constants.UserInnovationRight.ROLE_CONSUMER_INSIGHTS }}">{{ global.constants.UserInnovationRight.ROLE_CONSUMER_INSIGHTS}}</option>
+                                <option value="{{ global.constants.UserInnovationRight.ROLE_OTHER }}">{{ global.constants.UserInnovationRight.ROLE_OTHER|capitalize }}</option>
+                                <option value="{{ global.constants.UserInnovationRight.ROLE_FINANCE_CONTACT }}">{{ global.constants.UserInnovationRight.ROLE_FINANCE_CONTACT|capitalize }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                <div class="content-buttons margin-top-10">
+                    <div class="loader-popup">
+                        <div class="loading-spinner"></div>
+                    </div>
+                    <button class="hub-button grey action-close-popup">Cancel</button>
+                    <button class="hub-button update-user-innovation-right">Update user</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

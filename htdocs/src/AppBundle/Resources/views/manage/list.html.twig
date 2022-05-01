@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% set page_title = 'Manage' %}
+{% set current_url = app.request.requestUri %}
+{% block body %}
+    <script>
+        goToManageList(
+            '{{ current_url|raw }}',
+            '{{ tab is not defined ? "overview" : tab }}'
+        );
+    </script>
+{% endblock %}
+

@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% set page_title = global.getDashboardTitleForType(type) %}
+{% block body %}
+    <script>
+        gotToMonitorList('{{ current_url|raw }}', 'dashboard', '{{ type }}' );
+    </script>
+{% endblock %}
+

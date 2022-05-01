@@ -1,0 +1,70 @@
+<div class="custom-content-popup element-change-stage-popup transition">
+    <div class="content-blur transition"></div>
+    <div class="content-popup-for-scroll">
+        <div class="element-popup central-content-994 background-color-fff">
+            <div class="cross-close-popup transition action-close-popup"></div>
+            <div class="content-popup">
+                <div class="central-content-846 padding-30">
+                    <div class="title font-montserrat-700">Change stage</div>
+                    <div class="overflow-hidden popup-terminate-project-not-frozen">
+                        <div class="column-percent-50 padding-right-20">
+                            <div class="form-element">
+                                <label>Select a stage</label>
+                                <div class="content-select with-icon">
+                                    <div class="icon light"></div>
+                                    <select name="current_stage" id="popup-select-change-stage" class="select">
+                                        <option value="1">Discover</option>
+                                        <option value="2">Ideate</option>
+                                        <option value="3">Experiment</option>
+                                        <option value="4">Incubate</option>
+                                        <option value="5">Scale up</option>
+                                        <optgroup label="Terminate project">
+                                            <option value="8">Permanent range</option>
+                                            <option value="7">Discontinued</option>
+                                        </optgroup>
+                                        {% if app.user.hasAdminRights() %}
+                                            <optgroup>
+                                                <option value="delete">Delete project</option>
+                                            </optgroup>
+                                        {% endif %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column-percent-50 padding-left-20">
+                            <div class="form-element">
+                                <label>Or you can</label>
+                                <button class="hub-button grey button-action-frozen">Freeze your project</button>
+                                <div class="font-work-sans-300 font-size-15 margin-top-10">*A frozen project is considered on pause.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popup-terminate-project-frozen display-none">
+                        <div class="form-element">
+                            <label>Your project is currently frozen</label>
+                            <button class="button-action-frozen hub-button grey" data-id="">Unfreeze your project
+                            </button>
+                            <div class="font-work-sans-300 font-size-15 margin-top-10">*A frozen project is considered on pause.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="background-color-f2f2f2">
+                    <div class="central-content-846 padding-30 font-size-15">
+                        An innovation requires your time and your investments to become a success! Spending little at
+                        early stages can help you learn fast, stay flexible, and secure money to boost the best
+                        projects.
+                    </div>
+                </div>
+                <div class="padding-30 central-content-846 padding-top-0">
+                    <div class="content-buttons">
+                        <div class="loader-popup">
+                            <div class="loading-spinner"></div>
+                        </div>
+                        <button class="hub-button grey action-close-popup">Cancel</button>
+                        <button class="hub-button button-change-stage">Change stage</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

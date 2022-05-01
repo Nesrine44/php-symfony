@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% set added_html_classes = "height-100 background-color-gradient-161541" %}
+{% block body %}
+    <div class="content-twig-exception">
+        {% if error_number is defined and error_number == 404 %}
+        <div class="container-twig-exception-svg margin-bottom-50">
+            <div class="container-absolute-svg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="237" height="171" viewBox="0 0 237 171">
+                    <g fill="none" fill-rule="evenodd">
+                        <path d="M-10-8h260v180H-10z"/>
+                        <text fill="#FFF" font-family="WorkSans-Light, Work Sans" font-size="60" font-weight="300" transform="translate(-10 -8)">
+                            <tspan x="114.49" y="112">?</tspan>
+                        </text>
+                    </g>
+                </svg>
+            </div>
+            <div class="container-absolute-svg svg-poof">
+                <svg xmlns="http://www.w3.org/2000/svg" width="237" height="171" viewBox="0 0 237 171">
+                    <g fill="none" fill-rule="evenodd">
+                        <path stroke="#FFF" stroke-linecap="round" stroke-opacity=".4" stroke-width="3" d="M191.5 27.5l12-11M208.5 54.5l27-7M215.5 79.5l17 2M200.5 131.5l16 14M76.5 12.5l-8-11M53.5 32.5l-31-29M22.5 59.5l-21-13M37.5 135.5l-18 15M63.5 157.5l-6 12"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        {% else %}
+            <img src="{{ asset('/images/exceptions/broken-browser.png') }}" class="img-error-browser" />
+        {% endif %}
+        <div class="text-align-center font-work-sans-600 color-fff-0-5 margin-bottom-20 font-size-30">{% if error_number is defined %}{{ error_number }}{% endif %}</div>
+        <div class="text-align-center font-montserrat-700 color-fff font-size-34">{% if error_description is defined %}{{ error_description }}{% endif %}</div>
+    </div>
+{% endblock %}
+

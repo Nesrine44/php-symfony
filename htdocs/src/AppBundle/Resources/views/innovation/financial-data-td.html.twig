@@ -1,0 +1,32 @@
+{% set classe_td = (disabled) ? 'disabled' : '' %}
+{% set is_hq = the_user.hasAdminRights() %}
+{% set status_input = (disabled and not is_hq) ? 'disabled ' : '' %}
+{% set negative_values = ['central_investment', 'advertising_promotion', 'cogs'] %}
+
+
+{% set is_disabled = ((disabled or item['infos']['disabled']) and not is_hq) %}
+{% set is_valid = (financial_data and financial_data[item['id']] is defined) %}
+{% if is_disabled and not disabled %}
+    {% if is_valid %}
+        {% set is_disabled = (financial_data[item['id']] is not null and financial_data[item['id']] != '') %}
+    {% else %}
+        {% set is_disabled = false %}
+    {% endif %}
+{% endif %}
+{% set item_status_input = (is_disabled) ? 'disabled ' : status_input %}
+{% set item_td_classe = classe_td %}
+{% if not is_valid %}
+    {% set item_td_classe = item_td_classe ~ ' empty' %}
+{% endif %}
+{% if is_disabled and not disabled %}
+    {% set item_td_classe = item_td_classe ~ ' disabled' %}
+{% endif %}
+<td class="{{ item_td_classe }}">
+    <div class="loading-spinner"></div>
+    {% set negative_class = (key in negative_values) ? 'negative' : '' %}
+    <input type="text" {{ item_status_input }}
+           class="required financial-td-input {{ negative_class }} {{ (is_valid) ? 'validated' : 'error-empty' }}"
+           id="{{ item['id'] }}" name="{{ item['id'] }}"
+           placeholder="{{ item['placeholder'] }}" value="{{ (is_valid) ? financial_data[item['id']] : '' }}"
+    />
+</td>

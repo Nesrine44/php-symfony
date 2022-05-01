@@ -1,0 +1,180 @@
+{% extends 'base.html.twig' %}
+{% set page_title = 'Experimentation' %}
+{% block body %}
+    <div class="c-learn-article-page__article" style="">
+        <div class="position-relative overflow-hidden">
+            <div class="c-learn-article-page__content">
+                <div class="padding-left-40 padding-right-40">
+                    <h2 class="c-learn-article-page__heading">Experimentation</h2>
+                </div>
+                <div class="c-learn-article-page__hero">
+                    <img class="c-learn-article-page__hero-image" src="{{ asset('/images/learn/experimentation/experiment-hero.jpg') }}"
+                    />
+                    <div class="c-learn-article-page__hero-triangle">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <polygon fill="white" points="100,0 0,100 0,0"/>
+                        </svg>
+                        <div class="c-learn-article-page__meta">
+                            <div class="padding-left-40 margin-top-20">
+                                4-5 mn reading
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="padding-left-40 padding-right-40">
+                    {# INTRO #}
+                    <div class="c-learn-article-page__introduction">
+                        Experimentation requires an Entrepreneurial spirit. It is
+                        an attitude that embraces critical questioning, followed
+                        by quick actions and continuous improvements…
+                    </div>
+                    <img src="{{ asset('/images/learn/experimentation/experiment-funnel.png') }}" alt="" class="c-learn-article-page__image">
+                    {# WHY #}
+                    <h2 class="c-learn-article-page__paragraph-heading">Why?</h2>
+                    <p class="c-learn-article-page__paragraph">
+                        {# <span class="bold">Incubation is learning about the product market fit.</span> It is necessary to capture
+                        the recipe for success before full scale to ensure sustainable revenue. It is about
+                        finding the most effective route to market to reach early adopters. It’s about unlocking business impact, testing and learning on disruptive activations and fine-
+                        tuning a market positioning. <br/>
+                        <br/>
+                        <span class="medium">
+                            Remember that every time you bring a new innovation to market, you are
+                            adding one more SKU in the market place so your argument must be a strong one.
+                        </span> #}
+                        <span class="bold">Experimenting is a way to lower the risk on investing in a NEW idea</span> (products
+                        or services) by testing & learning at an early stage with consumers to understand
+                        traction. Making tests happening in a in a small realistic environment (a city or
+                        even a district in a city) should enable you to collect learnings and unlock
+                        consumer value. <br/>
+                        <br/>
+
+                        <span class="medium">An idea has no/little value until tested against reality.</span> It’s only when you know
+                        you are onto something, that you can invest a bigger amount of capital.
+                    </p>
+                    <img src="{{ asset('/images/learn/experimentation/experiment-why.png') }}" alt="" class="c-learn-article-page__image">
+                    {# WHAT #}
+                    <h2 class="c-learn-article-page__paragraph-heading">What?</h2>
+                    <p class="c-learn-article-page__paragraph">
+                        <span class="bold">Plan some tests according to what you need to learn</span> on consumer traction
+                        while consuming the fewest time & resources. It’s about making sure you ask the
+                        right questions to understand where value comes from with your early adopters
+                        before launch. <br/><br/>
+
+                        If you wonder <span class="bold">"Is there a consumer need worth solving?" with no offer ready
+                        yet</span>, you can learn from consumers with no final offer yet by doing Interviews in
+                        bars, shops, private parties, landing observations… collecting insights on pain
+                        points, using digital interaction to address in an agile way positioning, naming,
+                        design… <br/><br/>
+
+                        If you wonder <span class="bold">"Have I built something that solves that need in a specific
+                        market?" build for Experimental Editions</span>, it’s all about minimum viable product
+                        or services to put fast on the field to test consumer desirability. For product,
+                        micro production capabilities (internally or with 3rd partner) are required. For
+                        service, it is all about developing minimum required features to capture usage.
+                    </p>
+                    {# HOW #}
+                    <h2 class="c-learn-article-page__paragraph-heading">How?</h2>
+                    <p class="c-learn-article-page__paragraph">
+                        <span class="bold">Build partnerships to get access to consumers and capture evidences</span> from
+                        the field in a restricted environment targeting early adopters (limited numbers of
+                        hotels, bars, restaurants, shops, private parties…).  <span class="medium">Learn fast on the field with
+                        customers, consumers</span>… requires having a structured approach:
+                    </p>
+                    <img src="{{ asset('/images/learn/experimentation/experiment-how.png') }}" alt="" class="c-learn-article-page__image">
+                    <ul class="c-learn-article-page__list">
+                        <li>Identifying <span class="bold">hypotheses</span> on where value comes from</li>
+                        <li>Getting a point of view on <span class="bold">criteria of success</span>, thresholds</li>
+                        <li>Setting <span class="bold">metrics</span>, KPIs both quantitative and qualitative, parameters to capture evidence</li>
+                        <li>Collecting <span class="bold">feedbacks</span> and key facts and figures with people on the field</li>
+                    </ul>
+                    {# WHEN #}
+                    <h2 class="c-learn-article-page__paragraph-heading">When?</h2>
+                    <p class="c-learn-article-page__paragraph">
+                        <span class="bold">Before Capex investment</span> it’s shall be done in a lean way to allow iteration at a
+                        small cost. It requires people on the field to capture evidences and sponsors to
+                        facilitate decision making.
+                    </p>
+                    {# TIMING #}
+                    <h2 class="c-learn-article-page__paragraph-heading">Timing?</h2>
+                    <p class="c-learn-article-page__paragraph">
+                        <span class="bold">Speed in the validated learning</span> (test & learn feedback loop: build, measure,
+                        learn) means you do something right! It shall last in between 3 weeks and 3 months
+                        on incremental ideas and up to 6 months on breakthrough ideas.
+                    </p>
+                    {# CHALLENGES #}
+                    <h2 class="c-learn-article-page__paragraph-heading">Challenges</h2>
+                    <div class="c-learn-article-page__quote">
+                        <div class="title">
+                            <span class="quote-left"></span>
+                            <span>
+                                No amount of experimentation can prove <br>
+                                me right; one experiment can prove me <br>
+                                wrong.
+                            </span>
+                            <span class="quote-right"></span>
+                        </div>
+                        <div class="subtitle">Albert Einstein</div>
+                    </div>
+                    {# QUESTIONS #}
+                    <h2 class="c-learn-article-page__paragraph-heading">Questions to have in mind</h2>
+                     <ul class="c-learn-article-page__list">
+                        <li>What activities do I need to do to learn about consumer traction?</li>
+                        <li>What is the lowest investment I can do to learn it?</li>
+                        <li>How long should be my test?</li>
+                        <li>Where should I test it?</li>
+                        <li>What current PR structure can help me?</li>
+                        <li>Do I need external partners?</li>
+                        <li>What information do I need to track?</li>
+                        <li>What criteria shall I put in place for my dashboard?</li>
+                        <li>When should I iterate my original idea?</li>
+                        <li>Do I review the progress on a regular basis to make decisions and move forward?</li>
+                    </ul>
+                </div>
+                {# <div class="c-learn-article-page__overflowing-content"></div> #}
+            </div>
+            <div class="c-learn-article-page__sidebar">
+                <div class="c-learn-article-page__grey-bg">
+                    <div class="padding-60 padding-left-40 padding-right-40">
+                        <h2 class="c-learn-article-page__sidebar-headline">Pernod Ricard Story</h2>
+                        <div class="c-learn-article-item__element standalone">
+                            <a href="https://www.youtube.com/watch?v=ZGktWUIYKIA&t=2s" target="_blank">
+                                <div class="c-learn-article-item__thumbnail" style="background-image:url('{{ asset('/images/learn/experimentation/video-jameson-experimentation.jpg') }}');"></div>
+                                <div class="c-learn-article-item__title">
+                                    Jameson Experimentation
+                                </div>
+                            </a>
+                            <div class="c-learn-article-item__meta">
+                                2:02
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="padding-60 padding-left-40 padding-right-40">
+                    <h2 class="c-learn-article-page__sidebar-headline">External Inspiration</h2>
+                    <div class="c-learn-article-item__element standalone">
+                        <a href="https://www.youtube.com/watch?v=9euxoSJh9BQ" target="_blank">
+                            <div class="c-learn-article-item__thumbnail" style="background-image:url('{{ asset('/images/learn/experimentation/video-mvp-google-glass.jpg') }}');"></div>
+                            <div class="c-learn-article-item__title">
+                                Minimum Viable Product by Google - Tom Chi
+                            </div>
+                        </a>
+                        <div class="c-learn-article-item__meta">
+                            8:08
+                        </div>
+                    </div>
+                    <div class="c-learn-article-item__element standalone padding-top-30">
+                        <a href="https://www.youtube.com/watch?v=yqEYAF9v3rw" target="_blank">
+                            <div class="c-learn-article-item__thumbnail" style="background-image:url('{{ asset('/images/learn/experimentation/video-experimentation-ikea.jpg') }}');"></div>
+                            <div class="c-learn-article-item__title">
+                                Fake it until you make it - Wallhub experimentation vs IKEA
+                            </div>
+                        </a>
+                        <div class="c-learn-article-item__meta">
+                            3:02
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

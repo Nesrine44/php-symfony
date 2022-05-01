@@ -1,0 +1,215 @@
+{% extends 'AppBundle:admin:standard_layout.html.twig' %}
+
+{% block sonata_head_title %}Admin - User rights{% endblock %}
+{% block sonata_page_content_header %}
+    <h1>
+        User rights
+        <small>Manage user innovation rights</small>
+    </h1>
+{% endblock %}
+
+{% block content %}
+    <style>
+        .tr-right-admin {
+            background-color: #fff;
+            -webkit-transition: background-color 0.3s ease;
+            -moz-transition: background-color 0.3s ease;
+            -o-transition: background-color 0.3s ease;
+            -ms-transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease;
+        }
+
+        .tr-updated {
+            background-color: rgba(60, 141, 188, 0.1);
+        }
+
+        .tr-right-admin.to-add .no-to-add {
+            display: none;
+        }
+        .content-checkbox-button{
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding-left: 5px;
+        }
+        .content-checkbox-button:hover{
+            background-color: #e7e7e7;
+        }
+        .content-checkbox-button .icheckbox_square-blue{
+            background-color: #ffffff;
+            margin-right: 1px;
+        }
+        .content-checkbox-button .btn-default{
+            background-color: transparent;
+            border: none;
+            border-radius: 0 3px 3px 0;
+        }
+        .td-checkbox .icheckbox_square-blue{
+            margin-left: 6px;
+        }
+    </style>
+    <div class="box">
+        <form id="form-search-users" action="{{ path('ws_admin_load_user_rights') }}"
+              data-update-user-right-url="{{ path('ws_admin_update_user_rights') }}"
+              data-update-user-role-url="{{ path('ws_admin_update_user_rights_role') }}">
+            <div class="box-body">
+                <div class="form-group">
+                    <label>Search for a user</label>
+                    <select class="form-control select2" name="user" data-placeholder="Select a user"
+                            style="width:100%;">
+                        {% for user in users %}
+                            <option value="{{ user.id }}">{{ user.text }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Manage rights</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="wrong-result">
+
+    </div>
+
+    <div class="row search-result" style="display: none;">
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Current rights</h3>
+                </div>
+                <div class="box-body no-padding">
+                    <table class="table table-condensed table-current-rights">
+                        <thead>
+                        <tr>
+                            <th class="th-checkbox" style="width: 74px;">
+                                <div class="content-checkbox-button">
+                                    <input id="checkbox-select-all-update" class="checkbox-select-all minimal to-update"
+                                           type="checkbox">
+                                    <div class="btn-group" style="margin-right:-30px;">
+                                        <button type="button" class="btn btn-default dropdown-toggle"
+                                                data-toggle="dropdown">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            {#
+                                            <li>
+                                                <a href="#" class="change-right-selected to-update right-read"
+                                                   data-right="read">Read</a>
+                                            </li>
+                                            #}
+                                            <li>
+                                                <a href="#" class="change-right-selected to-update right-write"
+                                                   data-right="write">Write</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="change-right-selected to-update right-owner"
+                                                   data-right="owner">Owner</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="change-right-selected" data-right="remove">Remove</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </th>
+                            <th style="padding-left: 10px; vertical-align: middle;">Title</th>
+                            <th  style="vertical-align: middle;">Entity</th>
+                            <th style="width: 80px; vertical-align: middle;">Role</th>
+                            <th style="width: 80px; vertical-align: middle;">Manage</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="empty-list" style="text-align: center;padding:15px 10px;">
+                        User has no specific rights on innovations.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="box">
+                <form id="form-search-innovations" action="{{ path('ws_admin_search_innovation') }}">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Search innovations</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="search-by-title">By title</label>
+                            <input class="form-control" id="search-by-title" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="search-by-entity">By entity</label>
+                            <select class="form-control select2" id="search-by-entity" name="entity"
+                                    data-placeholder="Select an entity" style="width:100%;">
+                                <option value="all">All entities</option>
+                                {% for entity in entities %}
+                                    <option value="{{ entity.id }}">{{ entity.text }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="wrong-innovation-result">
+
+            </div>
+            <div class="search-innovation-result" style="display: none;">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Add rights</h3>
+                    </div>
+                    <div class="box-body no-padding">
+                        <table class="table table-condensed table-next-rights">
+                            <thead>
+                            <tr>
+                                <th class="th-checkbox" style="width: 74px;">
+                                    <div class="content-checkbox-button">
+                                        <input id="checkbox-select-all-add" class="checkbox-select-all minimal to-add"
+                                               type="checkbox">
+                                        <div class="btn-group" style="margin-right:-30px;">
+                                            <button type="button" class="btn btn-default dropdown-toggle"
+                                                    data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                {#
+                                                <li>
+                                                    <a href="#" class="change-right-selected to-add right-read"
+                                                       data-right="read">Read</a>
+                                                </li>
+                                                #}
+                                                <li>
+                                                    <a href="#" class="change-right-selected to-add right-write"
+                                                       data-right="write">Write</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="change-right-selected to-add right-owner"
+                                                       data-right="owner">Owner</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </th>
+                                <th style="padding-left: 10px; vertical-align: middle;">Title</th>
+                                <th style="vertical-align: middle;">Entity</th>
+                                <th style="width: 80px; vertical-align: middle;">Manage</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{{ asset('js/admin/user_rights.js') }}?v={{ date().timestamp }}"></script>
+{% endblock %}

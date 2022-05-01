@@ -1,0 +1,27 @@
+{% for member in members %}
+    {% set additional_classes = (member['is_new']) ? " new-update" : "" %}
+    {% if member['extends_rights'] %}
+        {% set additional_classes = additional_classes ~ " no-hover" %}
+    {% endif %}
+    <div class="c-teammate transition-background-color{{ additional_classes }}">
+        <div class="left">
+            <div class="picture loading-bg" data-bg="{{ member['picture'] }}" data-default-bg="/images/default/user.png"></div>
+            <div class="infos">
+                <div class="name text-ellipsis line-height-1-2 font-montserrat-700"><a href="{{ member['url'] }}" class="link-profile color-000 hub-link-on-hover line-height-1-2">{{ member['username'] }}</a></div>
+                <div class="subname text-ellipsis line-height-1-2 color-9b9b9b font-size-14 font-work-sans-400">{{ member['situation_and_entity'] }}</div>
+            </div>
+        </div>
+        {% if app.user.hasAdminRights() %}
+            <div class="middle">
+                <span class="font-work-sans-400 color-787878 font-size-15">{{ member['role'] }}</span>
+                {% if not member['extends_rights'] %}<span class="explore-detail-update-team-member button-update-user-role transition-opacity with-tooltip" data-role="{{ member['role'] }}" data-uid="{{ member['user_id'] }}" title="Update team member role"></span>{% endif %}
+            </div>
+        {% endif %}
+        {% if not member['extends_rights'] %}
+            <div class="content-right-button transition-opacity">
+                <div class="loading-spinner loading-spinner--26"></div>
+                <button class="hub-button height-26 with-tooltip explore-detail-button-remove-team-member" data-uid="{{ member['user_id'] }}" title="Remove user from your team">Remove</button>
+            </div>
+       {% endif %}
+    </div>
+{% endfor %}

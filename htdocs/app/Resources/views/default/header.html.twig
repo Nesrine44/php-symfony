@@ -1,0 +1,136 @@
+{% set url_list = path('manage_list') %}
+{% set url_homepage = path('homepage') %}
+{% if app.user %}
+    <div id="element-main-header" class="transition">
+        {% if global.settings.is_beta_enabled %}
+            <div class="element-bar-beta transition position-relative font-work-sans-400">
+                <div class="central-content">
+                <span class="text-ellipsis">
+                    This is a beta version of the new {{ website_title }}. If you encounter any issue or bug, let us know
+                    with the chat on the bottom right of the screen.
+                </span>
+                </div>
+            </div>
+        {% endif %}
+        <div class="element-bar-header position-relative">
+            <div class="central-content">
+                <div class="button-menu-responsive">
+                    <div class="line transition"></div>
+                    <div class="line transition"></div>
+                    <div class="line transition"></div>
+                </div>
+                <a href="{{ url_homepage }}" data-url-list="{{ url_list }}"
+                   class="element-main-header-logo position-relative link-welcome {{ (global.settings.is_maintenance_enabled) ? 'maintenance' : '' }}">
+                    {% if global.settings.is_maintenance_enabled %}
+                        <img src="{{ asset('/images/exceptions/maintenance-cone.png') }}" data-no-retina alt="Home"
+                             title="Maintenance mode" class="vertical-align-middle"/>
+                    {% else %}
+                        <img src="{{ asset('/images/logo.png') }}" data-no-retina alt="Home"
+                             class="vertical-align-middle"/>
+                    {% endif %}
+                    <span class="vertical-align-middle font-montserrat-700">{{ website_title }}</span>
+                </a>
+                <div class="pri-content-input-search">
+                    <div class="content-search-input">
+                        <div class="button-search-input transition"></div>
+                        <input id="pri-search-input" type="text" class="font-work-sans-400"
+                               placeholder="Search">
+                    </div>
+                </div>
+                <div class="pri-menu-right-header">
+                    <div id="main-menu" class="navigation font-montserrat-700">
+                        <ul id="main-menu-links" class="links clearfix">
+                            <li class="menu-li-explore">
+                                <a href="{{ path("explore_list") }}" class="link-list-explore">Explore</a>
+                            </li>
+                            <li class="menu-li-manage hide-no-role hide-management">
+                                <a href="{{ url_list }}" class="transition link-list-innovations">Manage</a>
+                            </li>
+                            <li class="menu-li-connect">
+                                <a href="{{ path("user_connect") }}" class="transition link-connect">Connect</a>
+                            </li>
+                            <li id="menu-li-learn" class="menu-li-learn">
+                                {% set classe_active = (app.request.get('_route') starts with 'learn_') ? 'active' : '' %}
+                                <a href="{{ path("learn_list") }}" class="transition link-learn {{ classe_active }}">Learn</a>
+                            </li>
+                            <li id="menu-li-monitor" class="menu-li-monitor hide-no-role">
+                                <a href="{{ path("monitor_list") }}" class="transition link-monitor-innovations">Monitor</a>
+                            </li>
+                            <li class="menu-li-about-us">
+                                {% set classe_active = (app.request.get('_route') starts with 'about_us') ? 'active' : '' %}
+                                <a href="{{ path("about_us") }}" class="transition link-about-us {{ classe_active }}">About
+                                    us</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="button-profile content-sub-menu">
+                        <div class="img-header-profile" data-username="{{ app.user.getProperUsername() }}">
+                            <div class="user-picture loading-bg" data-bg="{{ app.user.getPictureUrl() }}"
+                                 data-default-bg="{{ asset('/images/default/user.png') }}"></div>
+                        </div>
+                        <div class="element-sub-menu">
+                            <div class="arrow"></div>
+                            <ul class="menu transition">
+                                <li>
+                                    <a href="{{ path('current_user_profile') }}"
+                                       class="link-profile font-montserrat-700">Profile</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('current_user_settings') }}"
+                                       class="link-user-settings font-montserrat-700">Settings</a>
+                                </li>
+                                {% if app.user.hasAdminRights() %}
+                                    <li>
+                                        <a href="{{ path('sonata_admin_dashboard') }}" class="font-montserrat-700">Administration</a>
+                                    </li>
+                                {% endif %}
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="{{ path('fos_user_security_logout') }}"
+                                       class="font-montserrat-700">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="button-access-manage" class="button-access-manage hide-no-role content-sub-menu">
+                        <div class="micro-button transition"></div>
+                        <div class="element-sub-menu">
+                            <div class="arrow"></div>
+                            <div class="title font-montserrat-700">
+                                My projects
+                            </div>
+                            <div class="list">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-flash-messages">
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="flash-message {{ label }}">
+                                <div class="content">
+                                    <span class="font-montserrat-700">{{ message }}</span>
+                                    <div class="close-flash-message"></div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="pri-content-loader">
+                <div class="pri-loader-bar transition-slow"></div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div id="element-main-header-without-user" class="transition">
+        <div class="central-content">
+            <a href="{{ url_homepage }}" data-url-list="{{ url_list }}"
+               class="element-main-header-logo position-relative">
+                <img src="{{ asset('/images/logo.png') }}" data-no-retina alt="Home" class="vertical-align-middle"/>
+                <span class="vertical-align-middle font-montserrat-700">{{ website_title }}</span>
+            </a>
+        </div>
+    </div>
+{% endif %}

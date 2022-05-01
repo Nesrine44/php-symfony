@@ -1,0 +1,50 @@
+version: '3'
+services:
+    php7:
+        build:
+            context: .
+            args:
+                debug: "true"
+
+        env_file: ./.env
+        ports:
+            - "80:80"                                                           # Disable for HTTPS
+    #        - 127.0.0.1:80:80                                                  # Enable HTTPS
+    #        - 127.0.0.1:443:443                                                # Enable HTTPS
+        volumes:
+            - ./htdocs:/var/www/symfony
+            - ./logs/symfony:/var/www/symfony/var/logs
+    #        - ./proxy.conf:/etc/nginx/conf.d/default.conf                      # Enable HTTPS
+    #        - ./ssl:/etc/nginx/ssl                                             # Enable HTTPS
+    #        - ./logs/nginx:/var/logs/nginx
+    #        - "./htdocs/private:/var/www/symfony/private"
+    #        - "./htdocs/web:/var/www/symfony/web:rw"
+    #        - "./docker/php7/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro"
+        links:
+            - "db:db"
+            - "redis:redis"
+        working_dir: "/var/www/symfony"
+
+        environment:
+            - DEBUG=true
+
+
+
+    #Only for development purpose
+    redis:
+        image: redis
+        ports:
+            - 6379:6379
+
+
+    db:
+        image: mysql:8.0.0
+        ports:
+            - "3306:3306"
+        command: mysqld --sql_mode="" #disable strict mode
+        environment:
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - MYSQL_USER= ${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+

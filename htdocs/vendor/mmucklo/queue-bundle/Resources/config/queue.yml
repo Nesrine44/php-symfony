@@ -1,0 +1,276 @@
+services:
+    dtc_queue.document_manager:
+        synthetic: true
+
+    dtc_queue.entity_manager:
+        synthetic: true
+
+    dtc_queue.manager.job:
+        synthetic: true
+
+    dtc_queue.manager.run:
+        synthetic: true
+
+    dtc_queue.manager.job_timing:
+        synthetic: true
+
+    dtc_queue.manager.run.odm:
+        public: true
+        class: Dtc\QueueBundle\ODM\RunManager
+        arguments:
+            - "@dtc_queue.document_manager"
+            - "%dtc_queue.class.run%"
+            - "%dtc_queue.class.run_archive%"
+
+    dtc_queue.manager.job_timing.odm:
+        public: true
+        class: Dtc\QueueBundle\ODM\JobTimingManager
+        arguments:
+            - "@dtc_queue.document_manager"
+            - "%dtc_queue.class.job_timing%"
+            - "%dtc_queue.timings.record%"
+
+    dtc_queue.grid_source.jobs_waiting.odm:
+        public: true
+        class: Dtc\QueueBundle\ODM\LiveJobsGridSource
+        arguments:
+            - "@dtc_queue.manager.job.odm"
+        calls:
+            - [ 'setAnnotationReader', ['@annotation_reader' ]]
+            - [ 'setCacheDir', ['%kernel.cache_dir%' ]]
+
+    dtc_queue.grid_source.jobs_running.odm:
+        public: true
+        class: Dtc\QueueBundle\ODM\LiveJobsGridSource
+        arguments:
+            - "@dtc_queue.manager.job.odm"
+        calls:
+            - [ 'setAnnotationReader', ['@annotation_reader' ]]
+            - [ 'setCacheDir', ['%kernel.cache_dir%' ]]
+            - [ 'setRunning', [true ]]
+
+    dtc_queue.grid_source.jobs_waiting.orm:
+        public: true
+        class: Dtc\QueueBundle\ORM\LiveJobsGridSource
+        arguments:
+            - "@dtc_queue.manager.job.orm"
+        calls:
+            - [ 'setAnnotationReader', ['@annotation_reader' ]]
+            - [ 'setCacheDir', ['%kernel.cache_dir%' ]]
+
+    dtc_queue.grid_source.jobs_running.orm:
+        public: true
+        class: Dtc\QueueBundle\ORM\LiveJobsGridSource
+        arguments:
+            - "@dtc_queue.manager.job.orm"
+        calls:
+            - [ 'setAnnotationReader', ['@annotation_reader' ]]
+            - [ 'setCacheDir', ['%kernel.cache_dir%' ]]
+            - [ 'setRunning', [true ]]
+
+    dtc_queue.manager.job.odm:
+        public: true
+        class: Dtc\QueueBundle\ODM\JobManager
+        arguments:
+            - "@dtc_queue.manager.run"
+            - "@dtc_queue.manager.job_timing"
+            - '@dtc_queue.document_manager'
+            - '%dtc_queue.class.job%'
+            - '%dtc_queue.class.job_archive%'
+        calls:
+            - ["setMaxPriority", ['%dtc_queue.priority.max%']]
+            - ["setPriorityDirection", ['%dtc_queue.priority.direction%']]
+            - ["setDefaultMaxRetries", ['%dtc_queue.retry.max.retries%']]
+            - ["setDefaultMaxFailures", ['%dtc_queue.retry.max.failures%']]
+            - ["setDefaultMaxExceptions", ['%dtc_queue.retry.max.exceptions%']]
+            - ["setDefaultMaxStalls", ['%dtc_queue.retry.max.stalls%']]
+            - ["setAutoRetryOnFailure", ['%dtc_queue.retry.auto.failure%']]
+            - ["setAutoRetryOnException", ['%dtc_queue.retry.auto.exception%']]
+
+    dtc_queue.manager.job.beanstalkd:
+        public: true
+        class: Dtc\QueueBundle\Beanstalkd\JobManager
+        arguments:
+            - "@dtc_queue.manager.run"
+            - "@dtc_queue.manager.job_timing"
+            - '%dtc_queue.class.job%'
+        calls:
+            - ["setDefaultMaxRetries", ['%dtc_queue.retry.max.retries%']]
+            - ["setDefaultMaxFailures", ['%dtc_queue.retry.max.failures%']]
+            - ["setDefaultMaxExceptions", ['%dtc_queue.retry.max.exceptions%']]
+            - ["setAutoRetryOnFailure", ['%dtc_queue.retry.auto.failure%']]
+
+    dtc_queue.manager.job.rabbit_mq:
+        public: true
+        class: Dtc\QueueBundle\RabbitMQ\JobManager
+        arguments:
+            - "@dtc_queue.manager.run"
+            - "@dtc_queue.manager.job_timing"
+            - "%dtc_queue.class.job%"
+        calls:
+            - ["setMaxPriority", ['%dtc_queue.priority.max%']]
+            - ["setPriorityDirection", ['%dtc_queue.priority.direction%']]
+            - ["setDefaultMaxRetries", ['%dtc_queue.retry.max.retries%']]
+            - ["setDefaultMaxFailures", ['%dtc_queue.retry.max.failures%']]
+            - ["setDefaultMaxExceptions", ['%dtc_queue.retry.max.exceptions%']]
+            - ["setAutoRetryOnFailure", ['%dtc_queue.retry.auto.failure%']]
+            - ["setAutoRetryOnException", ['%dtc_queue.retry.auto.exception%']]
+
+    dtc_queue.manager.job.redis:
+        public: true
+        class: Dtc\QueueBundle\Redis\JobManager
+        arguments:
+            - "@dtc_queue.manager.run"
+            - "@dtc_queue.manager.job_timing"
+            - "%dtc_queue.class.job%"
+            - "%dtc_queue.redis.prefix%"
+        calls:
+            - ["setMaxPriority", ['%dtc_queue.priority.max%']]
+            - ["setPriorityDirection", ['%dtc_queue.priority.direction%']]
+            - ["setDefaultMaxRetries", ['%dtc_queue.retry.max.retries%']]
+            - ["setDefaultMaxFailures", ['%dtc_queue.retry.max.failures%']]
+            - ["setDefaultMaxExceptions", ['%dtc_queue.retry.max.exceptions%']]
+            - ["setAutoRetryOnFailure", ['%dtc_queue.retry.auto.failure%']]
+            - ["setAutoRetryOnException", ['%dtc_queue.retry.auto.exception%']]
+    dtc_queue.manager.run.orm:
+        public: true
+        class: Dtc\QueueBundle\ORM\RunManager
+        arguments:
+            - '@dtc_queue.entity_manager'
+            - "%dtc_queue.class.run%"
+            - "%dtc_queue.class.run_archive%"
+        calls:
+            - ["setEntityManagerName", ['%dtc_queue.orm.entity_manager%']]
+
+    dtc_queue.manager.job_timing.orm:
+        public: true
+        class: Dtc\QueueBundle\ORM\JobTimingManager
+        arguments:
+            - "@dtc_queue.entity_manager"
+            - "%dtc_queue.class.job_timing%"
+            - "%dtc_queue.timings.record%"
+        calls:
+            - ["setEntityManagerName", ['%dtc_queue.orm.entity_manager%']]
+
+    dtc_queue.manager.run.beanstalkd:
+        public: true
+        alias: dtc_queue.manager.run.base
+
+    dtc_queue.manager.run.rabbit_mq:
+        public: true
+        alias: dtc_queue.manager.run.base
+
+    dtc_queue.manager.run.redis:
+        public: true
+        alias: dtc_queue.manager.run.base
+
+    dtc_queue.manager.job_timing.beanstalkd:
+        public: true
+        alias: dtc_queue.manager.job_timing.base
+
+    dtc_queue.manager.job_timing.rabbit_mq:
+        public: true
+        alias: dtc_queue.manager.job_timing.base
+
+    dtc_queue.manager.job_timing.redis:
+        public: true
+        alias: dtc_queue.manager.job_timing.base
+
+    dtc_queue.manager.run.base:
+        public: true
+        class: Dtc\QueueBundle\Manager\RunManager
+        arguments:
+            - "%dtc_queue.class.run%"
+
+    dtc_queue.manager.job_timing.base:
+        public: true
+        class: Dtc\QueueBundle\Manager\JobTimingManager
+        arguments:
+            - "%dtc_queue.class.job_timing%"
+            - "%dtc_queue.timings.record%"
+
+    dtc_queue.manager.job.orm:
+        public: true
+        class: Dtc\QueueBundle\ORM\JobManager
+        arguments:
+            - "@dtc_queue.manager.run"
+            - "@dtc_queue.manager.job_timing"
+            - '@dtc_queue.entity_manager'
+            - '%dtc_queue.class.job%'
+            - '%dtc_queue.class.job_archive%'
+        calls:
+            - ["setMaxPriority", ['%dtc_queue.priority.max%']]
+            - ["setPriorityDirection", ['%dtc_queue.priority.direction%']]
+            - ["setDefaultMaxRetries", ['%dtc_queue.retry.max.retries%']]
+            - ["setDefaultMaxFailures", ['%dtc_queue.retry.max.failures%']]
+            - ["setDefaultMaxExceptions", ['%dtc_queue.retry.max.exceptions%']]
+            - ["setDefaultMaxStalls", ['%dtc_queue.retry.max.stalls%']]
+            - ["setAutoRetryOnFailure", ['%dtc_queue.retry.auto.failure%']]
+            - ["setAutoRetryOnException", ['%dtc_queue.retry.auto.exception%']]
+            - ["setEntityManagerName", ['%dtc_queue.orm.entity_manager%']]
+
+    dtc_queue.manager.worker:
+        public: true
+        class: Dtc\QueueBundle\Manager\WorkerManager
+        arguments:
+            - '@dtc_queue.manager.job'
+            - '@dtc_queue.event_dispatcher'
+        calls:
+            - [ "setLogger", ['@?logger'] ]
+        tags: [{ name: monolog.logger, channel: dtc_queue }]
+
+    dtc_queue.event_dispatcher:
+        public: true
+        class: Dtc\QueueBundle\EventDispatcher\EventDispatcher
+
+    dtc_queue.doctrine_listener:
+        public: true
+        class: Dtc\QueueBundle\Doctrine\DtcQueueListener
+        arguments:
+            - '%dtc_queue.class.job_archive%'
+            - '%dtc_queue.class.run_archive%'
+        calls:
+            - [ "setEntityManagerName", ['%dtc_queue.orm.entity_manager%']]
+        tags:
+            - { name: doctrine.event_listener, event: preRemove }
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine_mongodb.odm.event_listener, event: preRemove }
+            - { name: doctrine_mongodb.odm.event_listener, event: perPersist }
+            - { name: doctrine_mongodb.odm.event_listener, event: preUpdate }
+
+    dtc_queue.run.loop:
+        public: true
+        class: Dtc\QueueBundle\Run\Loop
+        arguments:
+            - "@dtc_queue.manager.worker"
+            - "@dtc_queue.manager.job"
+            - "@dtc_queue.manager.run"
+        calls:
+            - [ "setLogger", ['@?logger'] ]
+        tags: [{ name: monolog.logger, channel: dtc_queue }]
+
+    dtc_queue.command.count:
+        class: Dtc\QueueBundle\Command\CountCommand
+        tags:
+            - { name: console.command }
+
+    dtc_queue.command.create_job:
+        class: Dtc\QueueBundle\Command\CreateJobCommand
+        tags:
+            - { name: console.command }
+
+    dtc_queue.command.prune:
+        class: Dtc\QueueBundle\Command\PruneCommand
+        tags:
+            - { name: console.command }
+
+    dtc_queue.command.reset:
+        class: Dtc\QueueBundle\Command\ResetCommand
+        tags:
+            - { name: console.command }
+
+    dtc_queue.command.run:
+        class: Dtc\QueueBundle\Command\RunCommand
+        tags:
+            - { name: console.command }

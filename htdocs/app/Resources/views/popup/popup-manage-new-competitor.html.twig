@@ -1,0 +1,105 @@
+<div class="custom-content-popup element-manage-new-competitor-popup transition">
+    <div class="content-blur transition"></div>
+    <div class="content-popup-for-scroll">
+        <div class="element-popup background-color-fff central-content-994">
+            <div class="cross-close-popup transition action-close-popup"></div>
+            <div class="content-popup">
+                <form id="form-manage-new-competitor-popup" action="" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="competitor_id"/>
+                    <div class="content-step-1 transition-none padding-40">
+                        <div class="central-content-846 box-sizing-border-box padding-left-30 padding-right-30 text-align-center">
+                            <h3 class="color-000 font-montserrat-700 font-size-30">
+                                Competitor
+                            </h3>
+                        </div>
+                        <div class="padding-top-40">
+                            <div class="display-inline-block vertical-align-top">
+                                <div id="competitor-picture" class="form-element">
+                                    <label class="padding-top-10 color-b5b5b5 font-size-13 line-height-1">
+                                        Picture
+                                    </label>
+                                    <input type="hidden" name="picture_id"/>
+                                    <div class="block-add-picture md-competitor" id="edition_manage_competitor_picture">
+                                        <div class="add-picture">
+                                            <span>Select file to upload<br>or drag and drop your picture file</span>
+                                            <input name="files[]" type="file" id="manage_competitor_picture_upload" class="hidden-upload-input">
+                                            <div class="progress-upload">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                        </div>
+                                        <div class="picture-added">
+                                            <div class="fake-img"></div>
+                                            <div class="button-delete-picture md hub-button height-26" data-target="md_competitor">Remove</div>
+                                        </div>
+                                        <div class="error-upload"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="display-inline-block vertical-align-top padding-left-40" style="width:430px">
+                                <div class="form-element">
+                                    <label class="padding-top-10 color-b5b5b5 font-size-13 line-height-1">
+                                        Product name
+                                    </label>
+                                    <div class="content-input-text">
+                                        <input type="text" name="name">
+                                    </div>
+                                </div>
+                                <div class="form-element">
+                                    <label class="padding-top-10 color-b5b5b5 font-size-13 line-height-1">
+                                        Category
+                                    </label>
+                                    <div class="content-select">
+                                        <select class="people-select required form-input" name="category">
+                                            <option value=""></option>
+                                            <option value="Aniseed">Aniseed</option>
+                                            <option value="Bitters">Bitters</option>
+                                            <option value="Brandy non Cognac">Brandy non Cognac</option>
+                                            <option value="Cognac">Cognac</option>
+                                            <option value="Gin">Gin</option>
+                                            <option value="Intl Champagne">Intl Champagne</option>
+                                            <option value="Liqueurs">Liqueurs</option>
+                                            <option value="Non-Scotch Whisky">Non-Scotch Whisky</option>
+                                            <option value="RTD/RTS">RTD/RTS</option>
+                                            <option value="Rum">Rum</option>
+                                            <option value="Scotch Whisky">Scotch Whisky</option>
+                                            <option value="Tequila">Tequila</option>
+                                            <option value="Vodka">Vodka</option>
+                                            <option value="Wine">Wine</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-element">
+                                    <label class="padding-top-10 color-b5b5b5 font-size-13 line-height-1">
+                                        Brand
+                                    </label>
+                                    <div class="content-input-text">
+                                        <input type="text" name="brand">
+                                    </div>
+                                </div>
+                                <div class="form-element">
+                                    <label class="padding-top-10 color-b5b5b5 font-size-13 line-height-1">
+                                        Tags (up to 5)
+                                    </label>
+                                    <div class="font-work-sans-400 font-size-15 line-height-1-53 color-000 margin-bottom-10">
+                                        Add or change tags so readers know what this product is about:
+                                    </div>
+                                    <select type="text" name="tags" multiple style="width: 100%">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="content-buttons padding-left-40 padding-right-40">
+                                <div class="error-message info-inner-content-button font-work-sans-400 color-e8485c"></div>
+                                <div class="loader-popup">
+                                    <div class="loading-spinner"></div>
+                                </div>
+                                <button class="hub-button grey action-close-popup" type="button">Cancel</button>
+                                <button class="hub-button" type="submit">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+{% for item in items %}
+    {% set id = item['innovation_id'] %}
+    {% set right = item['right'] %}
+    {% set role = item['role'] %}
+    {% set display_role = (role) ? role : global.constants.UserInnovationRight.ROLE_OTHER  %}
+    {% set tr_class = (right == 'Add') ? 'to-add' : 'to-update' %}
+    <tr id="tr-item-{{ id }}" class="tr-right-admin {{ tr_class }}" data-id="{{ id }}">
+        <td class="td-checkbox" style="vertical-align: middle;">
+            <input id="checkbox-{{ id }}"
+                   class="checkbox-select minimal checkbox-{{ tr_class }} {{ (item['is_owner']) ? 'disabled' : '' }}" {{ (item['is_owner']) ? 'disabled' : '' }}
+                   type="checkbox">
+        </td>
+        <td class="td-innovation-title"
+            style="vertical-align: middle; padding-left: 10px;">{{ item['innovation_title'] }}</td>
+        <td class="td-innovation-entity-title" style="vertical-align: middle;">{{ item['innovation_entity'] }}</td>
+        {% if item['is_owner'] %}
+            <td class="td-user-role" {{ (role) ? '' : 'style="display:none"' }}></td>
+        {% else %}
+            <td class="td-user-role" {{ (role) ? '' : 'style="display:none"' }}>
+                <div class="btn-group row">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <strong class="text-info">{{ display_role }}</strong> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#" data-id="{{ id }}" class="change-role"
+                               data-role="{{ global.constants.UserInnovationRight.ROLE_RESEARCH_AND_DEVELOPMENT }}">
+                                {% if display_role == global.constants.UserInnovationRight.ROLE_RESEARCH_AND_DEVELOPMENT %}
+                                    <span class="pull-role"><i class="fa fa-check"></i></span>
+                                {% endif %}
+                                {{ global.constants.UserInnovationRight.ROLE_RESEARCH_AND_DEVELOPMENT }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-id="{{ id }}" class="change-role"
+                               data-role="{{ global.constants.UserInnovationRight.ROLE_OPERATIONS}}">
+                                {% if display_role == global.constants.UserInnovationRight.ROLE_OPERATIONS %}
+                                    <span class="pull-role"><i class="fa fa-check"></i></span>
+                                {% endif %}
+                                {{ global.constants.UserInnovationRight.ROLE_OPERATIONS }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-id="{{ id }}" class="change-role"
+                               data-role="{{ global.constants.UserInnovationRight.ROLE_LEGAL }}">
+                                {% if display_role == global.constants.UserInnovationRight.ROLE_LEGAL %}
+                                    <span class="pull-role"><i class="fa fa-check"></i></span>
+                                {% endif %}
+                                {{ global.constants.UserInnovationRight.ROLE_LEGAL }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-id="{{ id }}" class="change-role"
+                               data-role="{{ global.constants.UserInnovationRight.ROLE_MANAGEMENT }}">
+                                {% if display_role == global.constants.UserInnovationRight.ROLE_MANAGEMENT %}
+                                    <span class="pull-role"><i class="fa fa-check"></i></span>
+                                {% endif %}
+                                {{ global.constants.UserInnovationRight.ROLE_MANAGEMENT}}
+                            </a>
+                        </li>
+
+                         <li>
+                            <a href="#" data-id="{{ id }}" class="change-role"
+                               data-role="{{ global.constants.UserInnovationRight.ROLE_CONSUMER_INSIGHTS }}">
+                                {% if display_role == global.constants.UserInnovationRight.ROLE_CONSUMER_INSIGHTS %}
+                                    <span class="pull-role"><i class="fa fa-check"></i></span>
+                                {% endif %}
+                                {{ global.constants.UserInnovationRight.ROLE_CONSUMER_INSIGHTS}}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-id="{{ id }}" class="change-role"
+                               data-role="{{ global.constants.UserInnovationRight.ROLE_OTHER }}">
+                                {% if display_role == global.constants.UserInnovationRight.ROLE_OTHER %}
+                                    <span class="pull-role"><i class="fa fa-check"></i></span>
+                                {% endif %}
+                                {{ global.constants.UserInnovationRight.ROLE_OTHER }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-id="{{ id }}" class="change-role"
+                               data-role="{{ global.constants.UserInnovationRight.ROLE_FINANCE_CONTACT }}">
+                                {% if display_role == global.constants.UserInnovationRight.ROLE_FINANCE_CONTACT %}
+                                    <span class="pull-role"><i class="fa fa-check"></i></span>
+                                {% endif %}
+                                {{ global.constants.UserInnovationRight.ROLE_FINANCE_CONTACT }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+        {% endif %}
+        {% if item['is_owner'] %}
+            <td class="td-user-right" style="vertical-align: middle;">{{ right }}</td>
+        {% else %}
+            <td class="td-user-right">
+                <div class="btn-group row">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <strong class="text-info">{{ right }}</strong> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        {#
+                        <li>
+                            <a href="#" data-id="{{ id }}" class="change-right right-read" data-right="read">
+                                {% if right == 'Read' %}
+                                    <span class="pull-right"><i class="fa fa-check"></i></span>
+                                {% endif %}
+                                Read
+                            </a>
+                        </li>
+                        #}
+                        <li>
+                            <a href="#" data-id="{{ id }}" class="change-right right-write" data-right="write">
+                                {% if right == 'Write' %}
+                                    <span class="pull-right"><i class="fa fa-check"></i></span>
+                                {% endif %}
+                                Write
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-id="{{ id }}" class="change-right right-owner" data-right="owner">
+                                {% if right == 'Owner' %}
+                                    <span class="pull-right"><i class="fa fa-check"></i></span>
+                                {% endif %}
+                                Owner
+                            </a>
+                        </li>
+                        <li class="no-to-add">
+                            <a href="#" data-id="{{ id }}" class="change-right" data-right="remove">Remove</a>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+        {% endif %}
+    </tr>
+{% endfor %}

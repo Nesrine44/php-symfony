@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% set page_title = 'Explore' %}
+{% set current_url = app.request.requestUri %}
+{% block body %}
+    <script>
+        goToExploreListPage('{{ current_url|raw }}',
+            '{{ tab is not defined ? "products" : tab }}');
+    </script>
+{% endblock %}
+

@@ -1,0 +1,542 @@
+html.introjs-active,
+html.introjs-active body{
+    overflow: hidden;
+}
+html.introjs-active,
+html.introjs-active body,
+html.introjs-active #main,
+html.introjs-active #pri-main-container-without-header {
+    min-height: 100%;
+    height: 100%;
+}
+html.introjs-active #main #pri-main-container{
+    height: 100%;
+}
+
+.walkthrough-blur{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    background-color: rgba(0, 80, 149, 0.65);
+    z-index: 999999;
+}
+
+.walkthrough-blur.closed {
+    opacity: 1;
+    animation: animationFadeOut 0.3s ease;
+    -moz-animation: animationFadeOut 0.3s ease;
+    -webkit-animation: animationFadeOut 0.3s ease;
+    -ms-animation: animationFadeOut 0.3s ease;
+    -o-animation: animationFadeOut 0.3s ease;
+}
+
+.introjs-overlay {
+    position: absolute;
+    box-sizing: content-box;
+    z-index: 999999;
+    background: rgba(0, 80, 149, 0.65);
+    opacity: 1;
+}
+.introjs-overlay,
+.element-walkthrough-start-popup .content-blur,
+.element-walkthrough-end-popup .content-blur{
+    display: none!important;
+}
+
+.introjs-fixParent {
+    z-index: auto !important;
+    opacity: 1.0 !important;
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -o-transform: none !important;
+    transform: none !important;
+}
+
+.introjs-active #main *:not(.no-introjs-z-index),
+.introjs-active .sticky-fixed,
+.introjs-active #ui-datepicker-div {
+    z-index: auto !important;
+}
+.introjs-active #main .custom-content-popup,
+.introjs-active #main .custom-content-popup * {
+    z-index: 999999999999 !important;
+}
+
+.introjs-active .element-sub-header-menu-tab,
+.introjs-active .explore-overview-right-buttons-container,
+.introjs-active .position-fixed,
+.introjs-active .position-fixed-left-right,
+.introjs-active #element-main-header,
+.introjs-active #element-main-header-without-user {
+    position: absolute!important;
+}
+
+.introjs-active #main .button-search-input {
+    z-index: 4 !important;
+}
+.introjs-active #main .walkthrough-blur {
+    z-index: 999999 !important;
+}
+.introjs-active #main .introjs-showElement,
+.introjs-active #main .introjs-showElement *{
+    z-index: 99999999 !important;
+}
+
+.introjs-disableInteraction {
+    z-index: 99999999 !important;
+    position: absolute;
+}
+
+.introjs-relativePosition,
+tr.introjs-showElement > td,
+tr.introjs-showElement > th {
+    position: relative;
+}
+
+.introjs-helperLayer {
+    box-sizing: content-box;
+    position: absolute;
+    z-index: 9999998;
+    background-color: #fff;
+    border-radius: 3px;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    padding: 8px;
+    margin-left: -8px;
+    margin-top: -8px;
+}
+html.case-header-menu-li .introjs-helperLayer {
+    padding: 0 8px;
+    margin-top: 0;
+}
+html.case-button-access-manage .introjs-helperLayer {
+    padding: 0;
+    margin-left: 5px;
+    margin-top: 0;
+    height: 34px !important;
+    top: 8px !important;
+    width: 34px !important;
+    border-radius: 17px;
+}
+html.case-button-access-manage .introjs-tooltip {
+    top: 60px!important;
+}
+
+html.case-button-access-manage .introjs-arrow.top-right {
+    right: 10px;
+}
+html.case-button-access-manage .introjs-arrow.top {
+    left: 11px;
+}
+.introjs-tooltipReferenceLayer {
+    box-sizing: content-box;
+    position: absolute;
+    visibility: hidden;
+    z-index: 100000000;
+    background-color: transparent;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.introjs-helperLayer *,
+.introjs-helperLayer *:before,
+.introjs-helperLayer *:after {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -ms-box-sizing: content-box;
+    -o-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.introjs-helperNumberLayer {
+    display: none;
+}
+
+.introjs-arrow {
+    border: 11px solid transparent;
+    content:'';
+    position: absolute;
+}
+.introjs-arrow.top {
+    top: -22px;
+    border-bottom-color:#161541;
+}
+.introjs-arrow.top-right {
+    top: -22px;
+    right: 22px;
+    border-bottom-color:#161541;
+}
+.introjs-arrow.top-middle {
+    top: -22px;
+    left: 50%;
+    margin-left: -11px;
+    border-bottom-color:#161541;
+}
+.introjs-arrow.right {
+    right: -22px;
+    top: 22px;
+    border-left-color:#161541;
+}
+.introjs-arrow.right-bottom {
+    bottom:22px;
+    right: -22px;
+    border-left-color:#161541;
+}
+.introjs-arrow.bottom {
+    bottom: -22px;
+    border-top-color:#161541;
+}
+.introjs-arrow.bottom-right {
+    bottom: -22px;
+    right: 22px;
+    border-top-color:#161541;
+}
+.introjs-arrow.bottom-middle {
+    bottom: -22px;
+    left: 50%;
+    margin-left: -11px;
+    border-top-color:#161541;
+}
+.introjs-arrow.left {
+    left: -22px;
+    top: 22px;
+    border-right-color:#161541;
+}
+.introjs-arrow.left-bottom {
+    left: -22px;
+    bottom:22px;
+    border-right-color:#161541;
+}
+
+.introjs-tooltip {
+    box-sizing: content-box;
+    position: absolute;
+    visibility: visible;;
+    -webkit-transition: opacity 0.1s ease-out;
+    -moz-transition: opacity 0.1s ease-out;
+    -ms-transition: opacity 0.1s ease-out;
+    -o-transition: opacity 0.1s ease-out;
+    transition: opacity 0.1s ease-out;
+    min-width: 290px;
+    max-width: 310px;
+    padding: 15px 20px;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
+    background-color: #161541;
+}
+
+.introjs-tooltipbuttons {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.introjs-prevbutton,
+.introjs-skipbutton {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 26px;
+    text-align: center;
+    color: #03aff0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    outline: 0;
+}
+
+.introjs-prevbutton:hover,
+.introjs-skipbutton:hover {
+    color: #07cbf0;
+}
+
+.introjs-skipbutton {
+    float: left;
+}
+.introjs-donebutton {
+    float: right;
+}
+
+.introjs-prevbutton.introjs-fullbutton {
+
+}
+
+.introjs-donebutton,
+.introjs-nextbutton {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    margin-left: 20px;
+    -webkit-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    -o-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    -ms-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+    border: none;
+    background-color: #1eb3ea;
+    box-sizing: border-box;
+    cursor: pointer;
+    outline: 0;
+    padding: 0 15px;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 26px;
+    border-radius: 13px;
+    font-size: 13px;
+}
+
+.introjs-donebutton:hover,
+.introjs-nextbutton:hover{
+    background-color: #35cafd;
+    color: #fff;
+}
+
+
+.introjs-disabled, .introjs-disabled:hover, .introjs-disabled:focus {
+    opacity: 0;
+    cursor: default;
+}
+.introjs-nextbutton.introjs-disabled {
+    display: none;
+}
+
+.introjs-hidden {
+    display: none;
+}
+
+.introjs-bullets {
+    text-align: center;
+}
+.introjs-bullets ul {
+    box-sizing: content-box;
+    clear: both;
+    margin: 15px auto 0;
+    padding: 0;
+    display: inline-block;
+}
+.introjs-bullets ul li {
+    box-sizing: content-box;
+    list-style: none;
+    float: left;
+    margin: 0 2px;
+}
+.introjs-bullets ul li a {
+    box-sizing: content-box;
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: #ccc;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.introjs-bullets ul li a:hover {
+    background: #999;
+}
+.introjs-bullets ul li a.active {
+    background: #999;
+}
+
+.introjs-progress {
+    box-sizing: content-box;
+    overflow: hidden;
+    height: 10px;
+    margin: 10px 0 5px 0;
+    border-radius: 4px;
+    background-color: #ecf0f1
+}
+.introjs-progressbar {
+    box-sizing: content-box;
+    float: left;
+    width: 0%;
+    height: 100%;
+    font-size: 10px;
+    line-height: 10px;
+    text-align: center;
+    background-color: #08c;
+}
+
+.introjsFloatingElement {
+    position: absolute;
+    height: 0;
+    width: 0;
+    left: 50%;
+    top: 50%;
+}
+
+.introjs-fixedTooltip {
+    position: fixed;
+}
+
+.introjs-hint {
+    box-sizing: content-box;
+    position: absolute;
+    background: transparent;
+    width: 20px;
+    height: 15px;
+    cursor: pointer;
+}
+.introjs-hint:focus {
+    border: 0;
+    outline: 0;
+}
+.introjs-hidehint {
+    display: none;
+}
+
+.introjs-fixedhint {
+    position: fixed;
+}
+
+.introjs-hint:hover > .introjs-hint-pulse {
+    border: 5px solid rgba(60, 60, 60, 0.57);
+}
+
+.introjs-hint-pulse {
+    box-sizing: content-box;
+    width: 10px;
+    height: 10px;
+    border: 5px solid rgba(60, 60, 60, 0.27);
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background-color: rgba(136, 136, 136, 0.24);
+    z-index: 10;
+    position: absolute;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+.introjs-hint-no-anim .introjs-hint-dot {
+    -webkit-animation: none;
+    -moz-animation: none;
+    animation: none;
+}
+.introjs-hint-dot {
+    box-sizing: content-box;
+    border: 10px solid rgba(146, 146, 146, 0.36);
+    background: transparent;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    height: 50px;
+    width: 50px;
+    -webkit-animation: introjspulse 3s ease-out;
+    -moz-animation: introjspulse 3s ease-out;
+    animation: introjspulse 3s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    z-index: 1;
+    opacity: 0;
+}
+
+
+.introjs-tooltip .introjs-tooltiptext .introjs-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+.introjs-tooltip .introjs-tooltiptext .introjs-numeric-stepper {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+@-webkit-keyframes introjspulse {
+    0% {
+        -webkit-transform: scale(0);
+        opacity: 0.0;
+    }
+    25% {
+        -webkit-transform: scale(0);
+        opacity: 0.1;
+    }
+    50% {
+        -webkit-transform: scale(0.1);
+        opacity: 0.3;
+    }
+    75% {
+        -webkit-transform: scale(0.5);
+        opacity: 0.5;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 0.0;
+    }
+}
+
+@-moz-keyframes introjspulse {
+    0% {
+        -moz-transform: scale(0);
+        opacity: 0.0;
+    }
+    25% {
+        -moz-transform: scale(0);
+        opacity: 0.1;
+    }
+    50% {
+        -moz-transform: scale(0.1);
+        opacity: 0.3;
+    }
+    75% {
+        -moz-transform: scale(0.5);
+        opacity: 0.5;
+    }
+    100% {
+        -moz-transform: scale(1);
+        opacity: 0.0;
+    }
+}
+
+@keyframes introjspulse {
+    0% {
+        transform: scale(0);
+        opacity: 0.0;
+    }
+    25% {
+        transform: scale(0);
+        opacity: 0.1;
+    }
+    50% {
+        transform: scale(0.1);
+        opacity: 0.3;
+    }
+    75% {
+        transform: scale(0.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.0;
+    }
+}

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% set page_title = 'Settings' %}
+{% set current_url = app.request.requestUri %}
+{% block body %}
+    <script>
+        goToUserSettings({{ the_user|json_encode|raw }});
+    </script>
+{% endblock %}
+
+
+
+

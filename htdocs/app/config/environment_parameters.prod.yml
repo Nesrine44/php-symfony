@@ -1,0 +1,4 @@
+parameters:
+    stage: prod
+    http_protocol: https
+    cookie_secure: true

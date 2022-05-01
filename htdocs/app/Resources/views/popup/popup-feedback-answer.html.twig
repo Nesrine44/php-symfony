@@ -1,0 +1,117 @@
+<div class="custom-content-popup element-feedback-answer-popup transition">
+    <div class="content-blur transition"></div>
+    <div class="content-popup-for-scroll">
+        <div class="element-popup background-color-fff central-content-994">
+            <div class="cross-close-popup transition action-close-popup"></div>
+            <div class="content-popup">
+                <form id="form-feedback-answer" action="" method="post" enctype="multipart/form-data">
+                    <div class="content-step-1 transition-none padding-top-30 padding-bottom-20">
+                        <div class="central-content-846 box-sizing-border-box padding-left-30 padding-right-30">
+                            <div class="title main-title font-montserrat-700">Give feedback</div>
+                            <div class="popup-feedback-citation">
+                                <div class="title font-montserrat-500">
+                                    <span class="quote-left"></span>
+                                    <span>All of us are smarter than any of us.</span>
+                                    <span class="quote-right"></span>
+                                </div>
+                                <div class="subtitle font-work-sans-300">Tim Brown, CEO IDEO</div>
+                            </div>
+                        </div>
+                        <div class="central-content-846 box-sizing-border-box padding-left-30 padding-right-30">
+                            <h3 class="color-000 font-montserrat-700 font-size-20">
+                                How to give useful feedback?
+                            </h3>
+                            <p class="margin-top-10 color-000 font-work-sans-300 font-size-15 line-height-1-33">
+                                A useful feedback is a feedback the team can use in their work.<br/><br/>
+                                
+                                It is a constructive and candid look at where the project is at, from your perspective. It is not a pat on the back - which is nice, but may not help the team on their journey to success. <br/><br/>
+
+                                Be specific: point out what may or may not have worked. Ground your feedback in examples.<br/><br/>
+
+                                Giving feedback can feel awkward at first, but it gets easier as you practice. <br/>
+                                And it's a fantastic skill in all your team work.
+                            </p>
+                        </div>
+                        <div class="background-color-f2f2f2 margin-top-30 padding-top-30 padding-bottom-30">
+                            <div class="central-content-846 box-sizing-border-box padding-left-30 padding-right-30 font-size-15">
+                                <div class="font-work-sans-300 margin-bottom-10">{{ feedbackInvitation.getSender().getProperUsername() }} said :</div>
+                                <span class="font-work-sans-500 line-height-1-33">“{{ feedbackInvitation.getMessage() | nl2br }}”</span>
+                            </div>
+                        </div>
+                        <div class="central-content-846 box-sizing-border-box padding-left-30 padding-right-30 padding-top-30 padding-bottom-20">
+                            <input type="hidden" name="invitation_id" value="{{ feedbackInvitation.getId() }}">
+                            <div class="form-element">
+                                <label class="color-000 font-size-15 line-height-1">Rating</label>
+                                <span class="font-work-sans-400 font-size-14 color-787878 display-block">
+                                    If you were an investor, would you invest in this idea?
+                                </span>
+                                <div class="rateit margin-top-5" data-rateit-step="1" data-rateit-resetable="false" data-rateit-starwidth="26" data-rateit-starheight="26"></div>
+                                <input type="hidden" name="rating">
+                            </div>
+                            <div class="form-element">
+                                <label class="padding-top-10 color-000 font-size-15 line-height-1">Your feedback</label>
+                                <div class="content-textarea">
+                                    <textarea
+                                        type="text"
+                                        style="width:100%;"
+                                        name="message"
+                                        id="form-feedback-answer-message"
+                                        class="required form-input"
+                                        rows="8"
+                                        placeholder="Tune into the needs of the person you are helping.We like to use variations of these questions: What's their timeline? What type of feedback will serve them in their work? What should I be looking for/not looking for in their project? What's memorable? What's unclear?  Who is this for / not for?"
+                                    ></textarea>
+                                </div>
+                            </div>
+                            <div class="form-element">
+                                <label class="padding-top-10 color-000 font-size-15">
+                                    What is your role in innovation? (optional)
+                                </label>
+                                <div class="content-select">
+                                    <select class="role-select optional form-input" name="role" id="form-feedback-answer-role">
+                                        <option value=""></option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="Finance">Finance</option>
+                                        <option value="Operations">Operations</option>
+                                        <option value="Manager / director">Manager / director</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="content-buttons">
+                                <div class="error-message-feedback-answer info-inner-content-button font-work-sans-400 color-e8485c"></div>
+                                <div class="loader-popup">
+                                    <div class="loading-spinner"></div>
+                                </div>
+                                <button class="hub-button grey action-close-popup" type="button">Cancel</button>
+                                <button class="hub-button">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-step-2 display-none transition-none">
+                        <div class="padding-top-30 padding-right-30 padding-left-30 central-content-846 box-sizing-border-box">
+                            <div class="title main-title font-montserrat-700">Thanks for your help !</div>
+                        </div>
+                        <div class="central-content-846 box-sizing-border-box padding-right-30 padding-bottom-40 padding-left-30 text-align-center">
+                            <img
+                                src="{{ asset('/images/feedback/illus-thanks.png') }}"
+                                srcset="{{ asset('/images/feedback/illus-thanks@2x.png') }} 2x,
+                                        {{ asset('/images/feedback/illus-thanks@3x.png') }} 3x"
+                                class="margin-top-10"
+                            />
+                            <div class="font-work-sans-400 font-size-20 margin-top-40">
+                                Feedback is priceless <br/>
+                                when it comes to making great innovations!
+                            </div>
+                            <div class="content-buttons margin-top-30">
+                                <div class="error-message-feedback-answer info-inner-content-button font-work-sans-400 color-e8485c"></div>
+                                <a href="{{ path('explore_detail', {'id': feedbackInvitation.getInnovation().getId() }) }}"
+                                    class="hub-button action-close-popup link_explore_detail">
+                                    OK
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

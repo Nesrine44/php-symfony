@@ -1,0 +1,16 @@
+.btn.btn-primary.loading{
+    background-color: #3c8dbc!important;
+    border-color: #367fa9!important;
+}
+.btn.btn-danger.loading{
+    background-color: #dd4b39!important;
+    border-color: #d73925!important;
+}
+.btn.loading{
+  color: transparent !important;
+  cursor: default!important;
+  background-size: auto 26px !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-image: url('../images/loader/button.gif') !important;
+}

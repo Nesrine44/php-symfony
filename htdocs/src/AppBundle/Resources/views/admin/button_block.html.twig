@@ -1,0 +1,147 @@
+{% extends 'SonataBlockBundle:Block:block_base.html.twig' %}
+
+{% block block %}
+    <script type="text/javascript" src="{{ asset('js/libs/jquery.confirm.min.js') }}"></script>
+    <button class="btn btn-primary btn-update-cache" type="button">Update Cache Version</button>
+    <button class="btn btn-primary btn-update-ping" type="button">Update Ping</button>
+    <br>
+    <br>
+    <button class="btn btn-danger btn-update-redis" type="button">Update Redis data</button>
+    <button class="btn btn-primary btn-generate-other-datas" type="button">Generate other datas cache</button>
+
+    <script>
+
+        function addAlert(message, type){
+            var alert_box = '<div class="alert alert-'+type+' alert-dismissable">'
+            alert_box += '<button type="button" class="close" data-dismiss="alert" aria-hidden="true" aria-label="Close">×</button>';
+            alert_box += message;
+            alert_box += '</div>';
+            $("html, body").animate({ scrollTop: 0 }, "fast");
+            $('.content-wrapper .content-header').append(alert_box);
+        }
+
+        $(".btn-update-cache").confirm({
+            text: "Do you want to update cache version?",
+            title: "Confirmation required",
+            confirm: function(button) {
+                $('.btn-update-cache').addClass('loading');
+                $.ajax({
+                    url: "{{ path('ws_admin_up_cache') }} ",
+                    timeout: 30000,
+                    type: "POST",
+                    success: function (msg) {
+                        //alert(JSON.stringify(msg));
+                        $('.btn-update-cache').removeClass('loading');
+                        addAlert('Cache version updated', 'success');
+                    },
+                    error: function (jqXHR, textStatus) {
+                        $('.btn-update-cache').removeClass('loading');
+                        addAlert('An error occured during cache update', 'error');
+                    }
+                });
+            },
+            cancel: function(button) {
+                // nothing to do
+            },
+            confirmButton: "Yes I am",
+            cancelButton: "Cancel",
+            post: true,
+            confirmButtonClass: "btn-primary",
+            cancelButtonClass: "btn-default",
+            dialogClass: "modal-dialog modal-dialog-centered"
+        });
+
+        $(".btn-update-ping").confirm({
+            text: "Do you want to update ping?",
+            title: "Confirmation required",
+            confirm: function(button) {
+                $('.btn-update-ping').addClass('loading');
+                $.ajax({
+                    url: "{{ path('ws_admin_up_ping') }}",
+                    timeout: 30000,
+                    type: "POST",
+                    success: function (msg) {
+                        //alert(JSON.stringify(msg));
+                        $('.btn-update-ping').removeClass('loading');
+                        addAlert('Ping updated', 'success');
+                    },
+                    error: function (jqXHR, textStatus) {
+                        $('.btn-update-ping').removeClass('loading');
+                        addAlert('An error occured during ping update', 'error');
+                    }
+                });
+            },
+            cancel: function(button) {
+                // nothing to do
+            },
+            confirmButton: "Yes I am",
+            cancelButton: "Cancel",
+            post: true,
+            confirmButtonClass: "btn-primary",
+            cancelButtonClass: "btn-default",
+            dialogClass: "modal-dialog modal-dialog-centered"
+        });
+
+        $(".btn-update-redis").confirm({
+            text: 'Do you really want to update redis data? This action will launch THE BIG UPDATE!<br>This action may take 10 minutes. Website will not be accessible during this time.<br><img src="https://media.giphy.com/media/1sd2bQx5GnQf6/giphy.gif" style="display: block;margin: 10px auto;" width="480" height="200">',
+            title: "Confirmation required",
+            confirm: function(button) {
+                $('.btn-update-redis').addClass('loading');
+                $.ajax({
+                    url: "{{ path('ws_admin_up_redis') }}",
+                    timeout: 30000,
+                    type: "POST",
+                    success: function (msg) {
+                        //alert(JSON.stringify(msg));
+                        $('.btn-update-redis').removeClass('loading');
+                        addAlert('Redis data update launched!', 'success');
+                    },
+                    error: function (jqXHR, textStatus) {
+                        $('.btn-update-redis').removeClass('loading');
+                        addAlert('An error occured during redis cache update', 'error');
+                    }
+                });
+            },
+            cancel: function(button) {
+                // nothing to do
+            },
+            confirmButton: "Yes I am",
+            cancelButton: "Nope! Abort! Abort!",
+            post: true,
+            confirmButtonClass: "btn-danger",
+            cancelButtonClass: "btn-default",
+            dialogClass: "modal-dialog modal-dialog-centered"
+        });
+
+        $(".btn-generate-other-datas").confirm({
+            text: "Do you want to generate other datas cache? Other datas are brand, entity, user lists (etc..) used in Manage section.",
+            title: "Confirmation required",
+            confirm: function(button) {
+                $('.btn-generate-other-datas').addClass('loading');
+                $.ajax({
+                    url: "{{ path('ws_admin_generate_other_datas') }}",
+                    timeout: 30000,
+                    type: "POST",
+                    success: function (msg) {
+                        //alert(JSON.stringify(msg));
+                        $('.btn-generate-other-datas').removeClass('loading');
+                        addAlert('Other datas generated!', 'success');
+                    },
+                    error: function (jqXHR, textStatus) {
+                        $('.btn-generate-other-datas').removeClass('loading');
+                        addAlert('An error occured during other datas generation.', 'error');
+                    }
+                });
+            },
+            cancel: function(button) {
+                // nothing to do
+            },
+            confirmButton: "Yes I am",
+            cancelButton: "Cancel",
+            post: true,
+            confirmButtonClass: "btn-primary",
+            cancelButtonClass: "btn-default",
+            dialogClass: "modal-dialog modal-dialog-centered"
+        });
+    </script>
+{% endblock %}

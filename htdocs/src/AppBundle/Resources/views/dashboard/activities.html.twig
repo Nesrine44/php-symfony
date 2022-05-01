@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% set page_title = 'Activities' %}
+{% block body %}
+    <div class="full-content-page-activities">
+        <div class="background-color-f2f2f2 padding-top-40 padding-bottom-40">
+            <div class="central-content padding-20 background-color-fff">
+                <div class="font-montserrat-700 font-size-20 color-000 margin-bottom-20">
+                    All activities
+                </div>
+                <div class="content-activities" data-offset="0" data-limit="50">
+                </div>
+                <div class="activity-loader margin-top-20">
+                    <div class="loading-spinner loading-spinner--26"></div>
+                </div>
+                <button class="hub-button grey margin-top-20 load-more-all-activities display-none">Load more</button>
+            </div>
+        </div>
+        <script type="text/javascript" src="{{ asset('js/all-activities.js') }}"></script>
+    </div>
+
+{% endblock %}
+

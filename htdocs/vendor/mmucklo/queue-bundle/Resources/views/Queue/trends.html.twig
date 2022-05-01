@@ -1,0 +1,70 @@
+{% extends "DtcQueueBundle::layout.html.twig" %}
+{% block title %}DtcQueue - Admin - Trends{% endblock %}
+{% block headcontent %}
+    <style type="text/css">
+        .view label {
+            font-weight: normal;
+            margin-right: 5px;
+        }
+        .view #type-spin {
+            font-size: 5px;
+        }
+
+        #range-container, #range-value-container {
+            display: none;
+        }
+
+        #range-value-container {
+            text-align: center;
+        }
+
+
+        .range input[type=range] {
+            width: 100%;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    {% if not record_timings %}
+        <h2>Timings Not Recorded</h2>
+        <p>
+            Job timings are not being recorded.
+        </p>
+        <p>
+            The following configuration entry needs to be enabled in config.yml:
+        </p>
+<pre>
+dtc_queue:
+    # ...
+    record_timings: true
+</pre>
+    {% else %}
+        <script src="{{ chartjs }}"></script>
+        <div class="view">
+            <label for="type">View</label>
+            <select id="type">
+                <option value="YEAR">By Year</option>
+                <option value="MONTH">By Month</option>
+                <option value="DAY">By Day</option>
+                <option value="HOUR" selected>By Hour</option>
+                <option value="MINUTE">By Minute</option>
+            </select> <span id="type-spin"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+            <span class="sr-only">Loading...</span></span>
+        </div>
+        <div>
+            <canvas id="trends"></canvas>
+        </div>
+        <div id="range-container">
+            <label for="date-adjuster">Range: </label> <input id="date-adjuster" type="range" max="23" value="23" min="0" />
+        </div>
+        <div id="range-value-container">
+            <span id="date-adjuster-value"></span>
+        </div>
+        <script>
+          var states = {{ states | json_encode | raw }};
+          var fetchPath = '{{ path('dtc_queue_timings') }}';
+        </script>
+        <script src="/bundles/dtcqueue/js/trends.js?v=1"></script>
+    {% endif %}
+{% endblock %}

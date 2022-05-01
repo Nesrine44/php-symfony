@@ -1,0 +1,10 @@
+image: pernodricard/sonarqube-scanner:latest
+
+pipelines:
+  branches:
+    staging:
+      - step:
+          script: 
+            # Running Sonar scanner against source code
+            - cd $BITBUCKET_CLONE_DIR
+            - sonar-scanner -Dsonar.projectKey=$BITBUCKET_REPO_SLUG -Dsonar.organization=pernod-ricard -Dsonar.sources=./htdocs/src -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARQUBE_TOKEN

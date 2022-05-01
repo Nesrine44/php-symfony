@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% set page_title = tag_array['title'] ~' search results' %}
+{% set current_url = app.request.requestUri %}
+{% block body %}
+    <script>
+        goToSearchResultsTagsPage({{ tag_array|json_encode|raw }}, false);
+    </script>
+{% endblock %}
+

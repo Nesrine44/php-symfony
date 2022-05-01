@@ -1,0 +1,553 @@
+<div class="custom-content-popup element-new-innovation-popup transition" data-current-step="">
+    <div class="content-blur transition"></div>
+    <div class="content-popup-for-scroll">
+        <div class="element-popup background-color-fff central-content-994">
+            <div class="cross-close-popup transition action-close-popup"></div>
+            <div class="back-on-popup action-back-popup transition display-none"></div>
+            <div class="content-popup">
+                <form id="form-new-innovation" action="" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="token" id="form-new-innovation-token"
+                           value="{{ csrf_token('create_innovation') }}"/>
+                    <div class="padding-30 central-content-786 padding-bottom-0">
+                        <div class="title main-title font-montserrat-700 margin-bottom-10">Project setup</div>
+                    </div>
+                    <div class="content-step-1 transition-none">
+                        <div class="central-content-786 padding-bottom-40">
+                            <div class="position-relative text-align-center font-montserrat-700 font-size-20 color-bebebe">
+                                1/4
+                            </div>
+                            <div class="picture-popup-new-innovation"></div>
+                            <div class="text-align-center font-montserrat-700 font-size-30 color-000 padding-bottom-10">
+                                Hello!
+                            </div>
+                            <div class="text-align-center font-work-sans-400 font-size-20 color-000 line-height-1-65 padding-bottom-5">
+                                We are very happy to welcome your innovation into the Innovation Hub.<br>
+                                Let’s start the journey!
+                            </div>
+                            <div class="text-align-center font-work-sans-400 font-size-15 color-9b9b9b line-height-1-53 padding-bottom-60">
+                                If you have any question during this process, feel free to contact us via the chatbot.
+                            </div>
+                            <div class="font-montserrat-700 font-size-20 color-000">
+                                Is your project a product or a service?
+                            </div>
+                            <div class="container-choices padding-top-30" data-target="classification">
+                                <div class="choice" data-value="product">
+                                    <div class="fake-radio"></div>
+                                    <div class="text font-work-sans-300">Product</div>
+                                </div>
+                                <div class="choice" data-value="service">
+                                    <div class="fake-radio"></div>
+                                    <div class="text font-work-sans-300">Service</div>
+                                </div>
+                            </div>
+                            <div class="content-buttons">
+                                <button class="hub-button grey action-close-popup" type="button">Cancel</button>
+                                <button class="hub-button action-step" data-step="step-2">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-step-2 transition-none">
+                        <div class="central-content-786 padding-bottom-40 only-product">
+                            <div class="position-relative text-align-center font-montserrat-700 font-size-20 color-bebebe">
+                                2/4
+                            </div>
+                            <div class="padding-top-30 font-work-sans-400 font-size-16 color-000">
+                                Please tell us a bit more about your project
+                            </div>
+                            <div class="font-montserrat-700 font-size-20 color-000 padding-top-40">
+                                Is your product a limited edition?
+                            </div>
+                            <div class="font-work-sans-400 font-size-16 color-9b9b9b">
+                                If you are aiming to create a series that with last in time, please answer no.
+                            </div>
+                            <div class="container-choices padding-top-30" data-target="question_1">
+                                <div class="choice display-inline-block vertical-align-middle margin-right-50"
+                                     data-value="yes">
+                                    <div class="fake-radio"></div>
+                                    <div class="text font-work-sans-300">Yes</div>
+                                </div>
+                                <div class="choice display-inline-block vertical-align-middle" data-value="no">
+                                    <div class="fake-radio"></div>
+                                    <div class="text font-work-sans-300">No</div>
+                                </div>
+                            </div>
+                            <div class="font-montserrat-700 font-size-20 color-000 padding-top-40">
+                                Is there a new liquid in the bottle?
+                            </div>
+                            <div class="container-choices padding-top-30" data-target="question_2">
+                                <div class="choice display-inline-block vertical-align-middle margin-right-50"
+                                     data-value="yes">
+                                    <div class="fake-radio"></div>
+                                    <div class="text font-work-sans-300">Yes</div>
+                                </div>
+                                <div class="choice display-inline-block vertical-align-middle" data-value="no">
+                                    <div class="fake-radio"></div>
+                                    <div class="text font-work-sans-300">No</div>
+                                </div>
+                            </div>
+                            <div class="font-montserrat-700 font-size-20 color-000 padding-top-40">
+                                Is it a restage implying the relaunch of the brand?
+                            </div>
+                            <div class="font-work-sans-400 font-size-16 color-9b9b9b">
+                                If it's a new value proposition for consumers or a sleeping beauty please answer yes.
+                            </div>
+                            <div class="container-choices padding-top-30" data-target="question_3">
+                                <div class="choice display-inline-block vertical-align-middle margin-right-50"
+                                     data-value="yes">
+                                    <div class="fake-radio"></div>
+                                    <div class="text font-work-sans-300">Yes</div>
+                                </div>
+                                <div class="choice display-inline-block vertical-align-middle" data-value="no">
+                                    <div class="fake-radio"></div>
+                                    <div class="text font-work-sans-300">No</div>
+                                </div>
+                            </div>
+
+                            <div class="content-buttons">
+                                <button class="hub-button grey action-step" data-step="step-2" type="button">Back
+                                </button>
+                                <button class="hub-button action-step" data-step="step-3" disabled>Next</button>
+                            </div>
+                        </div>
+
+                        <div class="central-content-786 padding-bottom-40 only-service">
+                            <div class="position-relative text-align-center font-montserrat-700 font-size-20 color-bebebe">
+                                2/4
+                            </div>
+                            <div class="padding-top-30 font-work-sans-400 font-size-16 color-000">
+                                Some questions to check if your project match with the Pernod Ricard Innovation definition
+                            </div>
+                            <div class="font-montserrat-700 font-size-20 color-000 padding-top-40">
+                                Will you monetize the service?
+                            </div>
+                            <div class="container-choices padding-top-30" data-target="question_1">
+                                <div class="choice display-inline-block vertical-align-middle margin-right-50"
+                                     data-value="yes">
+                                    <div class="fake-radio"></div>
+                                    <div class="text font-work-sans-300">Yes</div>
+                                </div>
+                                <div class="choice display-inline-block vertical-align-middle" data-value="no">
+                                    <div class="fake-radio"></div>
+                                    <div class="text font-work-sans-300">No</div>
+                                </div>
+                            </div>
+                            <div class="font-montserrat-700 font-size-20 color-000 padding-top-40">
+                                Do you have a long term ambition for that service?
+                            </div>
+                            <div class="container-choices padding-top-30" data-target="question_2">
+                                <div class="choice display-inline-block vertical-align-middle margin-right-50"
+                                     data-value="yes">
+                                    <div class="fake-radio"></div>
+                                    <div class="text font-work-sans-300">Yes</div>
+                                </div>
+                                <div class="choice display-inline-block vertical-align-middle" data-value="no">
+                                    <div class="fake-radio"></div>
+                                    <div class="text font-work-sans-300">No</div>
+                                </div>
+                            </div>
+                            <div class="content-buttons">
+                                <button class="hub-button grey action-step" data-step="step-2" type="button">Back
+                                </button>
+                                <button class="hub-button action-step" data-step="step-3" disabled>Next</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-step-3 transition-none">
+                        <div class="central-content-786">
+                            <div class="position-relative text-align-center font-montserrat-700 font-size-20 color-bebebe">
+                                3/4
+                            </div>
+                        </div>
+                        <div class="central-content-786 padding-30">
+                            <div class="text-align-left font-montserrat-700 font-size-20 color-000 margin-bottom-5">
+                                Welcome on board!
+                            </div>
+                            <div class="text-align-left font-work-sans-400 font-size-16 color-000 margin-bottom-30">
+                                Two more stages and your Innovation will be on the Hub.
+                            </div>
+                            <input type="hidden" name="ajax-call" value=""/>
+                            {% if (entities|length == 1) %}
+                                <input type="hidden" name="entity" id="form-new-innovation-entity"
+                                       value="{{ entities[0]['id'] }}"/>
+                            {% else %}
+                                <div class="form-element">
+                                    <label>Entity</label>
+                                    <div class="under-label">Please select your entity for this innovation</div>
+                                    <div class="content-select">
+                                        <select class="team-entity-select required form-input" name="entity"
+                                                id="form-new-innovation-entity">
+                                            {% set selected = false %}
+                                            {% for entity in entities %}
+                                                <option value="{{ entity.id }}" {{ (selected) ? '' : 'selected="selected"' }}>{{ entity.text }}</option>
+                                                {% set selected = true %}
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <div class="form-element">
+                                <label>Innovation name</label>
+                                <div class="under-label">Your innovation name is part of its value proposition for
+                                    consumers. You can come back later as your project evolves to update it.
+                                </div>
+                                <div class="content-input-text">
+                                    <input type="text" name="innovation-name"
+                                           class="required form-input"
+                                           placeholder="Enter your innovation or project code name"/>
+                                </div>
+                            </div>
+
+                            <div class="form-element margin-bottom-60 display-none">
+                                <label>Is your innovation a service?</label>
+                                <div class="content-input-radio">
+                                    <input type="radio" value="1" name="is_a_service"
+                                           class="new_is_a_service checkbox-content-filter"
+                                           id="new_is_a_service_yes">
+                                    <label class="fake-checkbox" for="new_is_a_service_yes"></label>
+                                    <label class="fake-label" for="new_is_a_service_yes">Yes</label>
+                                    <input type="radio" value="0" name="is_a_service"
+                                           class="new_is_a_service checkbox-content-filter"
+                                           id="new_is_a_service_no" checked>
+                                    <label class="fake-checkbox" for="new_is_a_service_no"></label>
+                                    <label class="fake-label" for="new_is_a_service_no">No</label>
+                                </div>
+                            </div>
+                            <div class="padding-top-40"></div>
+                            <div class="form-element content-only-service display-none">
+                                <label>Is your innovation multi-brand?</label>
+                                <div class="content-input-radio">
+                                    <input type="radio" value="1" name="multi_brand_innovation"
+                                           class="new_multi_brand_innovation checkbox-content-filter"
+                                           id="new_multi_brand_innovation_yes">
+                                    <label class="fake-checkbox" for="new_multi_brand_innovation_yes"></label>
+                                    <label class="fake-label" for="new_multi_brand_innovation_yes">Yes</label>
+                                    <input type="radio" value="0" name="multi_brand_innovation"
+                                           class="new_multi_brand_innovation checkbox-content-filter"
+                                           id="new_multi_brand_innovation_no" checked>
+                                    <label class="fake-checkbox" for="new_multi_brand_innovation_no"></label>
+                                    <label class="fake-label" for="new_multi_brand_innovation_no">No</label>
+                                </div>
+                            </div>
+
+                            <div class="form-element content-have_a_mother_brand">
+                                <label>Does your innovation have a motherbrand?</label>
+                                <div class="content-input-radio">
+                                    <input type="radio" value="1" name="have_a_mother_brand"
+                                           class="new_have_a_mother_brand checkbox-content-filter"
+                                           id="new_have_a_mother_brand_yes" checked>
+                                    <label class="fake-checkbox" for="new_have_a_mother_brand_yes"></label>
+                                    <label class="fake-label" for="new_have_a_mother_brand_yes">Yes</label>
+                                    <input type="radio" value="0" name="have_a_mother_brand"
+                                           class="new_have_a_mother_brand checkbox-content-filter"
+                                           id="new_have_a_mother_brand_no">
+                                    <label class="fake-checkbox" for="new_have_a_mother_brand_no"></label>
+                                    <label class="fake-label" for="new_have_a_mother_brand_no">No</label>
+                                </div>
+                            </div>
+
+                            <div class="form-element content-brand-name">
+                                <label>Brand name</label>
+                                <div class="content-select">
+                                    <select class="brand-select optional" name="brand-name">
+                                        {% for brand in brands %}
+                                            <option value="{{ brand.id }}">{{ brand.text }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-element content-only-product">
+                                <label>Growth model</label>
+                                <div class="content-select with-icon">
+                                    <div class="icon fast_growth"></div>
+                                    <select class="growth_model-select optional" name="growth_model" disabled>
+                                        <option value="fast_growth" selected="selected">Fast Growth = 2/4 years
+                                            growth
+                                            model
+                                        </option>
+                                        <option value="slow_build">Slow Build = 4-8 years growth model</option>
+                                    </select>
+                                </div>
+                                <div class="new-content-infos-strat_intent font-work-sans-300 font-size-15 color-787878 margin-bottom-60 padding-top-20">
+                                    - Typically line extensions from strong brands<br>
+                                    - Endorsed by a mother brand with strong equity where it is launched (less
+                                    education
+                                    and awareness to do)<br>
+                                    - Success in 1 market first<br>
+                                    - Window of 2-4 years to rollout globally<br>
+                                    - ROI: short/mid-term payback after inflection point
+                                </div>
+                            </div>
+
+                            <div class="form-element content-only-product">
+                                <label>Does your innovation replace an
+                                    existing {{ global.get_global_wording()['company'] }}
+                                    SKU?</label>
+                                <div class="content-input-radio">
+                                    <input type="radio" value="1" name="replace_existing_product"
+                                           class="new_replace_existing_product checkbox-content-filter"
+                                           id="new_replace_existing_product_yes">
+                                    <label class="fake-checkbox" for="new_replace_existing_product_yes"></label>
+                                    <label class="fake-label" for="new_replace_existing_product_yes">Yes</label>
+                                    <input type="radio" value="0" name="replace_existing_product"
+                                           class="new_replace_existing_product checkbox-content-filter"
+                                           id="new_replace_existing_product_no" checked>
+                                    <label class="fake-checkbox" for="new_replace_existing_product_no"></label>
+                                    <label class="fake-label" for="new_replace_existing_product_no">No</label>
+                                </div>
+                            </div>
+
+                            <div class="form-element content-existing_product content-only-product display-none">
+                                <label>Which one?</label>
+                                <div class="content-input-text">
+                                    <input type="text" name="existing_product"
+                                           class="optional form-input"
+                                           placeholder="Enter the name of the replaced product"/>
+                                </div>
+                            </div>
+                            <div class="content-only-service display-none padding-top-40"></div>
+
+                            <div class="form-element">
+                                <label>Project started on</label>
+                                <div class="content-input-text date">
+                                    <input type="text" placeholder="mm/dd/yyyy" class="datepicker required"
+                                           name="entry-date" value=""/>
+                                </div>
+                            </div>
+                            <div class="content-buttons">
+                                <button class="hub-button grey action-close-popup" type="button">Cancel</button>
+                                <button class="hub-button action-step" data-step="step-4">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-step-4 transition-none display-none">
+                        <div class="central-content-786">
+                            <div class="position-relative text-align-center font-montserrat-700 font-size-20 color-bebebe">
+                                4/4
+                            </div>
+                        </div>
+                        <div class="central-content-786 padding-30">
+                            <div class="content-current-stage">
+                                <div class="text-align-left font-montserrat-700 font-size-20 color-000 margin-bottom-5">
+                                    Select your current innovation stage
+                                </div>
+                                <div class="text-align-left font-work-sans-400 font-size-16 color-000 margin-bottom-30">
+                                    A definition of each stage will appear at the roll-over. Please click on the
+                                    icon of the stage your project is at.
+                                </div>
+                                <input type="hidden" class="required" name="innovation-stage"
+                                       value="1">
+                                <div class="content-current-stage overflow-hidden">
+                                    <div class="container-carre discover active">
+                                        <div class="carre icon discover-unselected active"></div>
+                                        <div class="libelle font-montserrat-700" data-target="1"
+                                             data-libelle-target="discover">discover
+                                        </div>
+                                    </div>
+                                    <div class="container-carre ideate">
+                                        <div class="carre icon ideate-unselected"></div>
+                                        <div class="libelle font-montserrat-700" data-target="2"
+                                             data-libelle-target="ideate">ideate
+                                        </div>
+                                    </div>
+                                    <div class="container-carre experiment">
+                                        <div class="carre icon experiment-unselected"></div>
+                                        <div class="libelle font-montserrat-700" data-target="3"
+                                             data-libelle-target="experiment">experiment
+                                        </div>
+                                    </div>
+                                    <div class="container-carre incubate">
+                                        <div class="carre icon incubate-unselected"></div>
+                                        <div class="libelle font-montserrat-700" data-target="4"
+                                             data-libelle-target="incubate">incubate
+                                        </div>
+                                    </div>
+                                    <div class="container-carre scale_up">
+                                        <div class="carre icon scale_up-unselected"></div>
+                                        <div class="libelle font-montserrat-700" data-target="5"
+                                             data-libelle-target="scale_up">scale up
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="background-color-f2f2f2">
+                            <div class="central-content-786 padding-30">
+                                <div class="content-current-stage">
+                                    <div class="content-text-current-stage">
+                                        <div class="text-current-stage undefined"></div>
+                                        <div class="text-current-stage discover active">
+                                            <div class="font-size-20 font-montserrat-700 margin-bottom-20 color-stage-discover">
+                                                Mapping relevant opportunities
+                                                for {{ global.get_global_wording()['company'] }}
+                                            </div>
+                                            <div class="font-work-sans-500 color-000 font-size-16 line-height-1-69">
+                                                You are in Discover if:
+                                            </div>
+                                            <div class="font-work-sans-300 color-000 font-size-16 line-height-1-69">
+                                                You are deep diving into innovations opportunities, searching and
+                                                collecting consumers insights.
+                                                <br><br>
+                                                <div class="font-work-sans-400 color-787878 line-height-1-5 font-size-14">
+                                                    NB: REMEMBER YOU CAN STOP AN INNOVATION AT ANY STAGE.<br>
+                                                    AND THAT THE LESS YOU SPEND, AT EVERY STAGE, THE MORE FLEXIBILITY
+                                                    YOU
+                                                    HAVE TO ITERATE.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-current-stage ideate">
+                                            <div class="font-size-20 font-montserrat-700 margin-bottom-20 color-stage-ideate">
+                                                Crafting ideas & exploring sourcing options
+                                            </div>
+                                            <div class="font-work-sans-500 color-000 font-size-16 line-height-1-69">
+                                                You are in Ideate if:
+                                            </div>
+                                            <div class="font-work-sans-300 color-000 font-size-16 line-height-1-69">
+                                                You are still at a concept phase, having value hypothesis and areas
+                                                of
+                                                uncertainty on your
+                                                starter idea
+                                                <br><br>
+                                                <div class="font-work-sans-400 color-787878 line-height-1-5 font-size-14">
+                                                    NB: REMEMBER YOU CAN STOP AN INNOVATION AT ANY STAGE.<br>
+                                                    AND THAT THE LESS YOU SPEND, AT EVERY STAGE, THE MORE FLEXIBILITY
+                                                    YOU
+                                                    HAVE TO ITERATE.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-current-stage experiment">
+                                            <div class="font-size-20 font-montserrat-700 margin-bottom-20 color-stage-experiment">
+                                                Testing value with consumers at an early stage in a real environment
+                                            </div>
+                                            <div class="font-work-sans-500 color-000 font-size-16 line-height-1-69">
+                                                You are in Experiment if:
+                                            </div>
+                                            <div class="font-work-sans-300 color-000 font-size-16 line-height-1-69">
+                                                You have put in market an experimental edition (batch limited in
+                                                time) ,
+                                                with the ability to
+                                                iterate it thanks to learnings from consumers (NO CAPEX)
+                                                <br><br>
+                                                <div class="font-work-sans-400 color-787878 line-height-1-5 font-size-14">
+                                                    NB: REMEMBER YOU CAN STOP AN INNOVATION AT ANY STAGE.<br>
+                                                    AND THAT THE LESS YOU SPEND, AT EVERY STAGE, THE MORE FLEXIBILITY
+                                                    YOU
+                                                    HAVE TO ITERATE.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-current-stage incubate">
+                                            <div class="font-size-20 font-montserrat-700 margin-bottom-20 color-stage-incubate">
+                                                Learning about business potential in a regional pilot market
+                                            </div>
+                                            <div class="font-work-sans-500 color-000 font-size-16 line-height-1-69">
+                                                You are in Incubate if:
+                                            </div>
+                                            <div class="font-work-sans-300 color-000 font-size-16 line-height-1-69">
+                                                You have invested in CAPEX and cannot easily iterate the product
+                                                anymore, and you need to search
+                                                for the best RTM and the optimum Marketing mix
+                                                <br><br>
+                                                <div class="font-work-sans-400 color-787878 line-height-1-5 font-size-14">
+                                                    NB: REMEMBER YOU CAN STOP AN INNOVATION AT ANY STAGE.<br>
+                                                    AND THAT THE LESS YOU SPEND, AT EVERY STAGE, THE MORE FLEXIBILITY
+                                                    YOU
+                                                    HAVE TO ITERATE.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-current-stage scale_up">
+                                            <div class="font-size-20 font-montserrat-700 margin-bottom-20 color-stage-scale_up">
+                                                Phasing the investment over a minimum of 3 years to achieve growth
+                                                ambition
+                                            </div>
+                                            <div class="font-work-sans-500 color-000 font-size-16 line-height-1-69">
+                                                You are in Scale-Up if:
+                                            </div>
+                                            <div class="font-work-sans-300 color-000 font-size-16 line-height-1-69">
+                                                Your packaging, marketing mix, RTM is now final
+                                                <br><br>
+                                                <div class="font-work-sans-400 color-787878 line-height-1-5 font-size-14">
+                                                    NB: REMEMBER YOU CAN STOP AN INNOVATION AT ANY STAGE.<br>
+                                                    AND THAT THE LESS YOU SPEND, AT EVERY STAGE, THE MORE FLEXIBILITY
+                                                    YOU
+                                                    HAVE TO ITERATE.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="central-content-786 padding-30">
+                            <div class="content-buttons">
+                                <div class="error-message-create-innovation info-inner-content-button font-work-sans-400 color-e8485c">
+
+                                </div>
+                                <div class="loader-popup">
+                                    <div class="loading-spinner"></div>
+                                </div>
+                                <button class="hub-button grey action-back-popup" type="button">Cancel</button>
+                                <button class="hub-button" type="submit">Create</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-step-success transition-none">
+                        <div class="central-content-786 padding-bottom-40">
+                            <div class="picture-popup-new-innovation-emoji success"></div>
+                            <div class="text-align-center font-work-sans-400 font-size-20 color-000 padding-bottom-30">
+                                You can now complete your innovation page on the EDIT section and onboard your teammates on the TEAM section.
+                            </div>
+                            <div class="text-align-center">
+                                <button class="hub-button action-new-innovation-lets-go" data-id="">Let's go</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-step-out-of-scope transition-none">
+                        <div class="central-content-786 padding-bottom-40 only-product">
+                            <div class="picture-popup-new-innovation-emoji out-of-funnel"></div>
+                            <div class="text-align-center font-work-sans-400 font-size-20 line-height-1-5 color-000 padding-bottom-40">
+                                Sorry, the Innovation Hub is not built to manage this kind of project:<br>
+                                limited editions, VAPs and repacks are not in it's scope.
+                                <br><br>
+                                However, if you have questions concerning your project,<br>
+                                don't hesitate to contact the global innovation team via the chatbot.
+                                <br><br>
+                                <span class="font-work-sans-600">See you soon!</span>
+                            </div>
+                            <div class="text-align-center">
+                                <a href="/content/explore" class="hub-button link-list-explore">Discover the latest
+                                    innovations of the group</a>
+                                <div class="padding-top-17">
+                                    <span class="link-underline color-b5b5b5 font-montserrat-400 font-size-14 action-close-popup">Not now, thanks</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="central-content-786 padding-bottom-40 only-service">
+                            <div class="picture-popup-new-innovation-emoji out-of-funnel"></div>
+                            <div class="text-align-center font-work-sans-400 font-size-20 line-height-1-5 color-000 padding-bottom-40">
+                                Sorry, the Innovation Hub is not yet built to manage this kind<br>
+                                of service. It is focused on products and services/experiences that deliver long term business value.
+                                <br><br>
+                                However, if you have questions concerning your project,<br>
+                                don't hesitate to contact the global innovation team via the chatbot.
+                                <br><br>
+                                <span class="font-work-sans-600">We hope to see you soon with new projects!</span>
+                            </div>
+                            <div class="text-align-center">
+                                <a href="/content/learn" class="hub-button">Discover more about innovation</a>
+                                <div class="padding-top-17">
+                                    <span class="link-underline color-b5b5b5 font-montserrat-400 font-size-14 action-close-popup">Not now, thanks</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

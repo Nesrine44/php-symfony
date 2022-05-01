@@ -1,0 +1,323 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: environment_parameters.yml }
+    - { resource: global_parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: "@AppBundle/Resources/config/services.yml" }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+
+framework:
+    #esi: ~
+    translator: ~  #{ fallbacks: ['%locale%'] }
+    secret: '%secret%'
+    router:
+        resource: '%kernel.project_dir%/app/config/routing.yml'
+        strict_requirements: ~
+    form: ~
+    csrf_protection: ~
+    validation: { enable_annotations: true }
+    #serializer: { enable_annotations: true }
+    templating:
+            engines: ['twig']
+            #assets_version: SomeVersionScheme
+    default_locale: '%locale%'
+    trusted_hosts: ~
+    session:
+        # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id: session.handler.native_file
+        save_path: '%kernel.project_dir%/var/sessions'
+        cookie_httponly: true
+        cookie_secure: %cookie_secure%
+    fragments: ~
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+
+# Twig Configuration
+twig:
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        mapping_types:
+            enum: string
+        driver: pdo_mysql
+        host: '%database_host%'
+        port: '%database_port%'
+        dbname: '%database_name%'
+        user: '%database_user%'
+        password: '%database_password%'
+        charset: UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: '%kernel.project_dir%/var/data/data.sqlite'
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #path: '%database_path%'
+
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        dql:
+            string_functions:
+                UNIX_TIMESTAMP: DoctrineExtensions\Query\Mysql\UnixTimestamp
+
+# Fix to deprecation : Enabling the “sensio_framework_extra.router.annotations” configuration is deprecated since version 5.2.
+sensio_framework_extra:
+    router:
+        annotations: false
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport:  smtp
+    host:       '%env(SMTP_HOST)%'
+    port:       '%env(SMTP_PORT)%' # different ports are available, see SES console
+    encryption: tls # TLS encryption is required
+    username:   '%env(SMTP_USER)%'  # to be created in the SES console
+    password:   '%env(SMTP_PASSWORD)%'  # to be created in the SES console
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    from_email:
+        address: "%mailer_user%"
+        sender_name: "%mailer_user%"
+
+snc_redis:
+    clients:
+        default:
+            type: predis
+            alias: default
+            dsn: redis://%redis_host%
+
+dtc_queue:
+    manager:
+        job: redis
+        #job: orm
+    redis:
+        prefix: 'dtc_queue_%redis_prefix%'
+        # choose one of the below snc_redis, predis, or phpredis
+        predis:
+            # choose one of dns or connection_parameters
+            dsn: redis://%redis_host%
+#    orm:
+#        entity_manager: "default" # default is "default"
+
+sonata_admin:
+    title:      Administration
+    title_logo: /images/logo.png
+    assets:
+        # stylesheet paths to add to the page in addition to the list above
+        extra_stylesheets:
+            - css/admin.css
+    templates:
+        layout: AppBundle:admin:standard_layout.html.twig
+    dashboard:
+        blocks:
+            # display a dashboard block
+            - { position: left, type: sonata.admin.block.admin_list }
+            - { position: left, type: sonata.block.service.button}
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        sonata.block.service.button: ~
+        sonata.admin.block.search_result:
+            contexts: [admin]
+
+liip_imagine:
+    resolvers:
+        profile_photos:
+            aws_s3:
+                client_config:
+                    credentials:
+                        key:    "%amazon.s3.key%"
+                        secret: "%amazon.s3.secret%"
+                    region: "%amazon.s3.region%"
+                    version: "%amazon.s3.version%"
+                bucket: "%amazon.s3.bucket%"
+                get_options:
+                    Scheme: https
+                #put_options:
+                #    CacheControl: "max-age=86400" # good or not ?
+                cache_prefix: "%amazon.s3.directory%"
+        default:
+            web_path: ~
+    loaders:
+        loader_aws_s3_images:
+            stream:
+                # This refers to knp_gaufrette filesystems configuration
+                wrapper: gaufrette://filesystem_aws_s3_images
+
+
+    driver:  imagick
+    cache: profile_photos
+    data_loader: loader_aws_s3_images
+    filter_sets:
+        cache: ~
+        data_loader: ~
+
+        thumbnail_picture:
+            filters:
+                thumbnail:
+                    size: [1500,1000]
+                    mode: inset
+                    allow_upscale: false
+
+        financial_graph:
+            filters:
+                thumbnail:
+                    size: [670,405]
+                    mode: inset
+                    allow_upscale: false
+
+        search_picture:
+            filters:
+                thumbnail:
+                    size: [132,98]
+                    mode: outbound
+                    allow_upscale: true
+
+        thumbnail_explore_list:
+            filters:
+                thumbnail:
+                    size: [640,480]
+                    mode: inset
+                    allow_upscale: true
+                background:
+                    color: '#ffffff'
+                    size: [640,480]
+                    position: center
+
+        performance_picture:
+            filters:
+                thumbnail:
+                    size: [320,512]
+                    mode: outbound
+                    allow_upscale: true
+
+        beautyshot_quali_bg:
+            filters:
+                thumbnail:
+                    size: [930,700]
+                    mode: outbound
+                    allow_upscale: true
+
+        quali:
+            filters:
+                thumbnail:
+                    size: [1050,718]
+                    mode: outbound
+                    allow_upscale: true
+
+        proofs_of_traction:
+            filters:
+                thumbnail:
+                    size: [540,300]
+                    mode: outbound
+                    allow_upscale: true
+
+knp_gaufrette:
+    adapters:
+        adapter_aws_s3_images:
+            aws_s3:
+                service_id: pr.amazon_s3
+                bucket_name: "%amazon.s3.bucket%"
+                options:
+                    directory: '%amazon.s3.directory%'
+                    create: true
+    filesystems:
+        filesystem_aws_s3_images:
+            adapter: adapter_aws_s3_images
+    stream_wrapper: ~
+
+vich_uploader:
+    db_driver: orm
+    storage: gaufrette
+    mappings:
+        upload:
+            inject_on_load: true
+            uri_prefix: "s3://%amazon.s3.bucket%/%amazon.s3.directory%"
+            upload_destination: filesystem_aws_s3_images
+            delete_on_update:   false
+            delete_on_remove:   false
+
+knpu_oauth2_client:
+    clients:
+        # the key "facebook_main" can be anything, it
+        # will create a service: "knpu.oauth2.client.facebook_main"
+        azure:
+            # must be "azure" - it activates that type!
+            type: azure
+            # add and configure client_id and client_secret in parameters.yml
+            client_id: 'bc855915-380a-49a8-93e2-2f1568e3302d'
+            client_secret: ''
+            # a route name you'll create
+            redirect_route: connect_azure_check
+            redirect_params: {}
+            # Domain to build login URL
+            url_login: 'https://login.microsoftonline.com/933c9cbe-35d3-4416-abbd-ddd1bca5879c'
+            # Oauth path to authorize against
+            path_authorize: '/oauth2/v2.0/authorize'
+            # Oauth path to retrieve a token
+            path_token: '/oauth2/v2.0/token'
+            # Oauth scope send with the request
+            scope: %azure.scope%
+            # The tenant to use, default is `common`
+            # tenant: 'common'
+            # Domain to build request URL
+            url_api: 'https://graph.microsoft.com/oidc/userinfo'
+            # Oauth resource field
+            resource: ''
+            # The API version to run against
+            api_version: '1.6'
+            # Send resource field with auth-request
+            auth_with_resource: true
+            # whether to check OAuth2 "state": defaults to true
+            # use_state: true
+
+nelmio_api_doc:
+    documentation:
+        #host: api.example.com
+        #schemes: [http, https]
+        info:
+            title: Innovation Hub
+            description: Routing and API documentation
+            version: 1.0.0
+        #securityDefinitions:
+        #    Bearer:
+        #        type: apiKey
+        #        description: 'Value: Bearer {jwt}'
+        #        name: Authorization
+        #        in: header
+        #security:
+        #    - Bearer: []
+    areas:
+        path_patterns: # an array of regexps
+            - ^/connect/ # Azure AD
+            - ^/api(?!/doc$) # API
+            - ^/$ # Homepage
+            - ^/content/dashboard # Dashboard
+            - ^/content/manage # Manage
+            - ^/content/activities$ # All activities
+            - ^/content/monitor$ # Monitor
+            - ^/content/connect$ # Connect
+            - ^/content/explore$ # Explore
+            - ^/explore/ # Explore detail
+            - ^/content/compare$ # Compare
+            - ^/pm/ # Pixel Metrics
+            - ^/im/ # Mail clicked Metrics
+

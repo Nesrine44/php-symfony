@@ -1,0 +1,10 @@
+.gitignore
+.htaccess
+css/
+ctools/
+generated/
+media-icons/
+pdf/
+private/
+styles/
+tmb/

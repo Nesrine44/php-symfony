@@ -1,0 +1,71 @@
+{
+    "name": "mmucklo/queue-bundle",
+    "description": "Symfony2/3/4 Queue Bundle (for background jobs) supporting Mongo (Doctrine ODM), Mysql (and any Doctrine ORM), RabbitMQ, Beanstalkd, Redis, and ... {write your own}",
+    "keywords": ["queue", "Message queue","mysql","doctrine","mongo","mongodb","orm","odm","beanstalkd","rabbit_mq", "rabbitmq", "beanstalk", "redis", "symfony"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Tee"
+        },
+    	{
+            "name": "Matthew J. Mucklo",
+            "email": "mmucklo@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "dstuecken/php7ify": ">=1.1",
+        "mmucklo/grid-bundle": ">=4.2.0",
+        "symfony/framework-bundle": ">=2.7|>=3.3|4.*",
+        "sensio/framework-extra-bundle": "2.*|3.*|4.*|5.*",
+        "cocur/background-process": ">=0.7"
+    },
+    "require-dev": {
+        "doctrine/orm": "^2.4",
+        "doctrine/annotations": "<1.5",
+        "doctrine/cache": "<1.7",
+        "doctrine/collections": "<1.5",
+        "doctrine/instantiator": "<1.1",
+        "doctrine/common": "<2.8",
+        "doctrine/dbal": "<2.6",
+        "doctrine/mongodb-odm": "^1.2",
+        "symfony/templating": "2.*|3.*|4.*",
+        "pda/pheanstalk": "^3.1",
+        "php-amqplib/php-amqplib": "^2.6",
+        "friendsofphp/php-cs-fixer": "dev-master",
+        "phpunit/phpunit": "^5.7.0",
+        "phpunit/php-code-coverage": "^4.0",
+        "predis/predis": "^v1.1.1",
+        "snc/redis-bundle": "^2.0",
+        "beberlei/doctrineextensions": "^1.0",
+        "symfony/proxy-manager-bridge": ">=2.7|>=3.3|4.*",
+        "doctrine/doctrine-bundle": ">=1.8.1"
+    },
+    "suggest": {
+        "snc/redis-bundle": "If using redis",
+        "predis/predis": "If using redis",
+        "ext-redis": "Alternative redis library",
+        "pda/pheanstalk": "If using beanstalkd",
+        "php-amqplib/php-amqplib": "If using RabbitMQ",
+        "doctrine/orm": "If using an RDBMS",
+        "doctrine/mongodb-odm": "If using mongo db",
+        "oro/doctrine-extensions": "For YEAR, MONTH, DAY, HOUR, MINUTE date functions if using JobTiming trends",
+        "beberlei/DoctrineExtensions": "Alternative for YEAR, MONTH, DAY, HOUR, MINUTE if using JobTiming trends",
+        "alcaeus/mongo-php-adapter": "If trying to use MongoDB ODM on PHP 7.0 or greater"
+    },
+    "config": {
+        "bin-dir": "bin",
+        "platform": {
+            "ext-mongo": "1.6.16"
+        }
+    },
+    "autoload": {
+        "psr-4": { "Dtc\\QueueBundle\\": "" },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

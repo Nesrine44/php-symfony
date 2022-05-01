@@ -1,0 +1,108 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "@PrAuth/layout.html.twig" %}
+{% set page_title = 'Authentication required' %}
+{% block fos_user_content %}
+    <div class="central-content">
+
+        <div class="content-flash-messages">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="flash-message {{ label }}">
+                        <div class="content">
+                            <span class="font-montserrat-700">{{ message }}</span>
+                            <div class="close-flash-message"></div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% if error %}
+                <div class="flash-message error">
+                    <div class="content">
+                        <span class="font-montserrat-700">{{ error.messageKey|trans(error.messageData, 'security') }}</span>
+                        <div class="close-flash-message"></div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="fosuserbundle-content login {{ (pr_auth.my_portal_authentication_enabled) ? 'with-prauth' : '' }}">
+        <div class="central-content-720 background-color-fff">
+            <div class="overflow-hidden">
+                <div id="primary-logo"></div>
+                <div class="content-login-modes">
+                    {% if pr_auth.my_portal_authentication_enabled %}
+                        <div class="content-login-mode prauth-login">
+                            <div class="prauth-form text-align-center">
+                                <div class="font-montserrat-700 font-size-20 color-000 margin-bottom-30">
+                                    Log in as Pernod Ricard employee
+                                </div>
+                                <div>
+                                    <a class="prauth-onclick hub-button font-montserrat-400"
+                                       href="{{ path('connect_azure_start') }}"
+                                       title="Login in one click">Log in</a>
+                                </div>
+                                <div class="help-infos margin-top-30 margin-bottom-60 font-size-13 color-787878 text-align-center">
+                                    Having trouble logging in?<br>
+                                    <a class="cursor-pointer link-underline login-with-email">Log in with email</a>
+                                </div>
+
+                                {% if pr_auth.contact_email %}
+                                    <div class="help-infos font-size-13 color-787878 text-align-center">
+                                        Issue accessing the platform? <a href="mailto:{{ pr_auth.contact_email }}">Contact
+                                            us</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="content-login-mode fosuserbundle-login display-none">
+                        {% set field_classe = (error) ? 'error' : '' %}
+                        <div class="font-montserrat-700 font-size-20 color-000 margin-bottom-30">
+                            Log in with Email
+                        </div>
+                        <form action="{{ path("fos_user_security_check") }}" method="post" class="form-fosuserbundle">
+                            {% if csrf_token %}
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                            {% endif %}
+                            <div class="form-element {{ field_classe }}">
+                                <label>{{ 'profile.show.email'|trans }}</label>
+                                <div class="content-input-text">
+                                    <input type="text" id="username" name="_username" value="{{ last_username }}"
+                                           required="required"
+                                           autocomplete="email"/>
+                                </div>
+                            </div>
+                            <div class="form-element {{ field_classe }}">
+                                <label>{{ 'security.login.password'|trans }}</label>
+                                <div class="content-input-text">
+                                    <input type="password" id="password" name="_password" required="required"
+                                           autocomplete="current-password"/>
+                                </div>
+                            </div>
+                            <div class="content-remember-me">
+                                <input type="checkbox" id="remember_me" name="_remember_me" value="on" checked/>
+                                <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                            </div>
+                            <div class="text-align-center">
+                                <input type="submit" id="_submit" class="hub-button font-montserrat-400" name="_submit"
+                                       value="{{ 'security.login.submit'|trans }}"/>
+                            </div>
+                        </form>
+                        <div class="help-infos margin-top-30 margin-bottom-60 font-size-13 color-787878 text-align-center">
+                            You are a Pernod Ricard employee?<br>
+                            <a class="cursor-pointer link-underline login-with-employe">Log in here</a>
+                        </div>
+
+                        {% if pr_auth.contact_email %}
+                            <div class="help-infos font-size-13 color-787878 text-align-center">
+                                Issue accessing the platform? <a href="mailto:{{ pr_auth.contact_email }}">Contact
+                                    us</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div id="pernod-ricard-logo"></div>
+        </div>
+    </div>
+{% endblock fos_user_content %}
