@@ -147,7 +147,7 @@ $ docker-compose exec php7  php bin/console debug:router
 ## FOS User BUNDLE :
 ```bash 
 #Create First user :  
-docker-compose exec php7  php bin/console fos:user:create admin dev@corellis.eu 1pipo2 --super-admin
+docker-compose exec php7  php bin/console fos:user:create admin 1pipo2 --super-admin
 ```
 #### More informations : 
 https://symfony.com/doc/2.0/bundles/FOSUserBundle/command_line_tools.html
